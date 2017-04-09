@@ -6,19 +6,25 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Hello World | 再吃一口橙子</title>
+  <title>MySQL 学习笔记(1) | 再吃一口橙子</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+  <meta name="description" content="MySQL 学习笔记MySQL添加用户、删除用户与授权登录MYSQL： &amp;gt;mysql -u root -p 创建用户： &amp;gt;insert into mysql.user(Host,User,Password) values(“localhost”,”username”,password(“”)); 为用户授权: 以ROOT身份登录 &amp;gt;mysql -u root -p 为用户创建一个数据库: &amp;gt;cre">
 <meta name="keywords">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http://yoursite.com/2017/04/09/hello-world/index.html">
+<meta property="og:title" content="MySQL 学习笔记(1)">
+<meta property="og:url" content="http://yoursite.com/2017/04/09/MySQL-学习笔记-1/index.html">
 <meta property="og:site_name" content="再吃一口橙子">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
-<meta property="og:updated_time" content="2017-04-09T11:49:49.596Z">
+<meta property="og:description" content="MySQL 学习笔记MySQL添加用户、删除用户与授权登录MYSQL： &amp;gt;mysql -u root -p 创建用户： &amp;gt;insert into mysql.user(Host,User,Password) values(“localhost”,”username”,password(“”)); 为用户授权: 以ROOT身份登录 &amp;gt;mysql -u root -p 为用户创建一个数据库: &amp;gt;cre">
+<meta property="og:image" content="file:///home/milhaven1733/Desktop/1.png">
+<meta property="og:image" content="file:///home/milhaven1733/Desktop/2.png">
+<meta property="og:image" content="file:///home/milhaven1733/Desktop/3.png">
+<meta property="og:image" content="file:///home/milhaven1733/Desktop/4.png">
+<meta property="og:image" content="file:///home/milhaven1733/Desktop/5.png">
+<meta property="og:updated_time" content="2017-04-09T07:13:25.483Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello World">
-<meta name="twitter:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta name="twitter:title" content="MySQL 学习笔记(1)">
+<meta name="twitter:description" content="MySQL 学习笔记MySQL添加用户、删除用户与授权登录MYSQL： &amp;gt;mysql -u root -p 创建用户： &amp;gt;insert into mysql.user(Host,User,Password) values(“localhost”,”username”,password(“”)); 为用户授权: 以ROOT身份登录 &amp;gt;mysql -u root -p 为用户创建一个数据库: &amp;gt;cre">
+<meta name="twitter:image" content="file:///home/milhaven1733/Desktop/1.png">
   
     <link rel="alternative" href="/atom.xml" title="再吃一口橙子" type="application/atom+xml">
   
@@ -164,35 +170,67 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-hello-world" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-MySQL-学习笔记-1" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      Hello World
+      MySQL 学习笔记(1)
     </h1>
   
 
         
-        <a href="/2017/04/09/hello-world/" class="archive-article-date">
-  	<time datetime="2017-04-09T11:49:49.596Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-09</time>
+        <a href="/2017/04/09/MySQL-学习笔记-1/" class="archive-article-date">
+  	<time datetime="2017-04-09T07:09:54.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-09</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+        <h2 id="MySQL-学习笔记"><a href="#MySQL-学习笔记" class="headerlink" title="MySQL 学习笔记"></a>MySQL 学习笔记</h2><h3 id="MySQL添加用户、删除用户与授权"><a href="#MySQL添加用户、删除用户与授权" class="headerlink" title="MySQL添加用户、删除用户与授权"></a>MySQL添加用户、删除用户与授权</h3><p><strong>登录MYSQL：</strong></p>
+<p>>mysql -u root -p</p>
+<p><strong>创建用户：</strong></p>
+<p>>insert into mysql.user(Host,User,Password) values(“localhost”,”username”,password(“”));</p>
+<p><strong>为用户授权</strong>:</p>
+<p><strong>以ROOT身份登录</strong></p>
+<p>>mysql -u root -p</p>
+<p><strong>为用户创建一个数据库:</strong></p>
+<p>>create database <em>*</em>DB;</p>
+<p><strong>授权新用户拥有***DB数据库的所有权限:</strong></p>
+<p>>grant all privileges on ***DB.<em> to \</em>**@localhost identified by ‘<em>*</em>(password)’;</p>
+<p><strong>刷新系统权限表:</strong></p>
+<p>>flush privileges;</p>
+<p><strong>授权test用户拥有所有数据库的某些权限： </strong></p>
+<p>>grant select,delete,update,create,drop on <em>.</em> to ***@localhost identified by “<em>*</em>“;</p>
+<p><strong>查看MYSQL数据库中所有用户</strong>:</p>
+<p>> SELECT DISTINCT CONCAT(‘User: ‘’’,user,’’’@’’’,host,’’’;’) AS query FROM mysql.user;</p>
+<p><strong>查看数据库中具体某个用户的权限:</strong></p>
+<p>>show grants for ‘<em>*</em>‘@’localhost’;  </p>
+<h3 id="修改MySQL提示符："><a href="#修改MySQL提示符：" class="headerlink" title="修改MySQL提示符："></a>修改MySQL提示符：</h3><p><strong>登录时：</strong></p>
+<p>mysql -u -p –prompt 提示符</p>
+<p><strong>已连接客户端时:</strong></p>
+<p>>prompt 提示符;</p>
+<p>部分参数：</p>
+<p><img src="file:\\\home\milhaven1733\Desktop\1.png" alt=""></p>
+<h3 id="常用命令及语法规范"><a href="#常用命令及语法规范" class="headerlink" title="常用命令及语法规范"></a>常用命令及语法规范</h3><p><img src="file:\\\home\milhaven1733\Desktop\2.png" alt=""></p>
+<p><img src="file:\\\home\milhaven1733\Desktop\3.png" alt=""></p>
+<h3 id="操作数据库"><a href="#操作数据库" class="headerlink" title="操作数据库"></a>操作数据库</h3><p><strong>创建数据库：</strong></p>
+<p>>CREATE DATABASE db_name;</p>
+<p>全部参数：</p>
+<p><img src="file:\\\home\milhaven1733\Desktop\4.png" alt=""></p>
+<p>存在warning信息时查看：</p>
+<p>>SHOW WARNINGS;</p>
+<p>查看创建时编码方式：</p>
+<p>>SHOW CREATE DATABASE db_name;</p>
+<p><strong>查看（当前服务器下）数据库列表：</strong></p>
+<p>>SHOW DATABASES;</p>
+<p><strong>修改数据库：</strong></p>
+<p><img src="file:\\\home\milhaven1733\Desktop\5.png" alt=""></p>
+<p><strong>删除数据库：</strong></p>
+<p>>DROP DATABASE db_name;</p>
 
       
 
@@ -223,6 +261,17 @@
       
       
       
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/SQL/" class="article-tag-list-link color4">SQL</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
 
       
 
@@ -272,7 +321,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/04/09/hello-world/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/04/09/MySQL-学习笔记-1/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -286,15 +335,11 @@
   
 <nav id="article-nav">
   
-    <a href="/2017/04/09/t检验笔记/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          t检验笔记
-        
-      </div>
-    </a>
   
+    <a href="/2017/04/09/t检验笔记/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">t检验笔记</div>
+      <i class="icon-circle-right"></i>
+    </a>
   
 </nav>
 

@@ -220,6 +220,250 @@
 
 
   
+    <article id="post-t检验笔记" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/09/t检验笔记/">t检验笔记</a>
+    </h1>
+  
+
+        
+        <a href="/2017/04/09/t检验笔记/" class="archive-article-date">
+  	<time datetime="2017-04-09T08:17:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-09</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="t检验-第二部分"><a href="#t检验-第二部分" class="headerlink" title="t检验_第二部分"></a>t检验_第二部分</h2><h3 id="效应量（effect-size）"><a href="#效应量（effect-size）" class="headerlink" title="效应量（effect size）"></a>效应量（effect size）</h3><p>实验性研究中，表示处理效应的大小</p>
+<p>非实验性研究中，表示变量之间关系强度</p>
+<p>t/z检验中效应量衡量指标——均值差异（mean difference）</p>
+<h3 id="效应量测量类型"><a href="#效应量测量类型" class="headerlink" title="效应量测量类型"></a>效应量测量类型</h3><h4 id="差异度量"><a href="#差异度量" class="headerlink" title="差异度量"></a>差异度量</h4><p>​        均值差异</p>
+<p>​        标准化差异度量（standardized differens）——cohen‘s d</p>
+<h4 id="相关度量"><a href="#相关度量" class="headerlink" title="相关度量"></a>相关度量</h4><p>​        $$r^2$$  表示某个变量的变化比例与另一个变量的关系（一个变量能够“解释”另一个变量的特定变化的比例）</p>
+<h3 id="统计显著性"><a href="#统计显著性" class="headerlink" title="统计显著性"></a>统计显著性</h3><p>在统计学中，“显著性”是指——</p>
+<p>rejected the null</p>
+<p>results are not likely due to chance（sampling error）</p>
+<p>即：我们在解释结果时，排除了随机因素/抽样错误</p>
+<p><strong>判断调查研究结果是否有意义：</strong></p>
+<p>变量是否具有实际意义或社会、理论意义</p>
+<p>效应量大小</p>
+<p>能否排除抽样错误</p>
+<p>能否排除结果对立解释（排除潜在变量影响）</p>
+<h3 id="Cohen‘s-d【标准化均值差异（standardized-mean-difference）】"><a href="#Cohen‘s-d【标准化均值差异（standardized-mean-difference）】" class="headerlink" title="Cohen‘s d【标准化均值差异（standardized mean difference）】"></a>Cohen‘s d【标准化均值差异（standardized mean difference）】</h3><p>$$d=\frac{x-\mu}{s}$$</p>
+<blockquote>
+<p>$$x 表示样本均值 ,s表示样本标准差$$</p>
+</blockquote>
+<h3 id="r-2-（确定系数）"><a href="#r-2-（确定系数）" class="headerlink" title="$r^2$ （确定系数）"></a>$r^2$ （确定系数）</h3><p>​    <strong>相关度量</strong>  表示两个变量之间的关系程度</p>
+<p>​    $$r^2$$ 范围：0~1（数值越大相关性越强）</p>
+<p>​    <strong>t检验 中计算    $$r^2$$</strong> :</p>
+<p>​    $$r^2=\frac{t^2}{t^2+ df}$$</p>
+<blockquote>
+<p>t为在t检验中获得的值，df为自由度</p>
+</blockquote>
+<h3 id="报告结果"><a href="#报告结果" class="headerlink" title="报告结果"></a>报告结果</h3><p>描述统计量（文，图，表）</p>
+<p>推论统计量（假设检验、置信区间）</p>
+<p><strong>APA style</strong></p>
+<p>​    $$t（df）=x.xx,p=x.xx,direction$$</p>
+<p>​    e.g.     $$t(24)=-2.50,p&lt;0.05,one-tailed$$</p>
+<p>报告置信区间：（注明是什么的置信区间）</p>
+<p>​    <strong>e.g.    confidence interval on the mean difference;95% CI=(4,6)</strong></p>
+<p>报告效应量：</p>
+<p>e.g. $$d=x.xx$$</p>
+<p>​    $$r^2=.xx$$ (通常不写0)</p>
+<h3 id="完整的单样本t检验"><a href="#完整的单样本t检验" class="headerlink" title="完整的单样本t检验"></a>完整的单样本t检验</h3><h4 id="t检验"><a href="#t检验" class="headerlink" title="t检验"></a>t检验</h4><h4 id="置信区间"><a href="#置信区间" class="headerlink" title="置信区间"></a>置信区间</h4><h4 id="Cohen‘s-d"><a href="#Cohen‘s-d" class="headerlink" title="Cohen‘s d"></a>Cohen‘s d</h4><h4 id="r-2"><a href="#r-2" class="headerlink" title="r^2"></a>r^2</h4><p>公式：</p>
+<p>​    $$df=n-1$$</p>
+<p>​    $$SEM(均值标准误差)=\frac{S}{\sqrt{n}}$$</p>
+<p>​    $$t=\frac{x-\mu}{SEM}$$    </p>
+<p>​    $$CI =x+/-margin\ of\ error $$</p>
+<p>​    $$margin\ of\ error=t_crttical*SEM$$</p>
+<p>​    $$Cohen’s\ d=\frac{x-\mu}{S}$$    </p>
+<p>​    $$r^2=\frac{t^2}{t^2+ df}$$</p>
+<h4 id="过程"><a href="#过程" class="headerlink" title="过程"></a>过程</h4><ul>
+<li><p>自变量、因变量</p>
+</li>
+<li><p>处理方式</p>
+</li>
+<li><p>零假设、对立假设</p>
+</li>
+<li><p>哪种尾检验</p>
+</li>
+<li><p>自由度</p>
+</li>
+<li><p>t临界值（$$\alpha 水平$$）</p>
+</li>
+<li><p>SEM</p>
+</li>
+<li><p>均值误差（$$x-\mu$$）</p>
+</li>
+<li><p>t统计量</p>
+</li>
+<li><p>t是否在临界区</p>
+</li>
+<li><p>p值范围（是否大于置信水平）</p>
+</li>
+<li><p>统计显著性（是/否）</p>
+</li>
+<li><p>结果是否有意义</p>
+</li>
+<li><p>Cohen’s d</p>
+</li>
+<li><p>$$r^2$$</p>
+</li>
+<li><p>误差范围</p>
+</li>
+<li><p>置信区间 </p>
+<p>​</p>
+</li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/数据分析/" class="article-tag-list-link color5">数据分析</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/04/09/t检验笔记/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-MySQL-学习笔记-1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/09/MySQL-学习笔记-1/">MySQL 学习笔记(1)</a>
+    </h1>
+  
+
+        
+        <a href="/2017/04/09/MySQL-学习笔记-1/" class="archive-article-date">
+  	<time datetime="2017-04-09T07:09:54.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-09</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="MySQL-学习笔记"><a href="#MySQL-学习笔记" class="headerlink" title="MySQL 学习笔记"></a>MySQL 学习笔记</h2><h3 id="MySQL添加用户、删除用户与授权"><a href="#MySQL添加用户、删除用户与授权" class="headerlink" title="MySQL添加用户、删除用户与授权"></a>MySQL添加用户、删除用户与授权</h3><p><strong>登录MYSQL：</strong></p>
+<p>>mysql -u root -p</p>
+<p><strong>创建用户：</strong></p>
+<p>>insert into mysql.user(Host,User,Password) values(“localhost”,”username”,password(“”));</p>
+<p><strong>为用户授权</strong>:</p>
+<p><strong>以ROOT身份登录</strong></p>
+<p>>mysql -u root -p</p>
+<p><strong>为用户创建一个数据库:</strong></p>
+<p>>create database <em>*</em>DB;</p>
+<p><strong>授权新用户拥有***DB数据库的所有权限:</strong></p>
+<p>>grant all privileges on ***DB.<em> to \</em>**@localhost identified by ‘<em>*</em>(password)’;</p>
+<p><strong>刷新系统权限表:</strong></p>
+<p>>flush privileges;</p>
+<p><strong>授权test用户拥有所有数据库的某些权限： </strong></p>
+<p>>grant select,delete,update,create,drop on <em>.</em> to ***@localhost identified by “<em>*</em>“;</p>
+<p><strong>查看MYSQL数据库中所有用户</strong>:</p>
+<p>> SELECT DISTINCT CONCAT(‘User: ‘’’,user,’’’@’’’,host,’’’;’) AS query FROM mysql.user;</p>
+<p><strong>查看数据库中具体某个用户的权限:</strong></p>
+<p>>show grants for ‘<em>*</em>‘@’localhost’;  </p>
+<h3 id="修改MySQL提示符："><a href="#修改MySQL提示符：" class="headerlink" title="修改MySQL提示符："></a>修改MySQL提示符：</h3><p><strong>登录时：</strong></p>
+<p>mysql -u -p –prompt 提示符</p>
+<p><strong>已连接客户端时:</strong></p>
+<p>>prompt 提示符;</p>
+<p>部分参数：</p>
+<p><img src="file:\\\home\milhaven1733\Desktop\1.png" alt=""></p>
+<h3 id="常用命令及语法规范"><a href="#常用命令及语法规范" class="headerlink" title="常用命令及语法规范"></a>常用命令及语法规范</h3><p><img src="file:\\\home\milhaven1733\Desktop\2.png" alt=""></p>
+<p><img src="file:\\\home\milhaven1733\Desktop\3.png" alt=""></p>
+<h3 id="操作数据库"><a href="#操作数据库" class="headerlink" title="操作数据库"></a>操作数据库</h3><p><strong>创建数据库：</strong></p>
+<p>>CREATE DATABASE db_name;</p>
+<p>全部参数：</p>
+<p><img src="file:\\\home\milhaven1733\Desktop\4.png" alt=""></p>
+<p>存在warning信息时查看：</p>
+<p>>SHOW WARNINGS;</p>
+<p>查看创建时编码方式：</p>
+<p>>SHOW CREATE DATABASE db_name;</p>
+<p><strong>查看（当前服务器下）数据库列表：</strong></p>
+<p>>SHOW DATABASES;</p>
+<p><strong>修改数据库：</strong></p>
+<p><img src="file:\\\home\milhaven1733\Desktop\5.png" alt=""></p>
+<p><strong>删除数据库：</strong></p>
+<p>>DROP DATABASE db_name;</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/SQL/" class="article-tag-list-link color4">SQL</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/04/09/MySQL-学习笔记-1/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
   
 
 

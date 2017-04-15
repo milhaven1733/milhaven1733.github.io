@@ -8,14 +8,25 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>MySQL-学习笔记-2 | 再吃一口橙子</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="keywords">
+  <meta name="description" content="数据类型及数据表操作数据类型数据类型决定存储格式 要根据实际应用来选择最合适的数据类型 整型 浮点型 日期时间型 通常用数字类型取代日期时间或进行时间戳转换 字符型 注： CHAR(M)为定长类型 VARCHAR 为变长类型 L+1或L+2里多出来的字节用来保存数据值长度 ENUM表示从枚举的值中选择其一 SET表示从成员中进行排列组合形成其值 数据表操作创建数据表数据表是数据库中其他对象的基础">
+<meta name="keywords">
 <meta property="og:type" content="article">
 <meta property="og:title" content="MySQL-学习笔记-2">
 <meta property="og:url" content="http://yoursite.com/2017/04/12/MySQL-学习笔记-2/index.html">
 <meta property="og:site_name" content="再吃一口橙子">
-<meta property="og:updated_time" content="2017-04-12T10:15:56.461Z">
+<meta property="og:description" content="数据类型及数据表操作数据类型数据类型决定存储格式 要根据实际应用来选择最合适的数据类型 整型 浮点型 日期时间型 通常用数字类型取代日期时间或进行时间戳转换 字符型 注： CHAR(M)为定长类型 VARCHAR 为变长类型 L+1或L+2里多出来的字节用来保存数据值长度 ENUM表示从枚举的值中选择其一 SET表示从成员中进行排列组合形成其值 数据表操作创建数据表数据表是数据库中其他对象的基础">
+<meta property="og:image" content="http://yoursite.com/2017/04/12/MySQL-学习笔记-2/6.png">
+<meta property="og:image" content="http://yoursite.com/2017/04/12/MySQL-学习笔记-2/7.png">
+<meta property="og:image" content="http://yoursite.com/2017/04/12/MySQL-学习笔记-2/8.png">
+<meta property="og:image" content="http://yoursite.com/2017/04/12/MySQL-学习笔记-2/9.png">
+<meta property="og:image" content="http://yoursite.com/2017/04/12/MySQL-学习笔记-2/12.png">
+<meta property="og:image" content="http://yoursite.com/2017/04/12/MySQL-学习笔记-2/13.png">
+<meta property="og:image" content="http://yoursite.com/2017/04/12/MySQL-学习笔记-2/14.png">
+<meta property="og:updated_time" content="2017-04-15T16:31:15.797Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MySQL-学习笔记-2">
+<meta name="twitter:description" content="数据类型及数据表操作数据类型数据类型决定存储格式 要根据实际应用来选择最合适的数据类型 整型 浮点型 日期时间型 通常用数字类型取代日期时间或进行时间戳转换 字符型 注： CHAR(M)为定长类型 VARCHAR 为变长类型 L+1或L+2里多出来的字节用来保存数据值长度 ENUM表示从枚举的值中选择其一 SET表示从成员中进行排列组合形成其值 数据表操作创建数据表数据表是数据库中其他对象的基础">
+<meta name="twitter:image" content="http://yoursite.com/2017/04/12/MySQL-学习笔记-2/6.png">
   
     <link rel="alternative" href="/atom.xml" title="再吃一口橙子" type="application/atom+xml">
   
@@ -181,7 +192,164 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <h2 id="数据类型及数据表操作"><a href="#数据类型及数据表操作" class="headerlink" title="数据类型及数据表操作"></a>数据类型及数据表操作</h2><h3 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h3><p>数据类型决定存储格式</p>
+<p>要根据实际应用来选择最合适的数据类型</p>
+<h4 id="整型"><a href="#整型" class="headerlink" title="整型"></a>整型</h4><p><img src="/2017/04/12/MySQL-学习笔记-2/6.png" alt=""></p>
+<h4 id="浮点型"><a href="#浮点型" class="headerlink" title="浮点型"></a>浮点型</h4><p><img src="/2017/04/12/MySQL-学习笔记-2/7.png" alt=""></p>
+<h4 id="日期时间型"><a href="#日期时间型" class="headerlink" title="日期时间型"></a>日期时间型</h4><p><img src="/2017/04/12/MySQL-学习笔记-2/8.png" alt=""></p>
+<p>通常用数字类型取代日期时间或进行时间戳转换</p>
+<h4 id="字符型"><a href="#字符型" class="headerlink" title="字符型"></a>字符型</h4><p><img src="/2017/04/12/MySQL-学习笔记-2/9.png" alt=""></p>
+<p>注：</p>
+<p>CHAR(M)为定长类型</p>
+<p>VARCHAR 为变长类型</p>
+<p>L+1或L+2里多出来的字节用来保存数据值长度</p>
+<p>ENUM表示从枚举的值中选择其一</p>
+<p>SET表示从成员中进行排列组合形成其值</p>
+<h3 id="数据表操作"><a href="#数据表操作" class="headerlink" title="数据表操作"></a>数据表操作</h3><h4 id="创建数据表"><a href="#创建数据表" class="headerlink" title="创建数据表"></a>创建数据表</h4><p>数据表是数据库中其他对象的基础</p>
+<p>关系性数据库——二维表格——数据表</p>
+<p>行——记录 列——字段</p>
+<h4 id="打开数据库"><a href="#打开数据库" class="headerlink" title="打开数据库"></a>打开数据库</h4><blockquote>
+<p>USE 数据库名称;</p>
+<p>SELECT DATABASE()； 显示当前使用的数据库</p>
+</blockquote>
+<h4 id="创建数据表-1"><a href="#创建数据表-1" class="headerlink" title="创建数据表"></a>创建数据表</h4><blockquote>
+<p>CREATE TABLE table_name(</p>
+<p>​    column_name data_type,</p>
+<p>​    ……</p>
+<p> )</p>
+<p>e.g.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&gt; mysql&gt; CREATE TABLE tb1(</div><div class="line">&gt; -&gt; username VARCHAR(20),</div><div class="line">&gt; -&gt; age TINYINT UNSIGNED,</div><div class="line">&gt; -&gt; salary FLOAT(8,2) UNSIGNED                                                     </div><div class="line">&gt; -&gt; );</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+</blockquote>
+<p>&gt;</p>
+<blockquote>
+<p>Query OK, 0 rows affected (0.35 sec)</p>
+</blockquote>
+<h4 id="查看数据表"><a href="#查看数据表" class="headerlink" title="查看数据表"></a>查看数据表</h4><blockquote>
+<p><em>**</em>SHOW TABLES[FROM db_name]</p>
+<p>[LIKE ‘pattern’| WHERE expr]</p>
+</blockquote>
+<p>注：此命令可查询其他数据库中的表且不改变当前所处数据库，如：</p>
+<blockquote>
+<p>mysql&gt; show tables from mysql;</p>
+<p>+—————————+</p>
+<p>| Tables_in_mysql           |<br>+—————————+<br>| columns_priv              |<br>| db                        |<br>| engine_cost               |<br>| event                     |</p>
+</blockquote>
+<p>第二行涉及通配符，暂略</p>
+<h4 id="查看数据表结构"><a href="#查看数据表结构" class="headerlink" title="查看数据表结构"></a>查看数据表结构</h4><blockquote>
+<p>SHOW COLUMNS FROM table_name;</p>
+</blockquote>
+<p>如：</p>
+<blockquote>
+<p>mysql&gt; show columns from tb1;<br>+———-+———————+——+—–+———+——-+<br>| Field    | Type                | Null | Key | Default | Extra |<br>+———-+———————+——+—–+———+——-+<br>| username | varchar(20)         | YES  |     | NULL    |       |<br>| age      | tinyint(3) unsigned | YES  |     | NULL    |       |<br>| salary   | float(8,2) unsigned | YES  |     | NULL    |       |<br>+———-+———————+——+—–+———+——-+<br>3 rows in set (0.01 sec)</p>
+</blockquote>
+<h4 id="记录插入与查找"><a href="#记录插入与查找" class="headerlink" title="记录插入与查找"></a>记录插入与查找</h4><p>插入记录</p>
+<blockquote>
+<p>INSERT [INTO] tb1_name [(col_name,…)] VALUES(val,…)</p>
+</blockquote>
+<p>如：</p>
+<blockquote>
+<p>mysql&gt; INSERT tb1 VALUES(‘TOM’,25,7825.37);<br>Query OK, 1 row affected (0.07 sec)</p>
+<p>mysql&gt; INSERT tb1(username,salary)  VALUES(‘Jphn’,6825.37);<br>Query OK, 1 row affected (0.04 sec)</p>
+</blockquote>
+<p>查找记录</p>
+<blockquote>
+<p>SELECT expr,… FROM table_name</p>
+</blockquote>
+<p>如：</p>
+<blockquote>
+<p>mysql&gt; SELECT * FROM tb1;<br>+———-+——+———+<br>| username | age  | salary  |<br>+———-+——+———+<br>| TOM      |   25 | 7825.37 |<br>| Jphn     | NULL | 6825.37 |<br>+———-+——+———+</p>
+</blockquote>
+<p>注：*是对字段的过滤而非对记录的过滤</p>
+<h4 id="空值与非空"><a href="#空值与非空" class="headerlink" title="空值与非空"></a>空值与非空</h4><p>创建表格时指定某字段的值是否可以为空：</p>
+<p>NULL,字段值可以为空</p>
+<p>NOT NULL，字段值禁止为空</p>
+<blockquote>
+<p>mysql&gt; CREATE TABLE tb2(<br>-&gt; username VARCHAR(20) NOT NULL,<br>-&gt; age TINYINT UNSIGNED NULL<br>-&gt; );</p>
+<p>mysql&gt; SHOW COLUMNS FROM tb2;<br>+———-+———————+——+—–+———+——-+<br>| Field    | Type                | Null | Key | Default | Extra |<br>+———-+———————+——+—–+———+——-+<br>| username | varchar(20)         | NO   |     | NULL    |       |<br>| age      | tinyint(3) unsigned | YES  |     | NULL    |       |<br>+———-+———————+——+—–+———+——-+</p>
+<p>mysql&gt; INSERT tb2 VALUES(NULL,26);<br>ERROR 1048 (23000): Column ‘username’ cannot be null</p>
+</blockquote>
+<h4 id="自动编号"><a href="#自动编号" class="headerlink" title="自动编号"></a>自动编号</h4><p>保证某条记录的唯一性——记录自动编号</p>
+<p><img src="/2017/04/12/MySQL-学习笔记-2/12.png" alt=""></p>
+<p>即自动编号字段必须定义为数值类型，且定义为主键</p>
+<p>如设计错误的定义：</p>
+<blockquote>
+<p>mysql&gt; CREATE TABLE tb3(                                                              -&gt; -&gt;id SMALLINT UNSIGNED AUTO_INCREMENT,                                           -&gt; username VARCHAR(30) NOT NULL</p>
+<p>-&gt;);</p>
+<p>ERROR 1075 (42000): Incorrect table definition; there can be only one auto column and it must be defined as a key</p>
+</blockquote>
+<h4 id="初涉主键约束"><a href="#初涉主键约束" class="headerlink" title="初涉主键约束"></a>初涉主键约束</h4><p><img src="/2017/04/12/MySQL-学习笔记-2/13.png" alt=""></p>
+<p>如修改上述记录：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">mysql&gt; CREATE TABLE tb3(</div><div class="line">-&gt; id SMALLINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,</div><div class="line">-&gt; username VARCHAR(30) NOT NULL                          -&gt; );</div></pre></td></tr></table></figure>
+<blockquote>
+<p>mysql&gt; SHOW COLUMNS FROM tb3;<br>+———-+———————-+——+—–+———+—————-+<br>| Field    | Type                 | Null | Key | Default | Extra          |<br>+———-+———————-+——+—–+———+—————-+<br>| id       | smallint(5) unsigned | NO   | PRI | NULL    | auto_increment |<br>| username | varchar(30)          | NO   |     | NULL    |                |<br>+———-+———————-+——+—–+———+—————-+</p>
+</blockquote>
+<p>自动编号示例：</p>
+<blockquote>
+<p>mysql&gt; INSERT tb3(username) VALUES(‘XueXue’);<br>Query OK, 1 row affected (0.05 sec)</p>
+<p>mysql&gt; INSERT tb3(username) VALUES(‘TuTu’);<br>Query OK, 1 row affected (0.06 sec)</p>
+<p>mysql&gt; INSERT tb3(username) VALUES(‘JingJing’);<br>Query OK, 1 row affected (0.02 sec)</p>
+<p>mysql&gt; INSERT tb3(username) VALUES(‘GaiGai’);<br>Query OK, 1 row affected (0.05 sec)</p>
+<p>mysql&gt; SELECT * FROM tb3;<br>+—-+———-+<br>| id | username |<br>+—-+———-+<br>|  1 | XueXue   |<br>|  2 | TuTu     |<br>|  3 | JingJing |<br>|  4 | GaiGai   |<br>+—-+———-+</p>
+</blockquote>
+<p>主键不一定要定义为自动编号，如：</p>
+<blockquote>
+<p>mysql&gt; CREATE TABLE tb4(<br>-&gt; id SMALLINT UNSIGNED PRIMARY KEY,<br>-&gt; username VARCHAR(20) NOT NULL<br>-&gt; );<br>Query OK, 0 rows affected (0.36 sec)</p>
+<p>mysql&gt; SHOW COLUMNS FROM tb4;<br>+———-+———————-+——+—–+———+——-+<br>| Field    | Type                 | Null | Key | Default | Extra |<br>+———-+———————-+——+—–+———+——-+<br>| id       | smallint(5) unsigned | NO   | PRI | NULL    |       |<br>| username | varchar(20)          | NO   |     | NULL    |       |<br>+———-+———————-+——+—–+———+——-+</p>
+</blockquote>
+<p>主键字段具有唯一性：</p>
+<blockquote>
+<p>mysql&gt; INSERT tb4 VALUES(22,’Tom’);<br>Query OK, 1 row affected (0.05 sec)</p>
+<p>mysql&gt; INSERT tb4 VALUES(22,’John’);<br>ERROR 1062 (23000): Duplicate entry ‘22’ for key ‘PRIMARY’</p>
+</blockquote>
+<h4 id="初涉唯一约束"><a href="#初涉唯一约束" class="headerlink" title="初涉唯一约束"></a>初涉唯一约束</h4><p><img src="/2017/04/12/MySQL-学习笔记-2/14.png" alt=""></p>
+<p>第二三条看似相悖，实际上一张表只允许存在一个值为空的唯一约束字段</p>
+<p>创建示例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">mysql&gt; CREATE TABLE tb5(</div><div class="line">-&gt; id SMALLINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,</div><div class="line">-&gt; username VARCHAR(20) NOT NULL UNIQUE KEY,</div><div class="line">-&gt; age TINYINT UNSIGNED</div><div class="line">-&gt; );</div></pre></td></tr></table></figure>
+<blockquote>
+<p>mysql&gt; SHOW COLUMNS FROM tb5;<br>+———-+———————-+——+—–+———+—————-+<br>| Field    | Type                 | Null | Key | Default | Extra          |<br>+———-+———————-+——+—–+———+—————-+<br>| id       | smallint(5) unsigned | NO   | PRI | NULL    | auto_increment |<br>| username | varchar(20)          | NO   | UNI | NULL    |                |<br>| age      | tinyint(3) unsigned  | YES  |     | NULL    |                |<br>+———-+———————-+——+—–+———+—————-+</p>
+</blockquote>
+<p>验证唯一性：</p>
+<blockquote>
+<p>mysql&gt; INSERT tb5(username,age) VALUES(‘John’,22);<br>Query OK, 1 row affected (0.05 sec)</p>
+<p>mysql&gt; INSERT tb5(username,age) VALUES(‘John’,22);<br>ERROR 1062 (23000): Duplicate entry ‘John’ for key ‘username’</p>
+</blockquote>
+<h4 id="初涉默认约束"><a href="#初涉默认约束" class="headerlink" title="初涉默认约束"></a>初涉默认约束</h4><p>DEFAULT</p>
+<p>创建：</p>
+<blockquote>
+<p>mysql&gt; CREATE TABLE tb6(<br>-&gt; id SMALLINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,<br>-&gt; username VARCHAR(20) NOT NULL UNIQUE KEY,<br>-&gt; sex ENUM(‘1’,’2’,’3’) DEFAULT ‘3’<br>-&gt; );</p>
+</blockquote>
+<p>查看：</p>
+<blockquote>
+<p>mysql&gt; SHOW COLUMNS FROM tb6;<br>+———-+———————-+——+—–+———+—————-+<br>| Field    | Type                 | Null | Key | Default | Extra          |<br>+———-+———————-+——+—–+———+—————-+<br>| id       | smallint(5) unsigned | NO   | PRI | NULL    | auto_increment |</p>
+<table>
+<thead>
+<tr>
+<th>username</th>
+<th>varchar(20)</th>
+<th>NO</th>
+<th>UNI</th>
+<th>NULL</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>| sex      | enum(‘1’,’2’,’3’)    | YES  |     | 3       |                |<br>+———-+———————-+——+—–+———+—————-+ </p>
+</blockquote>
+<p>验证默认约束：</p>
+<blockquote>
+<p>mysql&gt; INSERT  tb6(username) VALUES(‘Tom’);<br>Query OK, 1 row affected (0.05 sec)</p>
+<p>mysql&gt; SELECT * FROM tb6;<br>+—-+———-+——+<br>| id | username | sex  |<br>+—-+———-+——+<br>|  1 | Tom      | 3    |<br>+—-+———-+——+</p>
+</blockquote>
+
       
 
       
@@ -285,11 +453,11 @@
   
 <nav id="article-nav">
   
-    <a href="/2017/04/12/MySQL-学习笔记-1/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2017/04/11/hello-world/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          MySQL-学习笔记-1
+          Hello World
         
       </div>
     </a>

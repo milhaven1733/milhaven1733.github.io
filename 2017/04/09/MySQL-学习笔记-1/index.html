@@ -8,23 +8,23 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>MySQL-学习笔记-1 | 再吃一口橙子</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="MySQL 学习笔记MySQL自启动sudo chkconfig –add mysql        添加服务 netstat -na | grep 3306  看到有监听说明服务启动 或：ps -ef | grep mysqld 检查MySQL服务器是否启动 另： sudo /etc/init.d/mysql start     启动MySQL 服务器 sudo /etc/init.d/mysq">
+  <meta name="description" content="MySQL自启动sudo chkconfig –add mysql        添加服务 netstat -na | grep 3306  看到有监听说明服务启动 或：ps -ef | grep mysqld 检查MySQL服务器是否启动 另： sudo /etc/init.d/mysql start     启动MySQL 服务器 sudo /etc/init.d/mysql stop 或 .">
 <meta name="keywords">
 <meta property="og:type" content="article">
 <meta property="og:title" content="MySQL-学习笔记-1">
-<meta property="og:url" content="http://yoursite.com/2017/04/12/MySQL-学习笔记-1/index.html">
+<meta property="og:url" content="http://yoursite.com/2017/04/09/MySQL-学习笔记-1/index.html">
 <meta property="og:site_name" content="再吃一口橙子">
-<meta property="og:description" content="MySQL 学习笔记MySQL自启动sudo chkconfig –add mysql        添加服务 netstat -na | grep 3306  看到有监听说明服务启动 或：ps -ef | grep mysqld 检查MySQL服务器是否启动 另： sudo /etc/init.d/mysql start     启动MySQL 服务器 sudo /etc/init.d/mysq">
-<meta property="og:image" content="http://yoursite.com/2017/04/12/MySQL-学习笔记-1/1.png">
-<meta property="og:image" content="http://yoursite.com/2017/04/12/MySQL-学习笔记-1/2.png">
-<meta property="og:image" content="http://yoursite.com/2017/04/12/MySQL-学习笔记-1/3.png">
-<meta property="og:image" content="http://yoursite.com/2017/04/12/MySQL-学习笔记-1/4.png">
-<meta property="og:image" content="http://yoursite.com/2017/04/12/MySQL-学习笔记-1/5.png">
-<meta property="og:updated_time" content="2017-04-12T10:16:38.001Z">
+<meta property="og:description" content="MySQL自启动sudo chkconfig –add mysql        添加服务 netstat -na | grep 3306  看到有监听说明服务启动 或：ps -ef | grep mysqld 检查MySQL服务器是否启动 另： sudo /etc/init.d/mysql start     启动MySQL 服务器 sudo /etc/init.d/mysql stop 或 .">
+<meta property="og:image" content="http://yoursite.com/2017/04/09/MySQL-学习笔记-1/1.png">
+<meta property="og:image" content="http://yoursite.com/2017/04/09/MySQL-学习笔记-1/2.png">
+<meta property="og:image" content="http://yoursite.com/2017/04/09/MySQL-学习笔记-1/3.png">
+<meta property="og:image" content="http://yoursite.com/2017/04/09/MySQL-学习笔记-1/4.png">
+<meta property="og:image" content="http://yoursite.com/2017/04/09/MySQL-学习笔记-1/5.png">
+<meta property="og:updated_time" content="2017-04-15T16:32:43.228Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MySQL-学习笔记-1">
-<meta name="twitter:description" content="MySQL 学习笔记MySQL自启动sudo chkconfig –add mysql        添加服务 netstat -na | grep 3306  看到有监听说明服务启动 或：ps -ef | grep mysqld 检查MySQL服务器是否启动 另： sudo /etc/init.d/mysql start     启动MySQL 服务器 sudo /etc/init.d/mysq">
-<meta name="twitter:image" content="http://yoursite.com/2017/04/12/MySQL-学习笔记-1/1.png">
+<meta name="twitter:description" content="MySQL自启动sudo chkconfig –add mysql        添加服务 netstat -na | grep 3306  看到有监听说明服务启动 或：ps -ef | grep mysqld 检查MySQL服务器是否启动 另： sudo /etc/init.d/mysql start     启动MySQL 服务器 sudo /etc/init.d/mysql stop 或 .">
+<meta name="twitter:image" content="http://yoursite.com/2017/04/09/MySQL-学习笔记-1/1.png">
   
     <link rel="alternative" href="/atom.xml" title="再吃一口橙子" type="application/atom+xml">
   
@@ -182,15 +182,15 @@
   
 
         
-        <a href="/2017/04/12/MySQL-学习笔记-1/" class="archive-article-date">
-  	<time datetime="2017-04-12T07:09:54.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-12</time>
+        <a href="/2017/04/09/MySQL-学习笔记-1/" class="archive-article-date">
+  	<time datetime="2017-04-08T16:17:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-09</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="MySQL-学习笔记"><a href="#MySQL-学习笔记" class="headerlink" title="MySQL 学习笔记"></a>MySQL 学习笔记</h2><h3 id="MySQL自启动"><a href="#MySQL自启动" class="headerlink" title="MySQL自启动"></a>MySQL自启动</h3><p><strong>sudo chkconfig –add mysql        添加服务</strong></p>
+        <h3 id="MySQL自启动"><a href="#MySQL自启动" class="headerlink" title="MySQL自启动"></a>MySQL自启动</h3><p><strong>sudo chkconfig –add mysql        添加服务</strong></p>
 <p><strong>netstat -na | grep 3306  看到有监听说明服务启动</strong></p>
 <p>或：<strong>ps -ef | grep mysqld 检查MySQL服务器是否启动</strong></p>
 <p>另：</p>
@@ -205,7 +205,7 @@
 <blockquote>
 <p>INSERT INTO user (host, user,ssl_cipher,x509_issuer,x509_subject)  VALUES (‘localhost’, ‘test’,’’,’’,’’);</p>
 <p>use mysql;</p>
-<p>UPDATE user SET authentication_string=PASSWORD(‘<em>*</em>‘) WHERE user=’test’;</p>
+<p> UPDATE user SET authentication_string=PASSWORD(‘<em>*</em>‘) WHERE user=’test’;</p>
 <p>FLUSH PRIVILEGES;</p>
 </blockquote>
 <p><strong>为用户授权</strong>:</p>
@@ -228,13 +228,13 @@
 <p><strong>已连接客户端时:</strong></p>
 <p>>prompt 提示符;</p>
 <p>部分参数：</p>
-<p><img src="/2017/04/12/MySQL-学习笔记-1/1.png" alt=""></p>
-<h3 id="常用命令及语法规范"><a href="#常用命令及语法规范" class="headerlink" title="常用命令及语法规范"></a>常用命令及语法规范</h3><p><img src="/2017/04/12/MySQL-学习笔记-1/2.png" alt=""></p>
-<p><img src="/2017/04/12/MySQL-学习笔记-1/3.png" alt=""></p>
+<p><img src="/2017/04/09/MySQL-学习笔记-1/1.png" alt=""></p>
+<h3 id="常用命令及语法规范"><a href="#常用命令及语法规范" class="headerlink" title="常用命令及语法规范"></a>常用命令及语法规范</h3><p><img src="/2017/04/09/MySQL-学习笔记-1/2.png" alt=""></p>
+<p><img src="/2017/04/09/MySQL-学习笔记-1/3.png" alt=""></p>
 <h3 id="操作数据库"><a href="#操作数据库" class="headerlink" title="操作数据库"></a>操作数据库</h3><p><strong>创建数据库：</strong></p>
 <p>>CREATE DATABASE db_name;</p>
 <p>全部参数：</p>
-<p><img src="/2017/04/12/MySQL-学习笔记-1/4.png" alt=""></p>
+<p><img src="/2017/04/09/MySQL-学习笔记-1/4.png" alt=""></p>
 <p>存在warning信息时查看：</p>
 <p>>SHOW WARNINGS;</p>
 <p>查看创建时编码方式：</p>
@@ -242,7 +242,7 @@
 <p><strong>查看（当前服务器下）数据库列表：</strong></p>
 <p>>SHOW DATABASES;</p>
 <p><strong>修改数据库：</strong></p>
-<p><img src="/2017/04/12/MySQL-学习笔记-1/5.png" alt=""></p>
+<p><img src="/2017/04/09/MySQL-学习笔记-1/5.png" alt=""></p>
 <p><strong>删除数据库：</strong></p>
 <p>>DROP DATABASE db_name;</p>
 
@@ -335,7 +335,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/04/12/MySQL-学习笔记-1/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/04/09/MySQL-学习笔记-1/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -349,18 +349,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2017/04/11/hello-world/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          Hello World
-        
-      </div>
-    </a>
   
-  
-    <a href="/2017/04/12/MySQL-学习笔记-2/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">MySQL-学习笔记-2</div>
+    <a href="/2017/04/09/t检验笔记/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">t检验笔记</div>
       <i class="icon-circle-right"></i>
     </a>
   

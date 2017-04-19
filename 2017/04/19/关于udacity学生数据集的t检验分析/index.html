@@ -6,14 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives | 再吃一口橙子</title>
+  <title>关于udacity学生数据集的t检验分析 | 再吃一口橙子</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="再吃一口橙子">
-<meta property="og:url" content="http://yoursite.com/archives/index.html">
+  <meta name="description" content="前言上一次，应用udacity提供的学生数据集，我们熟悉数据分析的基本流程，完成了数据的获取、导入、整理、取样、分类等步骤，也得到了相应的推测结论。但由于没有经过统计学检查，得到的只是未经证实的试验性结论。 因此，这一次我希望选取上次分析过程中得到的几个采样方法有代表的数据样本，对其进行统计学上的检验，看看分析结果是否能验证上次做出的一些预测或推论。">
+<meta name="keywords">
+<meta property="og:type" content="article">
+<meta property="og:title" content="关于udacity学生数据集的t检验分析">
+<meta property="og:url" content="http://yoursite.com/2017/04/19/关于udacity学生数据集的t检验分析/index.html">
 <meta property="og:site_name" content="再吃一口橙子">
+<meta property="og:description" content="前言上一次，应用udacity提供的学生数据集，我们熟悉数据分析的基本流程，完成了数据的获取、导入、整理、取样、分类等步骤，也得到了相应的推测结论。但由于没有经过统计学检查，得到的只是未经证实的试验性结论。 因此，这一次我希望选取上次分析过程中得到的几个采样方法有代表的数据样本，对其进行统计学上的检验，看看分析结果是否能验证上次做出的一些预测或推论。">
+<meta property="og:image" content="http://yoursite.com/2017/04/19/关于udacity学生数据集的t检验分析/t1.png">
+<meta property="og:image" content="http://yoursite.com/2017/04/19/关于udacity学生数据集的t检验分析/t2.png">
+<meta property="og:updated_time" content="2017-04-19T14:32:50.965Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="再吃一口橙子">
+<meta name="twitter:title" content="关于udacity学生数据集的t检验分析">
+<meta name="twitter:description" content="前言上一次，应用udacity提供的学生数据集，我们熟悉数据分析的基本流程，完成了数据的获取、导入、整理、取样、分类等步骤，也得到了相应的推测结论。但由于没有经过统计学检查，得到的只是未经证实的试验性结论。 因此，这一次我希望选取上次分析过程中得到的几个采样方法有代表的数据样本，对其进行统计学上的检验，看看分析结果是否能验证上次做出的一些预测或推论。">
+<meta name="twitter:image" content="http://yoursite.com/2017/04/19/关于udacity学生数据集的t检验分析/t1.png">
   
     <link rel="alternative" href="/atom.xml" title="再吃一口橙子" type="application/atom+xml">
   
@@ -165,37 +173,111 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-关于udacity学生数据集的t检验分析" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      关于udacity学生数据集的t检验分析
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/04/19/关于udacity学生数据集的t检验分析/" class="archive-article-date">
+
+        
+        <a href="/2017/04/19/关于udacity学生数据集的t检验分析/" class="archive-article-date">
   	<time datetime="2017-04-19T14:23:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-19</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/04/19/关于udacity学生数据集的t检验分析/">关于udacity学生数据集的t检验分析</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h4><p>上一次，应用udacity提供的学生数据集，我们熟悉数据分析的基本流程，完成了数据的获取、导入、整理、取样、分类等步骤，也得到了相应的推测结论。但由于没有经过统计学检查，得到的只是未经证实的试验性结论。</p>
+<p>因此，这一次我希望选取上次分析过程中得到的几个采样方法有代表的数据样本，对其进行统计学上的检验，看看分析结果是否能验证上次做出的一些预测或推论。</p>
+<a id="more"></a>
+<h4 id="检验什么问题？"><a href="#检验什么问题？" class="headerlink" title="检验什么问题？"></a>检验什么问题？</h4><p>根据上次分析中得到的一个结论：“通过第一个项目的学生上课分钟数要多于未通过的学生”，若进行验证，我们可以将要检验的论题定为：“通过第一个项目与未通过的学生，上课时长是否有显著的差异”。</p>
+<p>根据上次分析中得到的一个结论：“通过第一个项目的学生上课分钟数要多于未通过的学生”，若进行验证，我们可以将要检验的论题定为：“通过第一个项目与未通过的学生，上课时长是否有显著的差异”。</p>
+<h4 id="检验方式"><a href="#检验方式" class="headerlink" title="检验方式"></a>检验方式</h4><p>通过项目的学生与未通过项目的学生为两个不同的、无相互影响的群体，针对他们的一些特征值进行对比分析，应该采用<strong>独立样本的t检验</strong></p>
+<h4 id="数据导出"><a href="#数据导出" class="headerlink" title="数据导出"></a>数据导出</h4><p>上一次，为了对数据进行简单的描述统计，我们对注册一周内的参与记录进行分组，并根据字段提取了我们感兴趣的数据。那么上一次用于描述统计的数据集同样也是我们这一次进行推论统计分析的数据来源。</p>
+<p>为了对数据有直观的感觉，也为了便于计算、对比，虽然也可以直接在程序内部继续加工，整理，分析数据，但这一次我还是希望能将数据重新导出到csv文件，利用熟悉的表格应用来展示分析过程。</p>
+<p>Python csv库的写入功能比想象中略繁琐一些，csv.writer.writerows方法接受一个包含tuple的list，其中每个list元素（即一个tuple）写入一行，tuple的每个元素占一列，元素需要有多个且必须为string类型。（经试验，tuple只含一个元素时，该字符串会被逐字符分入单元格。。加一个’,’可以解决问题）</p>
+<p>但我们之前得到的数据集，如:non_passing_minutes.values()返回的是一个元素为float类型的list，必须对数据加以加工转化才能顺利写入csv文件。</p>
+<p>设计写入函数：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">import csv</div><div class="line">def writecsv(filename,listname):</div><div class="line">    with open (filename, &apos;wb+&apos;) as csvfile:</div><div class="line">        writer = csv.writer(csvfile)</div><div class="line">        data_tuple=()</div><div class="line">        for value in listname.values():</div><div class="line">            data=[]	#list</div><div class="line">            data_tuple=(value,) #list的tuple元素，一定要加&apos;,&apos;</div><div class="line">            data.append(data_tuple)</div><div class="line">            writer.writerows(data) #写入</div></pre></td></tr></table></figure>
+<p>得到csv文件：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">items_list=[non_passing_minutes,passing_minutes]</div><div class="line">items_name=[&apos;non_passing_minutes&apos;,&apos;passing_minutes&apos;]</div><div class="line">for name,item in zip(items_name,items_list):</div><div class="line">    writecsv(name+&apos;.csv&apos;,item)</div></pre></td></tr></table></figure>
+<p>打开本地文件检查是否成功写入：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">print len(non_passing_minutes.values())</div><div class="line">print len(passing_minutes.values())</div></pre></td></tr></table></figure>
+<p>out:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">348</div><div class="line">647</div></pre></td></tr></table></figure>
+<p><img src="/2017/04/19/关于udacity学生数据集的t检验分析/t1.png" alt=""><img src="/2017/04/19/关于udacity学生数据集的t检验分析/t2.png" alt=""></p>
+<p>与list长度一致，写入完成。</p>
+<h4 id="进入分析——假设检验"><a href="#进入分析——假设检验" class="headerlink" title="进入分析——假设检验"></a>进入分析——假设检验</h4><p>数据导出到表格，可以正式进入分析阶段。</p>
+<p>针对我们想要研究的问题：“通过第一个项目与未通过的学生，上课时长是否有显著的差异”</p>
+<p>我们可以先设定假设检验：</p>
+<blockquote>
+<p>$$T_n表示未通过项目的学生的听课时长，T_p表示通过项目的学生的听课时长$$</p>
+</blockquote>
+<p>$$H_0:T_n=T_p$$ (两者没有显著差异)</p>
+<p>$$H_A:T_n &gt;T_p$$ (两者存在显著差异,且前者大于后者)</p>
+<p>($$\alpha=0.05$$)</p>
+<p>首先计算两组样本用时的<strong>均值</strong>（单位：min）：</p>
+<p>Pass:         $$\bar{X}_p=394.59$$</p>
+<p>Non_Pass:    $$\bar{X}_n=143.33$$</p>
+<p>再来计算两组样本的<strong>标准偏差：</strong>(利用excel的stdev函数计算，之前分析结果中的标准差是不包含校正系数的)</p>
+<p>$$S_p=448.85$$</p>
+<p>$$S_n=269.93$$</p>
+<p>接下来<strong>计算总体的标准误差：</strong></p>
+<p>根据两独立样本的标准误差的计算公式：</p>
+<p>$$sd=\sqrt{\frac{S_1^2}{n_1}+\frac{S_2^2}{n_2}}$$</p>
+<p>$$SEM=S_{\bar X_p-\bar X_n}=\sqrt{\frac{S_p^2}{n_p}+\frac{S_n^2}{n_n}}=22.82$$</p>
+<p><strong>计算t统计量：</strong></p>
+<p>$$t=\frac{\bar X_p-\bar X_n}{SEM}=11.01$$</p>
+<p><strong>计算t临界值：</strong></p>
+<p>$$DF=n_p+n_n-2=993$$</p>
+<p>对照t表格可知$$df=1000,单尾\alpha=0.05 时，t_c=1.646$$</p>
+<p><strong>结论：</strong></p>
+<p>$$t&gt; t_c$$</p>
+<p>所以：拒绝零假设</p>
+<p>证明：通过第一个项目与未通过的学生，上课时长有显著的差异，且通过项目学生听课时长显著偏高。</p>
+<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p>应用统计学的检验方法，我们可以证明我们的推论：通过第一个项目的学生上课分钟数要多于未通过的学生。</p>
+<p>用类似的方式，我们也可以验证对与其他数据集的推论，此篇不赘述。</p>
 
-        <div class="article-info info-on-right">
-          
-          
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃小鱼干！<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="http://chuantu.biz/t5/68/1492575997x2728286852.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
@@ -208,234 +290,90 @@
 	</div>
 
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/04/19/关于udacity学生数据集的t检验分析/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/04/19/利用udacity学生数据集实践数据分析过程/" class="archive-article-date">
-  	<time datetime="2017-04-19T03:22:06.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-19</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/04/19/利用udacity学生数据集实践数据分析过程/">利用udacity学生数据集实践数据分析过程</a>
-    </h1>
-  
 
-        <div class="article-info info-on-right">
-          
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/数据分析/" class="article-tag-list-link color5">数据分析</a>
-        		</li>
-      		
-		</ul>
-	</div>
+  
+<nav id="article-nav">
+  
+    <a href="/2017/04/19/利用udacity学生数据集实践数据分析过程/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          利用udacity学生数据集实践数据分析过程
+        
+      </div>
+    </a>
+  
+  
+</nav>
 
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/04/16/MySQL-学习笔记-3/" class="archive-article-date">
-  	<time datetime="2017-04-16T01:23:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-16</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/04/16/MySQL-学习笔记-3/">MySQL-学习笔记-3</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/SQL/" class="article-tag-list-link color4">SQL</a>
-        		</li>
-      		
-		</ul>
-	</div>
 
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/04/13/MySQL-学习笔记-2/" class="archive-article-date">
-  	<time datetime="2017-04-13T10:12:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-13</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/04/13/MySQL-学习笔记-2/">MySQL-学习笔记-2</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/SQL/" class="article-tag-list-link color4">SQL</a>
-        		</li>
-      		
-		</ul>
-	</div>
 
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/04/11/MySQL-学习笔记-1/" class="archive-article-date">
-  	<time datetime="2017-04-10T16:17:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-11</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/04/11/MySQL-学习笔记-1/">MySQL-学习笔记-1</a>
-    </h1>
+    <div class="duoshuo"></div>
   
 
-        <div class="article-info info-on-right">
-          
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/SQL/" class="article-tag-list-link color4">SQL</a>
-        		</li>
-      		
-		</ul>
-	</div>
 
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/04/09/t检验笔记/" class="archive-article-date">
-  	<time datetime="2017-04-09T08:17:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-09</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/04/09/t检验笔记/">t检验笔记</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/数据分析/" class="article-tag-list-link color5">数据分析</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/04/09/hello-world/" class="archive-article-date">
-  	<time datetime="2017-04-08T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-09</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/04/09/hello-world/">Hello World</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
 
 
           </div>
@@ -458,8 +396,8 @@
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

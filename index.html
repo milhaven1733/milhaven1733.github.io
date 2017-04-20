@@ -167,6 +167,171 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-MySQL-学习笔记-4" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/20/MySQL-学习笔记-4/">MySQL-学习笔记-4</a>
+    </h1>
+  
+
+        
+        <a href="/2017/04/20/MySQL-学习笔记-4/" class="archive-article-date">
+  	<time datetime="2017-04-20T02:34:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-20</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="操作数据表中的记录"><a href="#操作数据表中的记录" class="headerlink" title="操作数据表中的记录"></a>操作数据表中的记录</h3><p>本节重点：对于数据表中记录的增、删、改、查。</p>
+<h4 id="插入记录INSERT"><a href="#插入记录INSERT" class="headerlink" title="插入记录INSERT"></a>插入记录INSERT</h4><p>插入记录</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">INSERT [INTO] table_name [(col_name,...)] &#123;VALUES|VALUE&#125; (&#123;expr|DEFAULT&#125;,...),(...),...</div></pre></td></tr></table></figure>
+<ul>
+<li>列名称省略，代表所有字段依次赋值</li>
+<li>值可以为表达式或默认值，字段之间逗号分隔</li>
+<li>可以一次插入多条记录</li>
+</ul>
+<p>对于自动编号的字段，可以用NULL或DEFAULT赋值，实现自动编号，如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">mysql&gt; INSERT user_new VALUES(NULL,&apos;John&apos;,&apos;1111&apos;,25,1);</div><div class="line">mysql&gt; INSERT user_new VALUES(DEFAULT,&apos;John&apos;,&apos;1111&apos;,25,1);</div></pre></td></tr></table></figure>
+<p>赋值时可以采用表达式，对于包含默认值的字段，可以用DEFAULT使之保持默认值：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">mysql&gt; INSERT user_new VALUES(DEFAULT,&apos;Tom&apos;,&apos;1111&apos;,3*7-2,1);</div><div class="line">mysql&gt; INSERT user_new VALUES(DEFAULT,&apos;Tom&apos;,&apos;2222&apos;,DEFAULT,1);</div></pre></td></tr></table></figure>
+<p>以上指令操作结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">mysql&gt; SELECT * FROM user_new;</div><div class="line">+----+----------+----------+-----+------+</div><div class="line">| id | username | password | age | sex  |</div><div class="line">+----+----------+----------+-----+------+</div><div class="line">|  1 | John     | 1111     |  25 |    1 |</div><div class="line">|  2 | John     | 1111     |  25 |    1 |</div><div class="line">|  3 | Tom      | 1111     |  19 |    1 |</div><div class="line">|  4 | Tom      | 2222     |  10 |    1 |</div><div class="line">+----+----------+----------+-----+------+</div></pre></td></tr></table></figure>
+<p>可以一次插入多条记录，且值可以返回自函数：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">mysql&gt; INSERT user_new VALUES(DEFAULT,&apos;Tom&apos;,&apos;2222&apos;,DEFAULT,1),(NULL,&apos;Rose&apos;,md5(&apos;123&apos;),DEFAULT,0);</div><div class="line">mysql&gt; SELECT * FROM user_new;                                                    </div><div class="line">+----+----------+----------------------------------+-----+------+</div><div class="line">| id | username | password                         | age | sex  |</div><div class="line">+----+----------+----------------------------------+-----+------+</div><div class="line">|  1 | John     | 1111                             |  25 |    1 |</div><div class="line">|  2 | John     | 1111                             |  25 |    1 |</div><div class="line">|  3 | Tom      | 1111                             |  19 |    1 |</div><div class="line">|  4 | Tom      | 2222                             |  10 |    1 |</div><div class="line">|  5 | Tom      | 2222                             |  10 |    1 |</div><div class="line">|  6 | Rose     | 202cb962ac59075b964b07152d234b70 |  10 |    0 |</div><div class="line">+----+----------+----------------------------------+-----+------+</div></pre></td></tr></table></figure>
+<h4 id="插入记录-INSERT-SET-SELECT"><a href="#插入记录-INSERT-SET-SELECT" class="headerlink" title="插入记录 INSERT SET/SELECT"></a>插入记录 INSERT SET/SELECT</h4><p>插入记录：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">INSERT [INTO] table_name SET col_name=&#123;expr|DEFAULT&#125;,...</div></pre></td></tr></table></figure>
+<p>区别：</p>
+<ul>
+<li><p>此方法可以引发子查询（SubQuery）</p>
+<p>【由比较运算符引发的子查询，是引发子查询的三种方式之一】</p>
+</li>
+<li><p>只能一次性插入一条记录</p>
+</li>
+</ul>
+<p>例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mysql&gt; INSERT user_new SET username=&apos;Bob&apos;,password=&apos;456&apos;;</div></pre></td></tr></table></figure>
+<p>id字段自动编号，age字段有默认值，sex字段可以为空，可以均不赋值。</p>
+<p>插入记录：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">INSERT [INTO] table_name [(col_name,...)] SELECT...</div></pre></td></tr></table></figure>
+<p>此方法可以将查询结果插入到指定数据表。（详见最后笔记底部）</p>
+<h4 id="单表更新记录UPDATE"><a href="#单表更新记录UPDATE" class="headerlink" title="单表更新记录UPDATE"></a>单表更新记录UPDATE</h4><p>更新记录（单表更新）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">UPDATE [LOW_PRIORITY][IGNORE] table_reference SET col_name1=&#123;expr1|DEFAULT&#125;[,col_name2=&#123;expr2|DEFAULT&#125;]...[WHERE where_condition]</div></pre></td></tr></table></figure>
+<ul>
+<li>可选项：降低优先权、处理更新过程中的错误中断等。</li>
+<li>参照关系：在单表操作中只能为某一张表</li>
+<li>省略WHERE条件，则所有的记录都被更新</li>
+</ul>
+<p>如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mysql&gt; UPDATE user_new set age=age+5;</div></pre></td></tr></table></figure>
+<p>将所有记录的age值加5.</p>
+<p>可以同时更新多个字段：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">mysql&gt; UPDATE user_new set age=age-1,sex=0;</div><div class="line">mysql&gt; SELECT * FROM user_new;</div><div class="line">+----+----------+----------------------------------+-----+------+</div><div class="line">| id | username | password                         | age | sex  |</div><div class="line">+----+----------+----------------------------------+-----+------+</div><div class="line">|  1 | John     | 1111                             |  29 |    0 |</div><div class="line">|  2 | John     | 1111                             |  29 |    0 |</div><div class="line">|  3 | Tom      | 1111                             |  23 |    0 |</div><div class="line">|  4 | Tom      | 2222                             |  14 |    0 |</div><div class="line">|  5 | Tom      | 2222                             |  14 |    0 |</div><div class="line">|  6 | Rose     | 202cb962ac59075b964b07152d234b70 |  14 |    0 |</div><div class="line">|  7 | Bob      | 456                              |  14 |    0 |</div><div class="line">+----+----------+----------------------------------+-----+------+</div></pre></td></tr></table></figure>
+<p>可以在WHERE之后加入条件，如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mysql&gt; UPDATE user_new set age=age+5 WHERE id%2=0;</div></pre></td></tr></table></figure>
+<p><strong>注意：判断取余结果要用“=” 不是“==”</strong></p>
+<p>可以看到，id为偶数的记录被更新了。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">mysql&gt; SELECT * FROM user_new;</div><div class="line">+----+----------+----------------------------------+-----+------+</div><div class="line">| id | username | password                         | age | sex  |</div><div class="line">+----+----------+----------------------------------+-----+------+</div><div class="line">|  1 | John     | 1111                             |  29 |    0 |</div><div class="line">|  2 | John     | 1111                             |  34 |    0 |</div><div class="line">|  3 | Tom      | 1111                             |  23 |    0 |</div><div class="line">|  4 | Tom      | 2222                             |  19 |    0 |</div><div class="line">|  5 | Tom      | 2222                             |  14 |    0 |</div><div class="line">|  6 | Rose     | 202cb962ac59075b964b07152d234b70 |  19 |    0 |</div><div class="line">|  7 | Bob      | 456                              |  14 |    0 |</div><div class="line">+----+----------+----------------------------------+-----+------+</div></pre></td></tr></table></figure>
+<h4 id="单表删除记录DELETE"><a href="#单表删除记录DELETE" class="headerlink" title="单表删除记录DELETE"></a>单表删除记录DELETE</h4><p>删除记录（单表删除）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">DELETE FROM table_name [WHERE where_condition]</div></pre></td></tr></table></figure>
+<p>如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mysql&gt; DELETE FROM user_new WHERE id=6;</div></pre></td></tr></table></figure>
+<p>id为６的记录被删除。但需要注意，当此时再插入一条新纪录，id为当前最大id值加１，而非补充被删去的６：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">mysql&gt; INSERT user_new VALUES(NULL,&apos;Tom&apos;,&apos;2222&apos;,33,NULL);</div><div class="line">mysql&gt; SELECT * FROM user_new;</div><div class="line">+----+----------+----------+-----+------+</div><div class="line">| id | username | password | age | sex  |</div><div class="line">+----+----------+----------+-----+------+</div><div class="line">|  1 | John     | 1111     |  29 |    0 |</div><div class="line">|  2 | John     | 1111     |  34 |    0 |</div><div class="line">|  3 | Tom      | 1111     |  23 |    0 |</div><div class="line">|  4 | Tom      | 2222     |  19 |    0 |</div><div class="line">|  5 | Tom      | 2222     |  14 |    0 |</div><div class="line">|  7 | Bob      | 456      |  14 |    0 |</div><div class="line">|  8 | Tom      | 2222     |  33 | NULL |</div><div class="line">+----+----------+----------+-----+------+</div></pre></td></tr></table></figure>
+<h4 id="查询表达式解析"><a href="#查询表达式解析" class="headerlink" title="查询表达式解析"></a>查询表达式解析</h4><p>SELECT语句在针对表操作的语句中使用率非常高。</p>
+<p>SELECT语句语法：</p>
+<p><img src="/2017/04/20/MySQL-学习笔记-4/1.png" alt=""></p>
+<ul>
+<li><p>SELECT语句可以只书写表达式，如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">SELECT VERSION();    SELECT NOW();  不依附于任何一张表</div></pre></td></tr></table></figure>
+<p>SELECE语句查询表达式：</p>
+</li>
+</ul>
+<p><img src="/2017/04/20/MySQL-学习笔记-4/2.png" alt=""></p>
+<p><strong>SELECT 查询表达式顺序影响结果顺序：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">mysql&gt; SELECT id,username FROM user_new;</div><div class="line">+----+----------+</div><div class="line">| id | username |</div><div class="line">+----+----------+</div><div class="line">|  1 | John     |</div><div class="line">|  2 | John     |</div><div class="line">|  3 | Tom      |</div><div class="line">|  4 | Tom      |</div><div class="line">|  5 | Tom      |</div><div class="line">|  7 | Bob      |</div><div class="line">|  8 | Tom      |</div><div class="line">+----+----------+</div><div class="line">mysql&gt; SELECT username,id FROM user_new;</div><div class="line">+----------+----+</div><div class="line">| username | id |</div><div class="line">+----------+----+</div><div class="line">| John     |  1 |</div><div class="line">| John     |  2 |</div><div class="line">| Tom      |  3 |</div><div class="line">| Tom      |  4 |</div><div class="line">| Tom      |  5 |</div><div class="line">| Bob      |  7 |</div><div class="line">| Tom      |  8 |</div><div class="line">+----------+----+</div></pre></td></tr></table></figure>
+<p>table_name.colume_name表示某表的某列，table_name.*表示该表所有列（多表连接操作中需要明确某列隶属于某表）。</p>
+<p>可以使用 as alias_name 使用别名，如：（as可以书写，也可以不写）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">mysql&gt; SELECT id AS userid,username AS uname FROM user_new;</div><div class="line">+--------+-------+</div><div class="line">| userid | uname |</div><div class="line">+--------+-------+</div><div class="line">|      1 | John  |</div><div class="line">|      2 | John  |</div><div class="line">|      3 | Tom   |</div><div class="line">|      4 | Tom   |</div><div class="line">|      5 | Tom   |</div><div class="line">|      7 | Bob   |</div><div class="line">|      8 | Tom   |</div><div class="line">+--------+-------+</div></pre></td></tr></table></figure>
+<p><strong>字段的别名将影响结果集。</strong></p>
+<h4 id="where语句进行条件查询"><a href="#where语句进行条件查询" class="headerlink" title="where语句进行条件查询"></a>where语句进行条件查询</h4><p>条件表达式：</p>
+<p>对记录进行过滤，如果没有指定where语句，则显示所有记录（同理，在UPDATE语句和DELETE语句中将更新和删除所有记录）</p>
+<p>在WHERE表达式中，可以使用MySQL支持的函数（如数学、字符函数）和运算符。</p>
+<h4 id="group-by语句对查询结果分组"><a href="#group-by语句对查询结果分组" class="headerlink" title="group by语句对查询结果分组"></a>group by语句对查询结果分组</h4><p>查询结果分组：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[GROUP BY &#123;cool_name|position&#125; [ASC|DESC],...]</div></pre></td></tr></table></figure>
+<p>ASC表示分组结果升序排列（默认），DESC表示分组结果降序排列。</p>
+<p>如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">mysql&gt; SELECT sex FROM user_new GROUP BY sex;</div><div class="line">+------+</div><div class="line">| sex  |</div><div class="line">+------+</div><div class="line">| NULL |</div><div class="line">|    0 |</div><div class="line">+------+</div><div class="line">mysql&gt; SELECT sex FROM user_new GROUP BY sex DESC;</div><div class="line">+------+</div><div class="line">| sex  |</div><div class="line">+------+</div><div class="line">|    0 |</div><div class="line">| NULL |</div><div class="line">+------+</div></pre></td></tr></table></figure>
+<h4 id="having语句设置分组筛选条件"><a href="#having语句设置分组筛选条件" class="headerlink" title="having语句设置分组筛选条件"></a>having语句设置分组筛选条件</h4><p>分组条件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[HAVING where_condition]</div></pre></td></tr></table></figure>
+<p>用HAVING字句做分组筛选的条件时，HAVING后的分组条件需要为聚合函数或条件中字段出现在SELECT之后</p>
+<p>聚合函数：永远只有一个返回结果的函数，如常规的min、max、avg、sum、count等</p>
+<p>如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">mysql&gt; SELECT sex FROM user_new GROUP BY sex HAVING count(id)&gt;2;</div><div class="line">+------+</div><div class="line">| sex  |</div><div class="line">+------+</div><div class="line">|    0 |</div><div class="line">+------+</div></pre></td></tr></table></figure>
+<p>分组筛选的结果剔除了SEX是NULL的结果，其原因是SEX=NULL的结果只有一个，不满足count(id)&gt;2的条件。</p>
+<h4 id="order-by语句对查询结果排序"><a href="#order-by语句对查询结果排序" class="headerlink" title="order by语句对查询结果排序"></a>order by语句对查询结果排序</h4><p>对查询结果进行排序：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[ORDER BY &#123;col_name|expr|position&#125;[ASC|DESC],...]</div></pre></td></tr></table></figure>
+<p>可以添加多个排序条件，当按照第一个字段排列后有重复值，再按照第二个字段排列，以此类推。如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">mysql&gt; SELECT * FROM user_new ORDER BY age;</div><div class="line">+----+----------+----------+-----+------+</div><div class="line">| id | username | password | age | sex  |</div><div class="line">+----+----------+----------+-----+------+</div><div class="line">|  5 | Tom      | 2222     |  14 |    0 |</div><div class="line">|  7 | Bob      | 456      |  14 |    0 |</div><div class="line">|  4 | Tom      | 2222     |  19 |    0 |</div><div class="line">|  3 | Tom      | 1111     |  23 |    0 |</div><div class="line">|  1 | John     | 1111     |  29 |    0 |</div><div class="line">|  8 | Tom      | 2222     |  33 | NULL |</div><div class="line">|  2 | John     | 1111     |  34 |    0 |</div><div class="line">+----+----------+----------+-----+------+</div><div class="line">mysql&gt; SELECT * FROM user_new ORDER BY age,id DESC;</div><div class="line">+----+----------+----------+-----+------+</div><div class="line">| id | username | password | age | sex  |</div><div class="line">+----+----------+----------+-----+------+</div><div class="line">|  7 | Bob      | 456      |  14 |    0 |</div><div class="line">|  5 | Tom      | 2222     |  14 |    0 |</div><div class="line">|  4 | Tom      | 2222     |  19 |    0 |</div><div class="line">|  3 | Tom      | 1111     |  23 |    0 |</div><div class="line">|  1 | John     | 1111     |  29 |    0 |</div><div class="line">|  8 | Tom      | 2222     |  33 | NULL |</div><div class="line">|  2 | John     | 1111     |  34 |    0 |</div><div class="line">+----+----------+----------+-----+------+</div></pre></td></tr></table></figure>
+<h4 id="limit语句限制查询数量"><a href="#limit语句限制查询数量" class="headerlink" title="limit语句限制查询数量"></a>limit语句限制查询数量</h4><p>限制查询结果返回的数量</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[LIMIT &#123;[offset,]row_count|row_count OFFSET offset&#125;]</div></pre></td></tr></table></figure>
+<p>返回查询结果中的前两条：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">mysql&gt; SELECT * FROM user_new LIMIT 2;</div><div class="line">+----+----------+----------+-----+------+</div><div class="line">| id | username | password | age | sex  |</div><div class="line">+----+----------+----------+-----+------+</div><div class="line">|  1 | John     | 1111     |  29 |    0 |</div><div class="line">|  2 | John     | 1111     |  34 |    0 |</div><div class="line">+----+----------+----------+-----+------+</div></pre></td></tr></table></figure>
+<p>返回从第2条起的2条记录：（记录从0开始编号）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">mysql&gt; SELECT * FROM user_new LIMIT 2,2;</div><div class="line">+----+----------+----------+-----+------+</div><div class="line">| id | username | password | age | sex  |</div><div class="line">+----+----------+----------+-----+------+</div><div class="line">|  3 | Tom      | 1111     |  23 |    0 |</div><div class="line">|  4 | Tom      | 2222     |  19 |    0 |</div><div class="line">+----+----------+----------+-----+------+</div></pre></td></tr></table></figure>
+<p>还要注意，id号和结果中的排号无联系，如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">mysql&gt; SELECT * FROM user_new ORDER BY id DESC LIMIT 2;</div><div class="line">+----+----------+----------+-----+------+</div><div class="line">| id | username | password | age | sex  |</div><div class="line">+----+----------+----------+-----+------+</div><div class="line">|  8 | Tom      | 2222     |  33 | NULL |</div><div class="line">|  7 | Bob      | 456      |  14 |    0 |</div><div class="line">+----+----------+----------+-----+------+</div></pre></td></tr></table></figure>
+<h4 id="将查询结果插入到表中"><a href="#将查询结果插入到表中" class="headerlink" title="将查询结果插入到表中"></a>将查询结果插入到表中</h4><p>可以讲查询返回的结果插入到指定表中，如：</p>
+<p>新建一张表：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">mysql&gt; CREATE TABLE test(</div><div class="line">    -&gt; id TINYINT UNSIGNED PRIMARY KEY AUTO_INCREMENT,</div><div class="line">    -&gt; username VARCHAR(20)                                                           -&gt; );</div></pre></td></tr></table></figure>
+<p>将查询到的字段插入到新建表中：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">mysql&gt; INSERT test(username) SELECT username FROM user_new WHERE age&gt;=25;</div><div class="line">Query OK, 3 rows affected (0.04 sec)</div></pre></td></tr></table></figure>
+<p>查看:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">mysql&gt; SELECT * FROM test;</div><div class="line">+----+----------+</div><div class="line">| id | username |</div><div class="line">+----+----------+</div><div class="line">|  1 | John     |</div><div class="line">|  2 | John     |</div><div class="line">|  3 | Tom      |</div><div class="line">+----+----------+</div></pre></td></tr></table></figure>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/SQL/" class="article-tag-list-link color4">SQL</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/04/20/MySQL-学习笔记-4/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
     <article id="post-关于udacity学生数据集的t检验分析" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     

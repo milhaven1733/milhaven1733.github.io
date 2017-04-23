@@ -15,14 +15,10 @@
 <meta property="og:url" content="http://yoursite.com/2017/04/22/使用NumPy和Pandas分析一维数据/index.html">
 <meta property="og:site_name" content="再吃一口橙子">
 <meta property="og:description" content="课程内容概述 熟悉NumPy的使用 熟悉Pandas库的使用 两种库的优势：降低编写数据分析代码的难度，提高代码的运算速度。">
-<meta property="og:image" content="http://yoursite.com/2017/04/22/使用NumPy和Pandas分析一维数据/1.png">
-<meta property="og:image" content="http://yoursite.com/2017/04/22/使用NumPy和Pandas分析一维数据/2.png">
-<meta property="og:image" content="http://yoursite.com/2017/04/22/使用NumPy和Pandas分析一维数据/3.png">
-<meta property="og:updated_time" content="2017-04-22T15:43:20.676Z">
+<meta property="og:updated_time" content="2017-04-23T13:52:01.715Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="使用NumPy和Pandas分析一维数据">
 <meta name="twitter:description" content="课程内容概述 熟悉NumPy的使用 熟悉Pandas库的使用 两种库的优势：降低编写数据分析代码的难度，提高代码的运算速度。">
-<meta name="twitter:image" content="http://yoursite.com/2017/04/22/使用NumPy和Pandas分析一维数据/1.png">
   
     <link rel="alternative" href="/atom.xml" title="再吃一口橙子" type="application/atom+xml">
   
@@ -406,15 +402,7 @@
 <p>有时候 使用Pandas 封装器更加方便，如可以使用 <code>data.plot()</code> 创建 Series 的折线图。Series 索引被用于 x 轴，值被用于 y 轴。</p>
 <p>在Jupyter notebook内绘图，需要添加 <code>%pylab inline</code></p>
 <p>首先，载入csv文件为“数据框”，并抽取index对应的记录：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">import pandas as pd</div><div class="line">import seaborn as sns</div><div class="line">path=&apos;/home/milhaven1733/Desktop/Data Analyst/data/&apos;</div><div class="line">employment = pd.read_csv(path + &apos;employment_above_15.csv&apos;, index_col=&apos;Country&apos;)</div><div class="line">life_expectancy = pd.read_csv(path + &apos;life_expectancy.csv&apos;, index_col=&apos;Country&apos;)</div><div class="line">employment_ch = employment.loc[&apos;China&apos;]</div><div class="line">life_expectancy_ch = life_expectancy.loc[&apos;China&apos;]</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">employment_ch = employment.loc[&apos;China&apos;]</div><div class="line">life_expectancy_ch = life_expectancy.loc[&apos;China&apos;]</div><div class="line">gdp_ch=gdp.loc[&apos;China&apos;]</div></pre></td></tr></table></figure>
-<p>绘制图形：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">%pylab inline</div><div class="line">employment_ch.plot()</div></pre></td></tr></table></figure>
-<p><img src="/2017/04/22/使用NumPy和Pandas分析一维数据/1.png" alt=""></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">life_expectancy_us.plot()</div></pre></td></tr></table></figure>
-<p><img src="/2017/04/22/使用NumPy和Pandas分析一维数据/2.png" alt=""></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">gdp_ch.plot()</div></pre></td></tr></table></figure>
-<p><img src="/2017/04/22/使用NumPy和Pandas分析一维数据/3.png" alt=""></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line">import pandas as pd</div><div class="line">import seaborn as sns</div><div class="line">path=&apos;/home/milhaven1733/Desktop/Data Analyst/data/&apos;</div><div class="line">employment = pd.read_csv(path + &apos;employment_above_15.csv&apos;, index_col=&apos;Country&apos;)</div><div class="line">life_expectancy = pd.read_csv(path + &apos;life_expectancy.csv&apos;, index_col=&apos;Country&apos;)</div><div class="line">employment_ch = employment.loc[&apos;China&apos;]</div><div class="line">life_expectancy_ch = life_expectancy.loc[&apos;China&apos;]</div><div class="line">​```</div><div class="line"></div><div class="line">​```</div><div class="line">employment_ch = employment.loc[&apos;China&apos;]</div><div class="line">life_expectancy_ch = life_expectancy.loc[&apos;China&apos;]</div><div class="line">gdp_ch=gdp.loc[&apos;China&apos;]</div><div class="line">​```</div><div class="line"></div><div class="line">绘制图形：</div><div class="line"></div><div class="line">​```</div><div class="line">%pylab inline</div><div class="line">employment_ch.plot()</div><div class="line">​```</div><div class="line"></div><div class="line">![](使用NumPy和Pandas分析一维数据\1.png)</div><div class="line"></div><div class="line">​```</div><div class="line">life_expectancy_us.plot()</div><div class="line">​```</div><div class="line"></div><div class="line">![](使用NumPy和Pandas分析一维数据\2.png)</div><div class="line"></div><div class="line">​```</div><div class="line">gdp_ch.plot()</div><div class="line">​```</div><div class="line"></div><div class="line">![](使用NumPy和Pandas分析一维数据\3.png)</div></pre></td></tr></table></figure>
 
       
 
@@ -534,8 +522,8 @@
     </a>
   
   
-    <a href="/2017/04/23/test/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">test</div>
+    <a href="/2017/04/23/使用NumPy和Pandas分析二维数据/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">使用NumPy和Pandas分析二维数据</div>
       <i class="icon-circle-right"></i>
     </a>
   

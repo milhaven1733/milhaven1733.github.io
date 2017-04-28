@@ -6,14 +6,26 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>再吃一口橙子</title>
+  <title>Python数据统计和可视化 | 再吃一口橙子</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="再吃一口橙子">
-<meta property="og:url" content="http://yoursite.com/index.html">
+  <meta name="description" content="数据整理日期转化 获取的某组信息中，日期的表示方法为格里高利历法(Gregorian calendar)，要转化为通常的日期表示方法，可以使用datetime.date.fromordinal()方法： 123date.fromordinal(736082)Out[19]:datetime.date(2016, 4, 28) 对于Series，可以使用apply整体转化： 1quotesdf[&amp;a">
+<meta name="keywords">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python数据统计和可视化">
+<meta property="og:url" content="http://yoursite.com/2017/04/28/Python数据统计和可视化/index.html">
 <meta property="og:site_name" content="再吃一口橙子">
+<meta property="og:description" content="数据整理日期转化 获取的某组信息中，日期的表示方法为格里高利历法(Gregorian calendar)，要转化为通常的日期表示方法，可以使用datetime.date.fromordinal()方法： 123date.fromordinal(736082)Out[19]:datetime.date(2016, 4, 28) 对于Series，可以使用apply整体转化： 1quotesdf[&amp;a">
+<meta property="og:image" content="http://yoursite.com/2017/04/28/Python数据统计和可视化/1.png">
+<meta property="og:image" content="http://yoursite.com/2017/04/28/Python数据统计和可视化/2.png">
+<meta property="og:image" content="http://yoursite.com/2017/04/28/Python数据统计和可视化/3.png">
+<meta property="og:image" content="http://yoursite.com/2017/04/28/Python数据统计和可视化/4.png">
+<meta property="og:image" content="http://yoursite.com/2017/04/28/Python数据统计和可视化/5.png">
+<meta property="og:image" content="http://yoursite.com/2017/04/28/Python数据统计和可视化/6.png">
+<meta property="og:updated_time" content="2017-04-28T16:03:40.470Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="再吃一口橙子">
+<meta name="twitter:title" content="Python数据统计和可视化">
+<meta name="twitter:description" content="数据整理日期转化 获取的某组信息中，日期的表示方法为格里高利历法(Gregorian calendar)，要转化为通常的日期表示方法，可以使用datetime.date.fromordinal()方法： 123date.fromordinal(736082)Out[19]:datetime.date(2016, 4, 28) 对于Series，可以使用apply整体转化： 1quotesdf[&amp;a">
+<meta name="twitter:image" content="http://yoursite.com/2017/04/28/Python数据统计和可视化/1.png">
   
     <link rel="alternative" href="/atom.xml" title="再吃一口橙子" type="application/atom+xml">
   
@@ -165,83 +177,14 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-利用matplotlib-finance-模块获取财经数据" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-Python数据统计和可视化" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/29/利用matplotlib-finance-模块获取财经数据/">利用matplotlib.finance 模块获取财经数据</a>
-    </h1>
-  
-
-        
-        <a href="/2017/04/29/利用matplotlib-finance-模块获取财经数据/" class="archive-article-date">
-  	<time datetime="2017-04-28T16:00:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-29</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>从matplotlib.finance模块引入quotes_historical_yahoo_ochl（获取雅虎财经股票历史数据）</p>
-<p>datetime.today()获取当天信息，start设置为一年前的今天。</p>
-<p>quotes_historical_yahoo_ochl()方法需要三个参数，上市公司股票代码，历史数据起始日期，终止日期。</p>
-<p>来查询中国移动一年来的股票数据，并转化为DataFrame：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">from matplotlib.finance import quotes_historical_yahoo_ochl</div><div class="line">from datetime import *</div><div class="line">import pandas as pd</div><div class="line">today=datetime.today()</div><div class="line">start=(today.year-1,today.month,today.day)</div><div class="line">quotes=quotes_historical_yahoo_ochl(&apos;0941.HK&apos;,start,today)</div><div class="line">df=pd.DataFrame(quotes)</div><div class="line">print df</div></pre></td></tr></table></figure>
-<p>表格六列分别表示日期、开盘价、收盘价、最高价、最低价、成交价。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/数据分析/" class="article-tag-list-link color5">数据分析</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/04/29/利用matplotlib-finance-模块获取财经数据/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-Python数据统计和可视化" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/28/Python数据统计和可视化/">Python数据统计和可视化</a>
+    <h1 class="article-title" itemprop="name">
+      Python数据统计和可视化
     </h1>
   
 
@@ -259,281 +202,422 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">date.fromordinal(736082)</div><div class="line">Out[19]:</div><div class="line">datetime.date(2016, 4, 28)</div></pre></td></tr></table></figure>
 <p>对于Series，可以使用apply整体转化：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">quotesdf[&apos;date&apos;]=quotesdf[&apos;date&apos;].apply(int).apply(date.fromordinal)</div></pre></td></tr></table></figure>
-        
-          <a class="article-more-a" href="/2017/04/28/Python数据统计和可视化/#more">查看更多 >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/数据分析/" class="article-tag-list-link color5">数据分析</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/04/28/Python数据统计和可视化/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-Series-DateFrame" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/27/Series-DateFrame/">Series&amp;DateFrame</a>
-    </h1>
-  
-
-        
-        <a href="/2017/04/27/Series-DateFrame/" class="archive-article-date">
-  	<time datetime="2017-04-27T01:12:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-27</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="Series"><a href="#Series" class="headerlink" title="Series"></a>Series</h3><ul>
-<li>定长有序字典</li>
-<li>包含数据和索引</li>
-</ul>
-        
-          <a class="article-more-a" href="/2017/04/27/Series-DateFrame/#more">查看更多 >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/数据分析/" class="article-tag-list-link color5">数据分析</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/04/27/Series-DateFrame/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-《Python数据分析实战》笔记-1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/27/《Python数据分析实战》笔记-1/">《Python数据分析实战》笔记-1</a>
-    </h1>
-  
-
-        
-        <a href="/2017/04/27/《Python数据分析实战》笔记-1/" class="archive-article-date">
-  	<time datetime="2017-04-27T00:52:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-27</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="关于NumPy库"><a href="#关于NumPy库" class="headerlink" title="关于NumPy库"></a>关于NumPy库</h3><h4 id="ndarray（N维数组）"><a href="#ndarray（N维数组）" class="headerlink" title="ndarray（N维数组）"></a>ndarray（N维数组）</h4><ul>
-<li>同质元素（几乎所有元素类型、大小都相同）组成</li>
-<li>数据类型由dtype指定</li>
-<li>大小固定（创建后大小不发生改变）</li>
-</ul>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/数据分析/" class="article-tag-list-link color5">数据分析</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/04/27/《Python数据分析实战》笔记-1/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-MySQL-学习笔记-6" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/25/MySQL-学习笔记-6/">MySQL-学习笔记-6</a>
-    </h1>
-  
-
-        
-        <a href="/2017/04/25/MySQL-学习笔记-6/" class="archive-article-date">
-  	<time datetime="2017-04-25T08:40:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-25</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="运算符与函数"><a href="#运算符与函数" class="headerlink" title="运算符与函数"></a>运算符与函数</h3><h4 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h4><p>按照功能划分：</p>
+<a id="more"></a>
+<p>pandas生成日期序列</p>
+<p>生成从起始日期始的某个周期内所有日期的序列：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">import pandas as pd</div><div class="line">dates=pd.date_range(&apos;20170427&apos;,periods=10)</div><div class="line">dates</div><div class="line">import pandas as pd</div><div class="line">dates=pd.date_range(&apos;20170427&apos;,periods=10)</div><div class="line">dates</div><div class="line">Out[16]:</div><div class="line">DatetimeIndex([&apos;2017-04-27&apos;, &apos;2017-04-28&apos;, &apos;2017-04-29&apos;, &apos;2017-04-30&apos;,</div><div class="line">               &apos;2017-05-01&apos;, &apos;2017-05-02&apos;, &apos;2017-05-03&apos;, &apos;2017-05-04&apos;,</div><div class="line">               &apos;2017-05-05&apos;, &apos;2017-05-06&apos;],</div><div class="line">              dtype=&apos;datetime64[ns]&apos;, freq=&apos;D&apos;)</div></pre></td></tr></table></figure>
+<h4 id="数据选择"><a href="#数据选择" class="headerlink" title="数据选择"></a>数据选择</h4><p>选择行：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">quotesdf.index=quotesdf[&apos;date&apos;].apply(str)</div><div class="line">quotesdf=quotesdf.drop([&apos;date&apos;],axis=1)</div><div class="line">quotesdf.loc[&apos;2017-01-06&apos;] #选择一行</div><div class="line">quotesdf[&apos;2017-01-06&apos;:&apos;2017-01-28&apos;] #选择多行</div></pre></td></tr></table></figure>
+<p>选择列：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">quotesdf[&apos;open&apos;]</div><div class="line">quotesdf.open  #open为column_name</div></pre></td></tr></table></figure>
+<p>选择行和列：(loc参数，前面选择列，后面选择行）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">quotesdf.loc[&apos;2017-01-06&apos;:&apos;2017-01-28&apos;,[&apos;high&apos;,&apos;lower&apos;]]</div><div class="line">quotesdf.iloc[1:5,1:3] #通过行列位置来选择</div></pre></td></tr></table></figure>
+<p>选择单个值：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">quotesdf.at[&apos;2017-01-06&apos;,&apos;high&apos;]</div></pre></td></tr></table></figure>
+<h4 id="数据统计与处理"><a href="#数据统计与处理" class="headerlink" title="数据统计与处理"></a>数据统计与处理</h4><p>计算某列相邻两数值之间差值：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">np.diff(quotesdf[&apos;close&apos;])</div><div class="line">np.sign(np.diff(quotesdf[&apos;close&apos;])) #仅显示为正值或负值</div></pre></td></tr></table></figure>
+<p>排序：（根据某一列的值，ascending=1表示升序，ascending=0表示降序）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">quotesdf.sort(columns=&apos;open&apos;,ascending=1)</div></pre></td></tr></table></figure>
+<h4 id="Merge"><a href="#Merge" class="headerlink" title="Merge"></a>Merge</h4><h5 id="Append"><a href="#Append" class="headerlink" title="Append"></a>Append</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">p=quotesdf[:2]</div></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>open</th>
+<th>close</th>
+<th>high</th>
+<th>low</th>
+<th>volume</th>
+<th>month</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>date</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>2017-01-03</td>
+<td>62.411631</td>
+<td>62.202897</td>
+<td>62.461328</td>
+<td>61.755608</td>
+<td>20694100.0</td>
+<td>01</td>
+</tr>
+<tr>
+<td>2017-01-04</td>
+<td>62.103497</td>
+<td>61.924581</td>
+<td>62.371870</td>
+<td>61.745666</td>
+<td>21340000.0</td>
+<td>01</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">q=quotesdf[&apos;2017-02-03&apos;:&apos;2017-02-07&apos;]</div></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>open</th>
+<th>close</th>
+<th>high</th>
+<th>low</th>
+<th>volume</th>
+<th>month</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>date</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>2017-02-03</td>
+<td>63.117352</td>
+<td>63.296267</td>
+<td>63.316147</td>
+<td>62.689943</td>
+<td>30301800.0</td>
+<td>02</td>
+</tr>
+<tr>
+<td>2017-02-06</td>
+<td>63.117352</td>
+<td>63.256507</td>
+<td>63.266450</td>
+<td>62.759520</td>
+<td>19796400.0</td>
+<td>02</td>
+</tr>
+<tr>
+<td>2017-02-07</td>
+<td>63.355907</td>
+<td>63.047773</td>
+<td>63.395663</td>
+<td>62.848978</td>
+<td>20277200.0</td>
+<td>02</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">p.append(q)</div></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>open</th>
+<th>close</th>
+<th>high</th>
+<th>low</th>
+<th>volume</th>
+<th>month</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>date</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>2017-01-03</td>
+<td>62.411631</td>
+<td>62.202897</td>
+<td>62.461328</td>
+<td>61.755608</td>
+<td>20694100.0</td>
+<td>01</td>
+</tr>
+<tr>
+<td>2017-01-04</td>
+<td>62.103497</td>
+<td>61.924581</td>
+<td>62.371870</td>
+<td>61.745666</td>
+<td>21340000.0</td>
+<td>01</td>
+</tr>
+<tr>
+<td>2017-02-03</td>
+<td>63.117352</td>
+<td>63.296267</td>
+<td>63.316147</td>
+<td>62.689943</td>
+<td>30301800.0</td>
+<td>02</td>
+</tr>
+<tr>
+<td>2017-02-06</td>
+<td>63.117352</td>
+<td>63.256507</td>
+<td>63.266450</td>
+<td>62.759520</td>
+<td>19796400.0</td>
+<td>02</td>
+</tr>
+<tr>
+<td>2017-02-07</td>
+<td>63.355907</td>
+<td>63.047773</td>
+<td>63.395663</td>
+<td>62.848978</td>
+<td>20277200.0</td>
+<td>02</td>
+</tr>
+</tbody>
+</table>
+<h5 id="concat"><a href="#concat" class="headerlink" title="concat"></a>concat</h5><p>连接前三和后三个数据</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">pieces=[quotesdf[:3],quotesdf[-3:]]</div><div class="line">pd.concat(pieces)</div></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>open</th>
+<th>close</th>
+<th>high</th>
+<th>low</th>
+<th>volume</th>
+<th>month</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>date</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>2017-01-03</td>
+<td>62.411631</td>
+<td>62.202897</td>
+<td>62.461328</td>
+<td>61.755608</td>
+<td>20694100.0</td>
+<td>01</td>
+</tr>
+<tr>
+<td>2017-01-04</td>
+<td>62.103497</td>
+<td>61.924581</td>
+<td>62.371870</td>
+<td>61.745666</td>
+<td>21340000.0</td>
+<td>01</td>
+</tr>
+<tr>
+<td>2017-01-05</td>
+<td>61.815244</td>
+<td>61.924581</td>
+<td>62.282413</td>
+<td>61.656208</td>
+<td>24876000.0</td>
+<td>01</td>
+</tr>
+<tr>
+<td>2017-03-29</td>
+<td>65.120003</td>
+<td>65.470001</td>
+<td>65.500000</td>
+<td>64.949997</td>
+<td>13512400.0</td>
+<td>03</td>
+</tr>
+<tr>
+<td>2017-03-30</td>
+<td>65.419998</td>
+<td>65.709999</td>
+<td>65.980003</td>
+<td>65.360001</td>
+<td>15100400.0</td>
+<td>03</td>
+</tr>
+<tr>
+<td>2017-03-31</td>
+<td>65.650002</td>
+<td>65.860001</td>
+<td>66.190002</td>
+<td>65.449997</td>
+<td>21001100.0</td>
+<td>03</td>
+</tr>
+</tbody>
+</table>
+<p>逻辑结构不同的也可以连接：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">quotes_without_month=quotesdf.drop(&apos;month&apos;,axis=1)</div><div class="line">pieces=[quotesdf[:3],quotes_without_month[-3:]]</div><div class="line">pd.concat(pieces)</div></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>close</th>
+<th>high</th>
+<th>low</th>
+<th>month</th>
+<th>open</th>
+<th>volume</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>date</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>2017-01-03</td>
+<td>62.202897</td>
+<td>62.461328</td>
+<td>61.755608</td>
+<td>01</td>
+<td>62.411631</td>
+<td>20694100.0</td>
+</tr>
+<tr>
+<td>2017-01-04</td>
+<td>61.924581</td>
+<td>62.371870</td>
+<td>61.745666</td>
+<td>01</td>
+<td>62.103497</td>
+<td>21340000.0</td>
+</tr>
+<tr>
+<td>2017-01-05</td>
+<td>61.924581</td>
+<td>62.282413</td>
+<td>61.656208</td>
+<td>01</td>
+<td>61.815244</td>
+<td>24876000.0</td>
+</tr>
+<tr>
+<td>2017-03-29</td>
+<td>65.470001</td>
+<td>65.500000</td>
+<td>64.949997</td>
+<td>NaN</td>
+<td>65.120003</td>
+<td>13512400.0</td>
+</tr>
+<tr>
+<td>2017-03-30</td>
+<td>65.709999</td>
+<td>65.980003</td>
+<td>65.360001</td>
+<td>NaN</td>
+<td>65.419998</td>
+<td>15100400.0</td>
+</tr>
+<tr>
+<td>2017-03-31</td>
+<td>65.860001</td>
+<td>66.190002</td>
+<td>65.449997</td>
+<td>NaN</td>
+<td>65.650002</td>
+<td>21001100.0</td>
+</tr>
+</tbody>
+</table>
+<h4 id="聚类分析"><a href="#聚类分析" class="headerlink" title="聚类分析"></a>聚类分析</h4><p>k-均值算法——简洁、快速、使用广泛</p>
+<p>流程：</p>
 <ul>
-<li>字符函数</li>
-<li>数值运算符和函数</li>
-<li>比较运算符和函数</li>
-<li>日期时间函数</li>
-<li>信息函数</li>
-<li>聚合函数</li>
-<li>加密函数</li>
+<li>任意选择k个对象作为初始聚类中心</li>
+<li>对每个点计算聚类中心点（一般采用均方差作为测度函数来计算距离）</li>
+<li>计算每个新聚类的聚类中心，直到收敛（即确定的中心点不再变化）</li>
 </ul>
-        
-          <a class="article-more-a" href="/2017/04/25/MySQL-学习笔记-6/#more">查看更多 >></a>
-        
+<p>要求：保证各聚类本身尽可能紧凑、各聚类之间尽可能分开</p>
+<p>scikit-learn机器学习包、scipy.clustre等聚类算法包中都会有k-均值算法</p>
+<p>案例：</p>
+<p>​    已知有一学霸的四科成绩为：100,95,100,92，同时知道另外五名同学的成绩，通过聚类分析，找出另外五名同学中的学霸和非学霸。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">from pylab import *</div><div class="line">from scipy.cluster.vq import * #聚类分析包</div><div class="line">list1=[88.0,74,96,85]  #将现有六组成绩放入6个list，注意kmeans()函数只接受浮点数</div><div class="line">list2=[92,99,95,94]</div><div class="line">list3=[91,87,99,95]</div><div class="line">list4=[78,99,97,81]</div><div class="line">list5=[88,78,98,84]</div><div class="line">list6=[100,95,100,92]</div><div class="line">data=vstack((list1,list2,list3,list4,list5,list6))  #堆积数据</div><div class="line">centroids,_=kmeans(data,2)  </div><div class="line">#利用kmeans计算，第一个参数为需聚类的数据，第二个数据为聚类数目。返回含两个元素的元组，第一个为聚类中心。</div><div class="line">result,_=vq(data,centroids) #用已有数据和聚类中心进行聚类</div><div class="line">print result</div></pre></td></tr></table></figure>
+<p>Out：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[1 0 0 0 1 0]</div></pre></td></tr></table></figure>
+<p>用0,1表示两个聚类。可以看出第1,5名同学为一类，第2,3,4,6名同学为一类。</p>
+<h4 id="Matplotlab绘图基础"><a href="#Matplotlab绘图基础" class="headerlink" title="Matplotlab绘图基础"></a>Matplotlab绘图基础</h4><ul>
+<li>主要用于二维绘图</li>
+<li>绘图API——pyplot模块</li>
+<li>集成库——pylab模块（包含NumPy和pyplot中的常用函数）</li>
+</ul>
+<p>折线图</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">import matplotlib.pyplot as plt</div><div class="line">t=np.arange(0.,4.,0.1)</div><div class="line">plt.plot(t,t,t,t+2,t,t**2) #3组横纵坐标值</div><div class="line">plt.show()</div></pre></td></tr></table></figure>
+<p><img src="/2017/04/28/Python数据统计和可视化/1.png" alt=""></p>
+<p>图像属性控制：</p>
+<p>线条色彩和样式</p>
+<p>通过第三个参数来指定：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">import pylab as pl</div><div class="line">pl.plot(x, y,&apos;g--&apos;)  #表示线条为绿色虚线</div></pre></td></tr></table></figure>
+<p><img src="/2017/04/28/Python数据统计和可视化/2.png" alt=""></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pl.plot(x, y,&apos;rD&apos;) #红色钻石形状散点</div></pre></td></tr></table></figure>
+<p>其他样式：</p>
+<p><img src="/2017/04/28/Python数据统计和可视化/3.png" alt=""></p>
+<p>其他属性：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">import matplotlib.pylab as pl</div><div class="line">pl.figure(figsize=(8,6),dpi=100)  #指定图的大小和精度</div><div class="line">t=np.arange(0.,4.,0.1)</div><div class="line">pl.plot(t,t,color=&apos;red&apos;,linestyle=&apos;-&apos;,linewidth=3,label=&apos;Line 1&apos;)</div><div class="line">#指定颜色，样式，线宽，图例</div><div class="line">pl.plot(t,t+2,color=&apos;green&apos;,linestyle=&apos;&apos;,marker=&apos;*&apos;,linewidth=3,label=&apos;Line 2&apos;)</div><div class="line">pl.plot(t,t**2,color=&apos;blue&apos;,linestyle=&apos;&apos;,marker=&apos;+&apos;,linewidth=3,label=&apos;Line 3&apos;)</div><div class="line">pl.legend(loc=&apos;upper left&apos;)  #图例位置</div><div class="line">pl.show()</div></pre></td></tr></table></figure>
+<p><img src="/2017/04/28/Python数据统计和可视化/4.png" alt=""></p>
+<p>控制子图区域：</p>
+<p>subplot子图：三个参数表示子图分几行几列，当前在第几区域绘图（小于10逗号可省略）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">subplot(3,1,1)</div><div class="line">pl.plot(t,t,color=&apos;red&apos;,linestyle=&apos;-&apos;,linewidth=3,label=&apos;Line 1&apos;)</div><div class="line">subplot(312)</div><div class="line">pl.plot(t,t+2,color=&apos;green&apos;,linestyle=&apos;&apos;,marker=&apos;*&apos;,linewidth=3,label=&apos;Line 2&apos;)</div><div class="line">subplot(313)</div><div class="line">pl.plot(t,t**2,color=&apos;blue&apos;,linestyle=&apos;&apos;,marker=&apos;+&apos;,linewidth=3,label=&apos;Line 3&apos;)</div></pre></td></tr></table></figure>
+<p><img src="/2017/04/28/Python数据统计和可视化/5.png" alt=""></p>
+<p>axes子图：</p>
+<p>axes([left,bottom,width,height]) 参数分别表示离左边界，底边界距离，图像高和宽（范围0-1）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">pl.axes([0.1,0.1,0.8,0.8])</div><div class="line">pl.plot(t,t,color=&apos;red&apos;,linestyle=&apos;-&apos;,linewidth=3,label=&apos;Line 1&apos;)</div><div class="line">pl.axes([0.5,0.15,0.3,0.3])</div><div class="line">pl.plot(t,t+2,color=&apos;green&apos;,linestyle=&apos;&apos;,marker=&apos;*&apos;,linewidth=3,label=&apos;Line 2&apos;)</div></pre></td></tr></table></figure>
+<p><img src="/2017/04/28/Python数据统计和可视化/6.png" alt=""></p>
+<h4 id="pandas作图"><a href="#pandas作图" class="headerlink" title="pandas作图"></a>pandas作图</h4><p>Pandas可以直接对Series和DataFrame绘图</p>
+<p>用Pandas做图之后，还可以使用plt中的函数来对参数做修改。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">import numpy as np</div><div class="line">import matplotlib.pyplot as plt</div><div class="line">import pandas as pd</div><div class="line">x = np.linspace(0, 1)</div><div class="line">y = np.sin(4 * np.pi * x) * np.exp(-5 * x)</div><div class="line">t = pd.DataFrame(y,index =x)</div><div class="line">t.plot()</div><div class="line">plt.show()</div></pre></td></tr></table></figure>
+<p>指定参数：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">df.plot(kind=&apos;bar&apos;)  #绘制柱形图</div><div class="line">df.plot(kind=&apos;barh&apos;)  #绘制横向柱形图</div><div class="line">df.plot(kind=&apos;bar&apos;,stacked=True)  #绘制累积柱形图</div><div class="line">df.plot(kind=&apos;scatter&apos;) #绘制散点图</div><div class="line">df.plot(x=&apos;&apos;,y=&apos;&apos;,color=&apos;&apos;)  #指定横纵坐标label和颜色</div><div class="line">df.plot(kind=&apos;kde&apos;)  #绘制概率分布图</div></pre></td></tr></table></figure>
       
 
       
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/SQL/" class="article-tag-list-link color4">SQL</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/04/25/MySQL-学习笔记-6/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-针对泰坦尼克号乘客数据集的数据分析" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/25/针对泰坦尼克号乘客数据集的数据分析/">针对泰坦尼克号乘客数据集的数据分析</a>
-    </h1>
-  
-
-        
-        <a href="/2017/04/25/针对泰坦尼克号乘客数据集的数据分析/" class="archive-article-date">
-  	<time datetime="2017-04-25T05:24:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-25</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="针对泰坦尼克号乘客数据集的数据分析"><a href="#针对泰坦尼克号乘客数据集的数据分析" class="headerlink" title="针对泰坦尼克号乘客数据集的数据分析"></a>针对泰坦尼克号乘客数据集的数据分析</h2><p>在这个项目中，我们将针对泰坦尼克号乘客数据集展开分析，对于乘客的某些信息进行一些描述性的统计分析，并简要分析乘客的某些因素与生还率之间是否具有相关性或具有怎样程度的相关性。</p>
-        
-          <a class="article-more-a" href="/2017/04/25/针对泰坦尼克号乘客数据集的数据分析/#more">查看更多 >></a>
-        
-      
-
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃小鱼干~<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/alipay.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
       
     </div>
     <div class="article-info article-info-index">
@@ -553,18 +637,83 @@
 
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/04/25/针对泰坦尼克号乘客数据集的数据分析/">展开全文 >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/04/28/Python数据统计和可视化/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
 
-
+  
+<nav id="article-nav">
+  
+    <a href="/2017/04/27/Series-DateFrame/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          Series&amp;DateFrame
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/04/29/利用matplotlib-finance-模块获取财经数据/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">利用matplotlib.finance 模块获取财经数据</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
 
 
 
@@ -572,285 +721,26 @@
 
 
   
-    <article id="post-使用NumPy和Pandas分析二维数据" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/23/使用NumPy和Pandas分析二维数据/">使用NumPy和Pandas分析二维数据</a>
-    </h1>
+    <div class="duoshuo"></div>
   
 
-        
-        <a href="/2017/04/23/使用NumPy和Pandas分析二维数据/" class="archive-article-date">
-  	<time datetime="2017-04-23T00:34:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-23</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="课程内容概述"><a href="#课程内容概述" class="headerlink" title="课程内容概述"></a>课程内容概述</h4><ul>
-<li>了解NumPy和Pandas更多特征</li>
-<li>用两种库分析二维数据</li>
-</ul>
-        
-          <a class="article-more-a" href="/2017/04/23/使用NumPy和Pandas分析二维数据/#more">查看更多 >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/数据分析/" class="article-tag-list-link color5">数据分析</a>
-        		</li>
-      		
-		</ul>
-	</div>
 
 
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/04/23/使用NumPy和Pandas分析二维数据/">展开全文 >></a>
-        </p>
-      
+<section id="comments">
+  <div id="disqus_thread"></div>
+    <script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'milhaven1733'; // required: replace example with your forum shortname
 
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-使用NumPy和Pandas分析一维数据" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/22/使用NumPy和Pandas分析一维数据/">使用NumPy和Pandas分析一维数据</a>
-    </h1>
-  
-
-        
-        <a href="/2017/04/22/使用NumPy和Pandas分析一维数据/" class="archive-article-date">
-  	<time datetime="2017-04-22T02:25:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-22</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="课程内容概述"><a href="#课程内容概述" class="headerlink" title="课程内容概述"></a>课程内容概述</h4><ul>
-<li>熟悉NumPy的使用</li>
-<li>熟悉Pandas库的使用</li>
-<li>两种库的优势：降低编写数据分析代码的难度，提高代码的运算速度。</li>
-</ul>
-        
-          <a class="article-more-a" href="/2017/04/22/使用NumPy和Pandas分析一维数据/#more">查看更多 >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/数据分析/" class="article-tag-list-link color5">数据分析</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/04/22/使用NumPy和Pandas分析一维数据/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-MySQL-学习笔记-5" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/21/MySQL-学习笔记-5/">MySQL-学习笔记-5</a>
-    </h1>
-  
-
-        
-        <a href="/2017/04/21/MySQL-学习笔记-5/" class="archive-article-date">
-  	<time datetime="2017-04-21T02:47:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-21</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="子查询与连接"><a href="#子查询与连接" class="headerlink" title="子查询与连接"></a>子查询与连接</h3><h4 id="数据的准备"><a href="#数据的准备" class="headerlink" title="数据的准备"></a>数据的准备</h4><p>创建商城信息数据库：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">mysql&gt; CREATE TABLE IF NOT EXISTS tdb_goods(</div><div class="line">    -&gt;     goods_id    SMALLINT UNSIGNED PRIMARY KEY AUTO_INCREMENT,</div><div class="line">    -&gt;     goods_name  VARCHAR(150) NOT NULL,</div><div class="line">    -&gt;     goods_cate  VARCHAR(40)  NOT NULL,</div><div class="line">    -&gt;     brand_name  VARCHAR(40)  NOT NULL,</div><div class="line">    -&gt;     goods_price DECIMAL(15,3) UNSIGNED NOT NULL DEFAULT 0,</div><div class="line">    -&gt;     is_show     BOOLEAN NOT NULL DEFAULT 1,</div><div class="line">    -&gt;     is_saleoff  BOOLEAN NOT NULL DEFAULT 0</div><div class="line">    -&gt;   );</div></pre></td></tr></table></figure>
-<p>字段说明：</p>
-<p>goods_id 商品id 主键    goods_cate 商品分类</p>
-<p>is_show  是否上架 布尔型    is_saleoff 是否售空 布尔型</p>
-        
-          <a class="article-more-a" href="/2017/04/21/MySQL-学习笔记-5/#more">查看更多 >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/SQL/" class="article-tag-list-link color4">SQL</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/04/21/MySQL-学习笔记-5/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-MySQL-学习笔记-4" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/20/MySQL-学习笔记-4/">MySQL-学习笔记-4</a>
-    </h1>
-  
-
-        
-        <a href="/2017/04/20/MySQL-学习笔记-4/" class="archive-article-date">
-  	<time datetime="2017-04-20T02:34:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-20</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="操作数据表中的记录"><a href="#操作数据表中的记录" class="headerlink" title="操作数据表中的记录"></a>操作数据表中的记录</h3><p>本节重点：对于数据表中记录的增、删、改、查。</p>
-<h4 id="插入记录INSERT"><a href="#插入记录INSERT" class="headerlink" title="插入记录INSERT"></a>插入记录INSERT</h4><p>插入记录</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">INSERT [INTO] table_name [(col_name,...)] &#123;VALUES|VALUE&#125; (&#123;expr|DEFAULT&#125;,...),(...),...</div></pre></td></tr></table></figure>
-<ul>
-<li>列名称省略，代表所有字段依次赋值</li>
-<li>值可以为表达式或默认值，字段之间逗号分隔</li>
-<li>可以一次插入多条记录</li>
-</ul>
-        
-          <a class="article-more-a" href="/2017/04/20/MySQL-学习笔记-4/#more">查看更多 >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/SQL/" class="article-tag-list-link color4">SQL</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/04/20/MySQL-学习笔记-4/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-  
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
-    </nav>
-  
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</section>
 
 
           </div>
@@ -872,8 +762,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: true,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,

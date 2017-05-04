@@ -167,6 +167,407 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-《利用Python进行数据分析》范例数据集-babynames" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/05/04/《利用Python进行数据分析》范例数据集-babynames/">《利用Python进行数据分析》范例数据集_babynames</a>
+    </h1>
+  
+
+        
+        <a href="/2017/05/04/《利用Python进行数据分析》范例数据集-babynames/" class="archive-article-date">
+  	<time datetime="2017-05-04T10:34:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-04</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>《利用Python进行数据分析》范例数据集-babynames</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</div></pre></td></tr></table></figure>
+<p>载入包含1880年美国新出生婴儿名字统计数据的文件</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">path=<span class="string">'/home/milhaven1733/Desktop/Data Analyst/pydata-book-master/ch02/names/yob1880.txt'</span></div></pre></td></tr></table></figure>
+<p>加载为DataFrame</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">names1880=pd.read_csv(path,names=[<span class="string">'names'</span>,<span class="string">'sex'</span>,<span class="string">'birth'</span>])</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">names1880.head()</div></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>names</th>
+<th>sex</th>
+<th>birth</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>Mary</td>
+<td>F</td>
+<td>7065</td>
+</tr>
+<tr>
+<td>1</td>
+<td>Anna</td>
+<td>F</td>
+<td>2604</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Emma</td>
+<td>F</td>
+<td>2003</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Elizabeth</td>
+<td>F</td>
+<td>1939</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Minnie</td>
+<td>F</td>
+<td>1746</td>
+</tr>
+</tbody>
+</table>
+<h4 id="统计总出生数"><a href="#统计总出生数" class="headerlink" title="统计总出生数"></a>统计总出生数</h4><p>以‘sex’分组统计birth人数总数：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">names1880.groupby(<span class="string">'sex'</span>).birth.sum()</div></pre></td></tr></table></figure>
+<p>Outs:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">sex</div><div class="line">F     90993</div><div class="line">M    110493</div><div class="line">Name: birth, dtype: int64</div></pre></td></tr></table></figure>
+<p>将1880-2010年所有数据文件加载至一个DataFrame</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">pieces=[]</div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_df_pieces</span><span class="params">(year)</span>:</span></div><div class="line">    path=<span class="string">'/home/milhaven1733/Desktop/Data Analyst/pydata-book-master/ch02/names/yob%d.txt'</span>%year</div><div class="line">    df=pd.read_csv(path,names=[<span class="string">'names'</span>,<span class="string">'sex'</span>,<span class="string">'birth'</span>])</div><div class="line">    df[<span class="string">'year'</span>]=year</div><div class="line">    pieces.append(df)</div><div class="line">    <span class="keyword">return</span> pieces</div><div class="line">years=range(<span class="number">1880</span>,<span class="number">2011</span>)</div><div class="line"><span class="keyword">for</span> year <span class="keyword">in</span> years:</div><div class="line">    get_df_pieces(year)</div></pre></td></tr></table></figure>
+<p>用pd.concat连接pieces中的每个元素：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">names=pd.concat(pieces,ignore_index=<span class="keyword">True</span>)</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">names.info()</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&lt;class &apos;pandas.core.frame.DataFrame&apos;&gt;</div><div class="line">RangeIndex: 1690784 entries, 0 to 1690783</div><div class="line">Data columns (total 4 columns):</div><div class="line">names    1690784 non-null object</div><div class="line">sex      1690784 non-null object</div><div class="line">birth    1690784 non-null int64</div><div class="line">year     1690784 non-null int64</div><div class="line">dtypes: int64(2), object(2)</div><div class="line">memory usage: 51.6+ MB</div></pre></td></tr></table></figure>
+<p>数据聚合。利用pivot_table或groupby在year和sex级别上进行聚合</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">total_birth=names.pivot_table(<span class="string">'birth'</span>,index=<span class="string">'year'</span>,columns=<span class="string">'sex'</span>,aggfunc=sum)</div><div class="line"><span class="comment">#total_birth=names.groupby(['year','sex']).birth.sum().unstack('sex').tail()</span></div><div class="line">total_birth.tail()</div></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>sex</th>
+<th>F</th>
+<th>M</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>year</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>2006</td>
+<td>1896468</td>
+<td>2050234</td>
+</tr>
+<tr>
+<td>2007</td>
+<td>1916888</td>
+<td>2069242</td>
+</tr>
+<tr>
+<td>2008</td>
+<td>1883645</td>
+<td>2032310</td>
+</tr>
+<tr>
+<td>2009</td>
+<td>1827643</td>
+<td>1973359</td>
+</tr>
+<tr>
+<td>2010</td>
+<td>1759010</td>
+<td>1898382</td>
+</tr>
+</tbody>
+</table>
+<p>对分组统计结果绘图：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">%matplotlib inline</div><div class="line"><span class="keyword">import</span> seaborn <span class="keyword">as</span> sns</div><div class="line">total_birth.plot(title=<span class="string">'Total births by sex and year'</span>)</div></pre></td></tr></table></figure>
+<p><img src="/2017/05/04/《利用Python进行数据分析》范例数据集-babynames/output_16_1.png" alt="png"></p>
+<h4 id="分析命名趋势"><a href="#分析命名趋势" class="headerlink" title="分析命名趋势"></a>分析命名趋势</h4><p>添加一个prop列，表示当年某名字婴儿数对于总出生数的比例（可以先按年份和性别分组，对每个分组进行处理，再验证完整数据集的结果变化）</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">add_prop</span><span class="params">(group)</span>:</span></div><div class="line">    birth=group.birth.astype(float)</div><div class="line">    group[<span class="string">'prop'</span>]=birth/birth.sum()</div><div class="line">    <span class="keyword">return</span> group</div><div class="line">names=names.groupby([<span class="string">'year'</span>,<span class="string">'sex'</span>]).apply(add_prop)</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">names.head()</div></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>names</th>
+<th>sex</th>
+<th>birth</th>
+<th>year</th>
+<th>prop</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>Mary</td>
+<td>F</td>
+<td>7065</td>
+<td>1880</td>
+<td>0.077643</td>
+</tr>
+<tr>
+<td>1</td>
+<td>Anna</td>
+<td>F</td>
+<td>2604</td>
+<td>1880</td>
+<td>0.028618</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Emma</td>
+<td>F</td>
+<td>2003</td>
+<td>1880</td>
+<td>0.022013</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Elizabeth</td>
+<td>F</td>
+<td>1939</td>
+<td>1880</td>
+<td>0.021309</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Minnie</td>
+<td>F</td>
+<td>1746</td>
+<td>1880</td>
+<td>0.019188</td>
+</tr>
+</tbody>
+</table>
+<p>验证分组总和是否为1</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line">np.allclose(names.groupby([<span class="string">'year'</span>,<span class="string">'sex'</span>]).prop.sum(),<span class="number">1</span>)</div><div class="line"><span class="comment">#np.allclose(names.groupby(['year']).prop.sum(),2)</span></div></pre></td></tr></table></figure>
+<p>Outs:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">True</div></pre></td></tr></table></figure>
+<p>由于数据集过大，我们可以取出每个[‘year’,’sex’]分组中总数目排在前1000的名字，作为之后分析工作的数据集：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_top1000</span><span class="params">(group)</span>:</span></div><div class="line">    <span class="keyword">return</span> group.sort_values(by=<span class="string">'birth'</span>,ascending=<span class="keyword">False</span>)[:<span class="number">1000</span>]</div><div class="line">top1000=names.groupby([<span class="string">'year'</span>,<span class="string">'sex'</span>]).apply(get_top1000)</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">top1000.info()</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&lt;class &apos;pandas.core.frame.DataFrame&apos;&gt;</div><div class="line">MultiIndex: 261877 entries, (1880, F, 0) to (2010, M, 1677645)</div><div class="line">Data columns (total 5 columns):</div><div class="line">names    261877 non-null object</div><div class="line">sex      261877 non-null object</div><div class="line">birth    261877 non-null int64</div><div class="line">year     261877 non-null int64</div><div class="line">prop     261877 non-null float64</div><div class="line">dtypes: float64(1), int64(2), object(2)</div><div class="line">memory usage: 13.7+ MB</div></pre></td></tr></table></figure>
+<p>按性别区分出2个子数据集：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">boys=top1000[top1000.sex==<span class="string">'M'</span>]</div><div class="line">girls=top1000[top1000.sex==<span class="string">'F'</span>]</div></pre></td></tr></table></figure>
+<p>按照年份和名字分组统计，抽取几个名字的birth数据，绘图显示130年间该名字的使用趋势：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">total_births=top1000.pivot_table(<span class="string">'birth'</span>,index=<span class="string">'year'</span>,columns=<span class="string">'names'</span>,aggfunc=sum)</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">subset=total_births[[<span class="string">'John'</span>,<span class="string">'Harry'</span>,<span class="string">'Mary'</span>,<span class="string">'Marilyn'</span>]]</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">subset.plot(subplots=<span class="keyword">True</span>,figsize=(<span class="number">12</span>,<span class="number">10</span>),title=<span class="string">'Number of births per year'</span>)</div></pre></td></tr></table></figure>
+<p>Outs:</p>
+<p><img src="/2017/05/04/《利用Python进行数据分析》范例数据集-babynames/output_30_1.png" alt="png"></p>
+<h4 id="评估命名多样性的增长"><a href="#评估命名多样性的增长" class="headerlink" title="评估命名多样性的增长"></a>评估命名多样性的增长</h4><p>首先可以统计取最流行的1000个名字的婴儿占所有婴儿比例的变化趋势：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">table=top1000.pivot_table(<span class="string">'prop'</span>,index=<span class="string">'year'</span>,columns=<span class="string">'sex'</span>,aggfunc=sum)</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">table.plot(xticks=range(<span class="number">1880</span>,<span class="number">2020</span>,<span class="number">10</span>),yticks=np.linspace(<span class="number">0</span>,<span class="number">1.1</span>,<span class="number">12</span>))</div></pre></td></tr></table></figure>
+<p>Outs:</p>
+<p><img src="/2017/05/04/《利用Python进行数据分析》范例数据集-babynames/output_34_1.png" alt="png"></p>
+<p>另外可以计算占总出生人数50%的名字的数量，先以2010年出生的男孩为例:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">df=boys[boys.year==<span class="number">2010</span>]</div></pre></td></tr></table></figure>
+<p>排序后计算累积和：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">prop_cumsum=df.sort_values(by=<span class="string">'prop'</span>,ascending=<span class="keyword">False</span>).prop.cumsum()</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">prop_cumsum.head()</div></pre></td></tr></table></figure>
+<p>Outs:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">year  sex         </div><div class="line">2010  M    1676644    0.011523</div><div class="line">           1676645    0.020934</div><div class="line">           1676646    0.029959</div><div class="line">           1676647    0.038930</div><div class="line">           1676648    0.047817</div><div class="line">Name: prop, dtype: float64</div></pre></td></tr></table></figure>
+<p>searchsorted方法求出0.5插入序列且不破坏顺序的位置：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">prop_cumsum.searchsorted(<span class="number">0.5</span>)</div></pre></td></tr></table></figure>
+<p>Outs:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">array([116])</div></pre></td></tr></table></figure>
+<p>对所有组合执行计算，绘图表示趋势：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_quantile_count</span><span class="params">(group)</span>:</span></div><div class="line">    group=group.sort_values(by=<span class="string">'prop'</span>,ascending=<span class="keyword">False</span>)</div><div class="line">    <span class="keyword">return</span> group.prop.cumsum().searchsorted(<span class="number">0.5</span>)[<span class="number">0</span>]+<span class="number">1</span></div><div class="line">diversity=top1000.groupby([<span class="string">'year'</span>,<span class="string">'sex'</span>]).apply(get_quantile_count)</div><div class="line">diversity=diversity.unstack(<span class="string">'sex'</span>)</div><div class="line">diversity.head()</div></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>sex</th>
+<th>F</th>
+<th>M</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>year</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>1880</td>
+<td>38</td>
+<td>14</td>
+</tr>
+<tr>
+<td>1881</td>
+<td>38</td>
+<td>14</td>
+</tr>
+<tr>
+<td>1882</td>
+<td>38</td>
+<td>15</td>
+</tr>
+<tr>
+<td>1883</td>
+<td>39</td>
+<td>15</td>
+</tr>
+<tr>
+<td>1884</td>
+<td>39</td>
+<td>16</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">diversity.plot(title=<span class="string">'Number of popular names in top 50%'</span>)</div></pre></td></tr></table></figure>
+<p>Outs:</p>
+<p><img src="/2017/05/04/《利用Python进行数据分析》范例数据集-babynames/output_44_1.png" alt="png"></p>
+<h4 id="探究名字最后一个字母的变革"><a href="#探究名字最后一个字母的变革" class="headerlink" title="探究名字最后一个字母的变革"></a>探究名字最后一个字母的变革</h4><p>首先为names添加表示名字末字母的一列，将全部出生数据进行聚合：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">get_last_letter=<span class="keyword">lambda</span> x:x[<span class="number">-1</span>]</div><div class="line">last_letters=names.names.apply(get_last_letter)</div><div class="line">names[<span class="string">'last_latter'</span>]=last_letters</div><div class="line">table=names.pivot_table(<span class="string">'birth'</span>,index=<span class="string">'last_latter'</span>,columns=[<span class="string">'sex'</span>,<span class="string">'year'</span>],aggfunc=sum)</div></pre></td></tr></table></figure>
+<p>取出有代表性的三列：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">subtable=table.reindex(columns=[<span class="number">1910</span>,<span class="number">1960</span>,<span class="number">2010</span>],level=<span class="string">'year'</span>)</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">subtable.head()</div></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>sex</th>
+<th>F</th>
+<th>M</th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>year</td>
+<td>1910</td>
+<td>1960</td>
+<td>2010</td>
+<td>1910</td>
+<td>1960</td>
+<td>2010</td>
+</tr>
+<tr>
+<td>last_latter</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>a</td>
+<td>108376.0</td>
+<td>691247.0</td>
+<td>670605.0</td>
+<td>977.0</td>
+<td>5204.0</td>
+<td>28438.0</td>
+</tr>
+<tr>
+<td>b</td>
+<td>NaN</td>
+<td>694.0</td>
+<td>450.0</td>
+<td>411.0</td>
+<td>3912.0</td>
+<td>38859.0</td>
+</tr>
+<tr>
+<td>c</td>
+<td>5.0</td>
+<td>49.0</td>
+<td>946.0</td>
+<td>482.0</td>
+<td>15476.0</td>
+<td>23125.0</td>
+</tr>
+<tr>
+<td>d</td>
+<td>6750.0</td>
+<td>3729.0</td>
+<td>2607.0</td>
+<td>22111.0</td>
+<td>262112.0</td>
+<td>44398.0</td>
+</tr>
+<tr>
+<td>e</td>
+<td>133569.0</td>
+<td>435013.0</td>
+<td>313833.0</td>
+<td>28655.0</td>
+<td>178823.0</td>
+<td>129012.0</td>
+</tr>
+</tbody>
+</table>
+<p>计算各年份末字母所占比例，绘图：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">letter_prop=subtable/subtable.sum(<span class="number">0</span>)</div><div class="line"><span class="comment">#letter_prop=subtable.div(subtable.sum(0))</span></div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</div><div class="line">fig,axes=plt.subplots(<span class="number">2</span>,<span class="number">1</span>,figsize=(<span class="number">10</span>,<span class="number">8</span>))</div><div class="line">letter_prop[<span class="string">'M'</span>].plot(kind=<span class="string">'bar'</span>,ax=axes[<span class="number">0</span>],title=<span class="string">'Male'</span>)</div><div class="line">letter_prop[<span class="string">'F'</span>].plot(kind=<span class="string">'bar'</span>,ax=axes[<span class="number">1</span>],title=<span class="string">'Female'</span>)</div></pre></td></tr></table></figure>
+<p>Outs:</p>
+<p><img src="/2017/05/04/《利用Python进行数据分析》范例数据集-babynames/output_53_1.png" alt="png"></p>
+<h4 id="探究一些女性化的“男性名字”的变化趋势："><a href="#探究一些女性化的“男性名字”的变化趋势：" class="headerlink" title="探究一些女性化的“男性名字”的变化趋势："></a>探究一些女性化的“男性名字”的变化趋势：</h4><p>从全部的名字中取出包含’lesl’的集合：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">all_names=pd.Series(top1000.names.unique())</div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">lesley</span><span class="params">(str)</span>:</span></div><div class="line">    <span class="keyword">return</span> <span class="string">'lesl'</span> <span class="keyword">in</span> str.lower()</div><div class="line">lesley_like=all_names[all_names.apply(lesley)]</div></pre></td></tr></table></figure>
+<p>从top1000中取出名字在lesley_like中的分组：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">filtered=top1000[top1000.names.isin(lesley_like)]</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">filtered.groupby(<span class="string">'names'</span>).sum().birth</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">names</div><div class="line">Leslee      1082</div><div class="line">Lesley     35022</div><div class="line">Lesli        929</div><div class="line">Leslie    370429</div><div class="line">Lesly      10067</div><div class="line">Name: birth, dtype: int64</div></pre></td></tr></table></figure>
+<p>按年份和性别进行聚合：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">table=filtered.pivot_table(<span class="string">'birth'</span>,index=<span class="string">'year'</span>,columns=<span class="string">'sex'</span>,aggfunc=<span class="string">'sum'</span>)</div></pre></td></tr></table></figure>
+<p>计算各年份各性别某名字的性别比例，并绘图展示变化趋势：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">table=table.div(table.sum(<span class="number">1</span>),axis=<span class="number">0</span>)</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">table.plot(style=&#123;<span class="string">'M'</span>:<span class="string">'-'</span>,<span class="string">'F'</span>:<span class="string">'--'</span>&#125;)</div></pre></td></tr></table></figure>
+<p><img src="/2017/05/04/《利用Python进行数据分析》范例数据集-babynames/output_64_1.png" alt="png"></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/数据分析/" class="article-tag-list-link color5">数据分析</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/05/04/《利用Python进行数据分析》范例数据集-babynames/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
     <article id="post-《利用Python进行数据分析》范例数据集-MovieLens" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -782,76 +1183,9 @@
 
 
   
-    <article id="post-使用NumPy和Pandas分析二维数据" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/23/使用NumPy和Pandas分析二维数据/">使用NumPy和Pandas分析二维数据</a>
-    </h1>
-  
-
-        
-        <a href="/2017/04/23/使用NumPy和Pandas分析二维数据/" class="archive-article-date">
-  	<time datetime="2017-04-23T00:34:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-23</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="课程内容概述"><a href="#课程内容概述" class="headerlink" title="课程内容概述"></a>课程内容概述</h4><ul>
-<li>了解NumPy和Pandas更多特征</li>
-<li>用两种库分析二维数据</li>
-</ul>
-        
-          <a class="article-more-a" href="/2017/04/23/使用NumPy和Pandas分析二维数据/#more">查看更多 >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/数据分析/" class="article-tag-list-link color5">数据分析</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/04/23/使用NumPy和Pandas分析二维数据/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
     </nav>
   
 

@@ -167,6 +167,484 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-使用NumPy和Pandas分析一维数据" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/22/使用NumPy和Pandas分析一维数据/">使用NumPy和Pandas分析一维数据</a>
+    </h1>
+  
+
+        
+        <a href="/2017/04/22/使用NumPy和Pandas分析一维数据/" class="archive-article-date">
+  	<time datetime="2017-04-22T02:25:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-22</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="课程内容概述"><a href="#课程内容概述" class="headerlink" title="课程内容概述"></a>课程内容概述</h4><ul>
+<li>熟悉NumPy的使用</li>
+<li>熟悉Pandas库的使用</li>
+<li>两种库的优势：降低编写数据分析代码的难度，提高代码的运算速度。</li>
+</ul>
+        
+          <a class="article-more-a" href="/2017/04/22/使用NumPy和Pandas分析一维数据/#more">查看更多 >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/数据分析/" class="article-tag-list-link color5">数据分析</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/04/22/使用NumPy和Pandas分析一维数据/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-MySQL-学习笔记-5" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/21/MySQL-学习笔记-5/">MySQL-学习笔记-5</a>
+    </h1>
+  
+
+        
+        <a href="/2017/04/21/MySQL-学习笔记-5/" class="archive-article-date">
+  	<time datetime="2017-04-21T02:47:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-21</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="子查询与连接"><a href="#子查询与连接" class="headerlink" title="子查询与连接"></a>子查询与连接</h3><h4 id="数据的准备"><a href="#数据的准备" class="headerlink" title="数据的准备"></a>数据的准备</h4><p>创建商城信息数据库：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">mysql&gt; CREATE TABLE IF NOT EXISTS tdb_goods(</div><div class="line">    -&gt;     goods_id    SMALLINT UNSIGNED PRIMARY KEY AUTO_INCREMENT,</div><div class="line">    -&gt;     goods_name  VARCHAR(150) NOT NULL,</div><div class="line">    -&gt;     goods_cate  VARCHAR(40)  NOT NULL,</div><div class="line">    -&gt;     brand_name  VARCHAR(40)  NOT NULL,</div><div class="line">    -&gt;     goods_price DECIMAL(15,3) UNSIGNED NOT NULL DEFAULT 0,</div><div class="line">    -&gt;     is_show     BOOLEAN NOT NULL DEFAULT 1,</div><div class="line">    -&gt;     is_saleoff  BOOLEAN NOT NULL DEFAULT 0</div><div class="line">    -&gt;   );</div></pre></td></tr></table></figure>
+<p>字段说明：</p>
+<p>goods_id 商品id 主键    goods_cate 商品分类</p>
+<p>is_show  是否上架 布尔型    is_saleoff 是否售空 布尔型</p>
+        
+          <a class="article-more-a" href="/2017/04/21/MySQL-学习笔记-5/#more">查看更多 >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/SQL/" class="article-tag-list-link color4">SQL</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/04/21/MySQL-学习笔记-5/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-MySQL-学习笔记-4" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/20/MySQL-学习笔记-4/">MySQL-学习笔记-4</a>
+    </h1>
+  
+
+        
+        <a href="/2017/04/20/MySQL-学习笔记-4/" class="archive-article-date">
+  	<time datetime="2017-04-20T02:34:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-20</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="操作数据表中的记录"><a href="#操作数据表中的记录" class="headerlink" title="操作数据表中的记录"></a>操作数据表中的记录</h3><p>本节重点：对于数据表中记录的增、删、改、查。</p>
+<h4 id="插入记录INSERT"><a href="#插入记录INSERT" class="headerlink" title="插入记录INSERT"></a>插入记录INSERT</h4><p>插入记录</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">INSERT [INTO] table_name [(col_name,...)] &#123;VALUES|VALUE&#125; (&#123;expr|DEFAULT&#125;,...),(...),...</div></pre></td></tr></table></figure>
+<ul>
+<li>列名称省略，代表所有字段依次赋值</li>
+<li>值可以为表达式或默认值，字段之间逗号分隔</li>
+<li>可以一次插入多条记录</li>
+</ul>
+        
+          <a class="article-more-a" href="/2017/04/20/MySQL-学习笔记-4/#more">查看更多 >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/SQL/" class="article-tag-list-link color4">SQL</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/04/20/MySQL-学习笔记-4/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-关于udacity学生数据集的t检验分析" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/19/关于udacity学生数据集的t检验分析/">关于udacity学生数据集的t检验分析</a>
+    </h1>
+  
+
+        
+        <a href="/2017/04/19/关于udacity学生数据集的t检验分析/" class="archive-article-date">
+  	<time datetime="2017-04-19T14:23:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-19</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h4><p>上一次，应用udacity提供的学生数据集，我们熟悉数据分析的基本流程，完成了数据的获取、导入、整理、取样、分类等步骤，也得到了相应的推测结论。但由于没有经过统计学检查，得到的只是未经证实的试验性结论。</p>
+<p>因此，这一次我希望选取上次分析过程中得到的几个采样方法有代表的数据样本，对其进行统计学上的检验，看看分析结果是否能验证上次做出的一些预测或推论。</p>
+        
+          <a class="article-more-a" href="/2017/04/19/关于udacity学生数据集的t检验分析/#more">查看更多 >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/数据分析/" class="article-tag-list-link color5">数据分析</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/04/19/关于udacity学生数据集的t检验分析/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-利用udacity学生数据集实践数据分析过程" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/19/利用udacity学生数据集实践数据分析过程/">利用udacity学生数据集实践数据分析过程</a>
+    </h1>
+  
+
+        
+        <a href="/2017/04/19/利用udacity学生数据集实践数据分析过程/" class="archive-article-date">
+  	<time datetime="2017-04-19T03:22:06.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-19</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="利用udacity学生数据集实践数据分析过程"><a href="#利用udacity学生数据集实践数据分析过程" class="headerlink" title="利用udacity学生数据集实践数据分析过程"></a>利用udacity学生数据集实践数据分析过程</h3><h4 id="数据采集与清理"><a href="#数据采集与清理" class="headerlink" title="数据采集与清理"></a>数据采集与清理</h4><p><strong>数据分析中的数据来源</strong></p>
+<ul>
+<li>下载数据文件</li>
+<li>从API中获取 </li>
+<li>从网页收集 </li>
+<li>合并多种不同格式数据</li>
+</ul>
+<p>在这次实践中，我们采用下载数据文件的方式。（将课程提供的三个csv数据集下载至本地)</p>
+<p>接下来，需要对数据文件进行数据整理使数据能够用于分类及分析。</p>
+<p>就要先了解我们下载的csv文件。</p>
+        
+          <a class="article-more-a" href="/2017/04/19/利用udacity学生数据集实践数据分析过程/#more">查看更多 >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/数据分析/" class="article-tag-list-link color5">数据分析</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/04/19/利用udacity学生数据集实践数据分析过程/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-MySQL-学习笔记-3" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/16/MySQL-学习笔记-3/">MySQL-学习笔记-3</a>
+    </h1>
+  
+
+        
+        <a href="/2017/04/16/MySQL-学习笔记-3/" class="archive-article-date">
+  	<time datetime="2017-04-16T01:23:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-16</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="MySQL约束及修改数据表"><a href="#MySQL约束及修改数据表" class="headerlink" title="MySQL约束及修改数据表"></a>MySQL约束及修改数据表</h3><h4 id="外键约束的要求解析"><a href="#外键约束的要求解析" class="headerlink" title="外键约束的要求解析"></a>外键约束的要求解析</h4><p><strong>约束</strong></p>
+<p><img src="/2017/04/16/MySQL-学习笔记-3/1.png" alt="1"></p>
+<p>根据约束针对字段多少：</p>
+<p>针对一个字段——列级约束</p>
+<p>针对多个字段——表级约束</p>
+        
+          <a class="article-more-a" href="/2017/04/16/MySQL-学习笔记-3/#more">查看更多 >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/SQL/" class="article-tag-list-link color4">SQL</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/04/16/MySQL-学习笔记-3/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-MySQL-学习笔记-2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/13/MySQL-学习笔记-2/">MySQL-学习笔记-2</a>
+    </h1>
+  
+
+        
+        <a href="/2017/04/13/MySQL-学习笔记-2/" class="archive-article-date">
+  	<time datetime="2017-04-13T10:12:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-13</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="数据类型及数据表操作"><a href="#数据类型及数据表操作" class="headerlink" title="数据类型及数据表操作"></a>数据类型及数据表操作</h2><h3 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h3><p>数据类型决定存储格式</p>
+<p>要根据实际应用来选择最合适的数据类型</p>
+        
+          <a class="article-more-a" href="/2017/04/13/MySQL-学习笔记-2/#more">查看更多 >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/SQL/" class="article-tag-list-link color4">SQL</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/04/13/MySQL-学习笔记-2/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
     <article id="post-MySQL-学习笔记-1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     

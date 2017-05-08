@@ -167,6 +167,508 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-《利用Python进行数据分析》范例数据集-MovieLens" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/05/03/《利用Python进行数据分析》范例数据集-MovieLens/">《利用Python进行数据分析》范例数据集_MovieLens</a>
+    </h1>
+  
+
+        
+        <a href="/2017/05/03/《利用Python进行数据分析》范例数据集-MovieLens/" class="archive-article-date">
+  	<time datetime="2017-05-03T14:27:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-03</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</div></pre></td></tr></table></figure>
+<p>加载.dat文件中的数据：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">unames=[<span class="string">'user_id'</span>,<span class="string">'gender'</span>,<span class="string">'age'</span>,<span class="string">'occupation'</span>,<span class="string">'zip'</span>]</div><div class="line">path=<span class="string">'/home/milhaven1733/Desktop/Data Analyst/pydata-book-master/ch02/movielens/users.dat'</span></div><div class="line">users=pd.read_table(path,sep=<span class="string">'::'</span>,header=<span class="keyword">None</span>,names=unames,engine = <span class="string">'python'</span>)</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">rnames=[<span class="string">'user_id'</span>,<span class="string">'movie_id'</span>,<span class="string">'rating'</span>,<span class="string">'timestamp'</span>]</div><div class="line">path=<span class="string">'/home/milhaven1733/Desktop/Data Analyst/pydata-book-master/ch02/movielens/ratings.dat'</span></div><div class="line">ratings=pd.read_table(path,sep=<span class="string">'::'</span>,header=<span class="keyword">None</span>,names=rnames,engine = <span class="string">'python'</span>)</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">mnames=[<span class="string">'movie_id'</span>,<span class="string">'title'</span>,<span class="string">'genres'</span>]</div><div class="line">path=<span class="string">'/home/milhaven1733/Desktop/Data Analyst/pydata-book-master/ch02/movielens/movies.dat'</span></div><div class="line">movies=pd.read_table(path,sep=<span class="string">'::'</span>,header=<span class="keyword">None</span>,names=mnames,engine = <span class="string">'python'</span>)</div></pre></td></tr></table></figure>
+        
+          <a class="article-more-a" href="/2017/05/03/《利用Python进行数据分析》范例数据集-MovieLens/#more">查看更多 >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/数据分析/" class="article-tag-list-link color5">数据分析</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/05/03/《利用Python进行数据分析》范例数据集-MovieLens/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-《利用Python进行数据分析》范例数据集-usagov-bitly-data" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/05/03/《利用Python进行数据分析》范例数据集-usagov-bitly-data/">《利用Python进行数据分析》范例数据集:usagov_bitly_data</a>
+    </h1>
+  
+
+        
+        <a href="/2017/05/03/《利用Python进行数据分析》范例数据集-usagov-bitly-data/" class="archive-article-date">
+  	<time datetime="2017-05-03T08:56:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-03</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>读取生成.gov或.mil短链接的用户数据文本文件（文本中每行的为JSON）</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">path=<span class="string">'/home/milhaven1733/Desktop/Data Analyst/pydata-book-master/ch02/usagov_bitly_data2012-03-16-1331923249.txt'</span></div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">open(path).readline()</div></pre></td></tr></table></figure>
+<p>Outs:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&apos;&#123; &quot;a&quot;: &quot;Mozilla\\/5.0 (Windows NT 6.1; WOW64) AppleWebKit\\/535.11 (KHTML, like Gecko) Chrome\\/17.0.963.78 Safari\\/535.11&quot;, &quot;c&quot;: &quot;US&quot;, &quot;nk&quot;: 1, &quot;tz&quot;: &quot;America\\/New_York&quot;, &quot;gr&quot;: &quot;MA&quot;, &quot;g&quot;: &quot;A6qOVH&quot;, &quot;h&quot;: &quot;wfLQtf&quot;, &quot;l&quot;: &quot;orofrog&quot;, &quot;al&quot;: &quot;en-US,en;q=0.8&quot;, &quot;hh&quot;: &quot;1.usa.gov&quot;, &quot;r&quot;: &quot;http:\\/\\/www.facebook.com\\/l\\/7AQEFzjSi\\/1.usa.gov\\/wfLQtf&quot;, &quot;u&quot;: &quot;http:\\/\\/www.ncbi.nlm.nih.gov\\/pubmed\\/22415991&quot;, &quot;t&quot;: 1331923247, &quot;hc&quot;: 1331822918, &quot;cy&quot;: &quot;Danvers&quot;, &quot;ll&quot;: [ 42.576698, -70.954903 ] &#125;\n&apos;</div></pre></td></tr></table></figure>
+<p>用Python的JSON模块将JSON字符串转换为Python字典对象</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> json</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">records=[json.loads(line) <span class="keyword">for</span> line <span class="keyword">in</span> open(path)]</div></pre></td></tr></table></figure>
+        
+          <a class="article-more-a" href="/2017/05/03/《利用Python进行数据分析》范例数据集-usagov-bitly-data/#more">查看更多 >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/数据分析/" class="article-tag-list-link color5">数据分析</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/05/03/《利用Python进行数据分析》范例数据集-usagov-bitly-data/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-A-B-test概览" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/05/02/A-B-test概览/">A/B test概览</a>
+    </h1>
+  
+
+        
+        <a href="/2017/05/02/A-B-test概览/" class="archive-article-date">
+  	<time datetime="2017-05-02T00:56:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-02</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="A-B-tests"><a href="#A-B-tests" class="headerlink" title="A/B tests"></a>A/B tests</h4><h5 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h5><p>通过尝试可能的改变，寻找用户更喜欢的方式，更科学的确定如何优化网站或移动应用——根据数据作出决定。</p>
+<h5 id="步骤："><a href="#步骤：" class="headerlink" title="步骤："></a>步骤：</h5><ul>
+<li>设计任务</li>
+<li>选择指标</li>
+<li>分析结果</li>
+</ul>
+<h4 id="关于A-B-test"><a href="#关于A-B-test" class="headerlink" title="关于A/B test"></a>关于A/B test</h4><p>用于在线测试的常规方法，用来测试新产品或新功能。</p>
+<h4 id="何时使用A-B-tests"><a href="#何时使用A-B-tests" class="headerlink" title="何时使用A/B tests"></a>何时使用A/B tests</h4><p>不适合使用的情境：</p>
+<ul>
+<li><p>在线购物网站：网站是否全面、是否存在用户想购买但无法提供的商品</p>
+<p>（测试无法确认是否提供了所有商品）</p>
+</li>
+<li><p>免费使用的网站考虑是否提供更高级的付费功能</p>
+<p>（无法全面测试高级服务是否是好的商业决策）</p>
+</li>
+<li><p>汽车销售网站：考虑变更是否使顾客再次访问网站或向朋友推荐</p>
+<p>（短时间内无法测试效果）</p>
+</li>
+<li><p>某家公司：测试改变品牌logo的效果</p>
+<p>（改变logo对于客户冲击较大，可能需要时间适应，短时间内采集的数据意义不大）</p>
+</li>
+</ul>
+<p>适合使用的情境：</p>
+<ul>
+<li><p>为用户提供电影推荐的网站：测试新的推荐排序算法</p>
+<p>（有明确的对照组和实验组和明确的评估改变的指标）</p>
+</li>
+<li><p>是否改变网站基础架构的后台（可能影响页面加载速度、用户可以看到的显示结果等）</p>
+<p>（如果计算机能够同时运行两个版本，则可以对变化结果进行测试）</p>
+</li>
+<li><p>某移动应用：测试改变应用首页的效果</p>
+<p>（明确的对照组和实验组、更容易选择评估改变的指标）</p>
+</li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/数据分析/" class="article-tag-list-link color5">数据分析</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/05/02/A-B-test概览/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-利用matplotlib-finance-模块获取财经数据" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/29/利用matplotlib-finance-模块获取财经数据/">利用matplotlib.finance 模块获取财经数据</a>
+    </h1>
+  
+
+        
+        <a href="/2017/04/29/利用matplotlib-finance-模块获取财经数据/" class="archive-article-date">
+  	<time datetime="2017-04-28T16:00:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-29</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>从matplotlib.finance模块引入quotes_historical_yahoo_ochl（获取雅虎财经股票历史数据）</p>
+<p>datetime.today()获取当天信息，start设置为一年前的今天。</p>
+<p>quotes_historical_yahoo_ochl()方法需要三个参数，上市公司股票代码，历史数据起始日期，终止日期。</p>
+<p>来查询中国移动一年来的股票数据，并转化为DataFrame：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">from matplotlib.finance import quotes_historical_yahoo_ochl</div><div class="line">from datetime import *</div><div class="line">import pandas as pd</div><div class="line">today=datetime.today()</div><div class="line">start=(today.year-1,today.month,today.day)</div><div class="line">quotes=quotes_historical_yahoo_ochl(&apos;0941.HK&apos;,start,today)</div><div class="line">df=pd.DataFrame(quotes)</div><div class="line">print df</div></pre></td></tr></table></figure>
+<p>表格六列分别表示日期、开盘价、收盘价、最高价、最低价、成交价。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/数据分析/" class="article-tag-list-link color5">数据分析</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/04/29/利用matplotlib-finance-模块获取财经数据/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-Python数据统计和可视化" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/28/Python数据统计和可视化/">Python数据统计和可视化</a>
+    </h1>
+  
+
+        
+        <a href="/2017/04/28/Python数据统计和可视化/" class="archive-article-date">
+  	<time datetime="2017-04-28T02:16:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-28</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="数据整理"><a href="#数据整理" class="headerlink" title="数据整理"></a>数据整理</h4><p>日期转化</p>
+<p>获取的某组信息中，日期的表示方法为格里高利历法(Gregorian calendar)，要转化为通常的日期表示方法，可以使用datetime.date.fromordinal()方法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">date.fromordinal(736082)</div><div class="line">Out[19]:</div><div class="line">datetime.date(2016, 4, 28)</div></pre></td></tr></table></figure>
+<p>对于Series，可以使用apply整体转化：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">quotesdf[&apos;date&apos;]=quotesdf[&apos;date&apos;].apply(int).apply(date.fromordinal)</div></pre></td></tr></table></figure>
+        
+          <a class="article-more-a" href="/2017/04/28/Python数据统计和可视化/#more">查看更多 >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/数据分析/" class="article-tag-list-link color5">数据分析</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/04/28/Python数据统计和可视化/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-Series-DateFrame" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/27/Series-DateFrame/">Series&amp;DateFrame</a>
+    </h1>
+  
+
+        
+        <a href="/2017/04/27/Series-DateFrame/" class="archive-article-date">
+  	<time datetime="2017-04-27T01:12:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-27</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="Series"><a href="#Series" class="headerlink" title="Series"></a>Series</h3><ul>
+<li>定长有序字典</li>
+<li>包含数据和索引</li>
+</ul>
+        
+          <a class="article-more-a" href="/2017/04/27/Series-DateFrame/#more">查看更多 >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/数据分析/" class="article-tag-list-link color5">数据分析</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/04/27/Series-DateFrame/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-《Python数据分析实战》笔记-1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/27/《Python数据分析实战》笔记-1/">《Python数据分析实战》笔记-1</a>
+    </h1>
+  
+
+        
+        <a href="/2017/04/27/《Python数据分析实战》笔记-1/" class="archive-article-date">
+  	<time datetime="2017-04-27T00:52:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-27</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="关于NumPy库"><a href="#关于NumPy库" class="headerlink" title="关于NumPy库"></a>关于NumPy库</h3><h4 id="ndarray（N维数组）"><a href="#ndarray（N维数组）" class="headerlink" title="ndarray（N维数组）"></a>ndarray（N维数组）</h4><ul>
+<li>同质元素（几乎所有元素类型、大小都相同）组成</li>
+<li>数据类型由dtype指定</li>
+<li>大小固定（创建后大小不发生改变）</li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/数据分析/" class="article-tag-list-link color5">数据分析</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/04/27/《Python数据分析实战》笔记-1/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
     <article id="post-MySQL-学习笔记-6" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -354,484 +856,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2017/04/23/使用NumPy和Pandas分析二维数据/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-使用NumPy和Pandas分析一维数据" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/22/使用NumPy和Pandas分析一维数据/">使用NumPy和Pandas分析一维数据</a>
-    </h1>
-  
-
-        
-        <a href="/2017/04/22/使用NumPy和Pandas分析一维数据/" class="archive-article-date">
-  	<time datetime="2017-04-22T02:25:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-22</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="课程内容概述"><a href="#课程内容概述" class="headerlink" title="课程内容概述"></a>课程内容概述</h4><ul>
-<li>熟悉NumPy的使用</li>
-<li>熟悉Pandas库的使用</li>
-<li>两种库的优势：降低编写数据分析代码的难度，提高代码的运算速度。</li>
-</ul>
-        
-          <a class="article-more-a" href="/2017/04/22/使用NumPy和Pandas分析一维数据/#more">查看更多 >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/数据分析/" class="article-tag-list-link color5">数据分析</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/04/22/使用NumPy和Pandas分析一维数据/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-MySQL-学习笔记-5" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/21/MySQL-学习笔记-5/">MySQL-学习笔记-5</a>
-    </h1>
-  
-
-        
-        <a href="/2017/04/21/MySQL-学习笔记-5/" class="archive-article-date">
-  	<time datetime="2017-04-21T02:47:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-21</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="子查询与连接"><a href="#子查询与连接" class="headerlink" title="子查询与连接"></a>子查询与连接</h3><h4 id="数据的准备"><a href="#数据的准备" class="headerlink" title="数据的准备"></a>数据的准备</h4><p>创建商城信息数据库：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">mysql&gt; CREATE TABLE IF NOT EXISTS tdb_goods(</div><div class="line">    -&gt;     goods_id    SMALLINT UNSIGNED PRIMARY KEY AUTO_INCREMENT,</div><div class="line">    -&gt;     goods_name  VARCHAR(150) NOT NULL,</div><div class="line">    -&gt;     goods_cate  VARCHAR(40)  NOT NULL,</div><div class="line">    -&gt;     brand_name  VARCHAR(40)  NOT NULL,</div><div class="line">    -&gt;     goods_price DECIMAL(15,3) UNSIGNED NOT NULL DEFAULT 0,</div><div class="line">    -&gt;     is_show     BOOLEAN NOT NULL DEFAULT 1,</div><div class="line">    -&gt;     is_saleoff  BOOLEAN NOT NULL DEFAULT 0</div><div class="line">    -&gt;   );</div></pre></td></tr></table></figure>
-<p>字段说明：</p>
-<p>goods_id 商品id 主键    goods_cate 商品分类</p>
-<p>is_show  是否上架 布尔型    is_saleoff 是否售空 布尔型</p>
-        
-          <a class="article-more-a" href="/2017/04/21/MySQL-学习笔记-5/#more">查看更多 >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/SQL/" class="article-tag-list-link color4">SQL</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/04/21/MySQL-学习笔记-5/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-MySQL-学习笔记-4" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/20/MySQL-学习笔记-4/">MySQL-学习笔记-4</a>
-    </h1>
-  
-
-        
-        <a href="/2017/04/20/MySQL-学习笔记-4/" class="archive-article-date">
-  	<time datetime="2017-04-20T02:34:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-20</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="操作数据表中的记录"><a href="#操作数据表中的记录" class="headerlink" title="操作数据表中的记录"></a>操作数据表中的记录</h3><p>本节重点：对于数据表中记录的增、删、改、查。</p>
-<h4 id="插入记录INSERT"><a href="#插入记录INSERT" class="headerlink" title="插入记录INSERT"></a>插入记录INSERT</h4><p>插入记录</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">INSERT [INTO] table_name [(col_name,...)] &#123;VALUES|VALUE&#125; (&#123;expr|DEFAULT&#125;,...),(...),...</div></pre></td></tr></table></figure>
-<ul>
-<li>列名称省略，代表所有字段依次赋值</li>
-<li>值可以为表达式或默认值，字段之间逗号分隔</li>
-<li>可以一次插入多条记录</li>
-</ul>
-        
-          <a class="article-more-a" href="/2017/04/20/MySQL-学习笔记-4/#more">查看更多 >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/SQL/" class="article-tag-list-link color4">SQL</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/04/20/MySQL-学习笔记-4/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-关于udacity学生数据集的t检验分析" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/19/关于udacity学生数据集的t检验分析/">关于udacity学生数据集的t检验分析</a>
-    </h1>
-  
-
-        
-        <a href="/2017/04/19/关于udacity学生数据集的t检验分析/" class="archive-article-date">
-  	<time datetime="2017-04-19T14:23:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-19</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h4><p>上一次，应用udacity提供的学生数据集，我们熟悉数据分析的基本流程，完成了数据的获取、导入、整理、取样、分类等步骤，也得到了相应的推测结论。但由于没有经过统计学检查，得到的只是未经证实的试验性结论。</p>
-<p>因此，这一次我希望选取上次分析过程中得到的几个采样方法有代表的数据样本，对其进行统计学上的检验，看看分析结果是否能验证上次做出的一些预测或推论。</p>
-        
-          <a class="article-more-a" href="/2017/04/19/关于udacity学生数据集的t检验分析/#more">查看更多 >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/数据分析/" class="article-tag-list-link color5">数据分析</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/04/19/关于udacity学生数据集的t检验分析/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-利用udacity学生数据集实践数据分析过程" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/19/利用udacity学生数据集实践数据分析过程/">利用udacity学生数据集实践数据分析过程</a>
-    </h1>
-  
-
-        
-        <a href="/2017/04/19/利用udacity学生数据集实践数据分析过程/" class="archive-article-date">
-  	<time datetime="2017-04-19T03:22:06.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-19</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="利用udacity学生数据集实践数据分析过程"><a href="#利用udacity学生数据集实践数据分析过程" class="headerlink" title="利用udacity学生数据集实践数据分析过程"></a>利用udacity学生数据集实践数据分析过程</h3><h4 id="数据采集与清理"><a href="#数据采集与清理" class="headerlink" title="数据采集与清理"></a>数据采集与清理</h4><p><strong>数据分析中的数据来源</strong></p>
-<ul>
-<li>下载数据文件</li>
-<li>从API中获取 </li>
-<li>从网页收集 </li>
-<li>合并多种不同格式数据</li>
-</ul>
-<p>在这次实践中，我们采用下载数据文件的方式。（将课程提供的三个csv数据集下载至本地)</p>
-<p>接下来，需要对数据文件进行数据整理使数据能够用于分类及分析。</p>
-<p>就要先了解我们下载的csv文件。</p>
-        
-          <a class="article-more-a" href="/2017/04/19/利用udacity学生数据集实践数据分析过程/#more">查看更多 >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/数据分析/" class="article-tag-list-link color5">数据分析</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/04/19/利用udacity学生数据集实践数据分析过程/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-MySQL-学习笔记-3" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/16/MySQL-学习笔记-3/">MySQL-学习笔记-3</a>
-    </h1>
-  
-
-        
-        <a href="/2017/04/16/MySQL-学习笔记-3/" class="archive-article-date">
-  	<time datetime="2017-04-16T01:23:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-16</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="MySQL约束及修改数据表"><a href="#MySQL约束及修改数据表" class="headerlink" title="MySQL约束及修改数据表"></a>MySQL约束及修改数据表</h3><h4 id="外键约束的要求解析"><a href="#外键约束的要求解析" class="headerlink" title="外键约束的要求解析"></a>外键约束的要求解析</h4><p><strong>约束</strong></p>
-<p><img src="/2017/04/16/MySQL-学习笔记-3/1.png" alt="1"></p>
-<p>根据约束针对字段多少：</p>
-<p>针对一个字段——列级约束</p>
-<p>针对多个字段——表级约束</p>
-        
-          <a class="article-more-a" href="/2017/04/16/MySQL-学习笔记-3/#more">查看更多 >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/SQL/" class="article-tag-list-link color4">SQL</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/04/16/MySQL-学习笔记-3/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-MySQL-学习笔记-2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/13/MySQL-学习笔记-2/">MySQL-学习笔记-2</a>
-    </h1>
-  
-
-        
-        <a href="/2017/04/13/MySQL-学习笔记-2/" class="archive-article-date">
-  	<time datetime="2017-04-13T10:12:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-13</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="数据类型及数据表操作"><a href="#数据类型及数据表操作" class="headerlink" title="数据类型及数据表操作"></a>数据类型及数据表操作</h2><h3 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h3><p>数据类型决定存储格式</p>
-<p>要根据实际应用来选择最合适的数据类型</p>
-        
-          <a class="article-more-a" href="/2017/04/13/MySQL-学习笔记-2/#more">查看更多 >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/SQL/" class="article-tag-list-link color4">SQL</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/04/13/MySQL-学习笔记-2/">展开全文 >></a>
         </p>
       
 

@@ -167,6 +167,500 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-LeetCode-176-Second-Highest-Salary" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/05/08/LeetCode-176-Second-Highest-Salary/">LeetCode 176.Second Highest Salary</a>
+    </h1>
+  
+
+        
+        <a href="/2017/05/08/LeetCode-176-Second-Highest-Salary/" class="archive-article-date">
+  	<time datetime="2017-05-08T04:40:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-08</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>问题描述：</p>
+<p>Write a SQL query to get the second highest salary from the <code>Employee</code> table.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">+----+--------+</div><div class="line">| Id | Salary |</div><div class="line">+----+--------+</div><div class="line">| 1  | 100    |</div><div class="line">| 2  | 200    |</div><div class="line">| 3  | 300    |</div><div class="line">+----+--------+</div></pre></td></tr></table></figure>
+<p>For example, given the above Employee table, the second highest salary is <code>200</code>. If there is no second highest salary, then the query should return <code>null</code>.</p>
+<p>问题求解：</p>
+<p>可以先查询出最高的Salary，再从原表中选取Salary低于此最高值的记录作为结果，最后再利用max函数选取结果中的最大值，即第二高的Salary。</p>
+<p>注意提交结果时使用题目指定的别名。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">SELECT MAX(Salary) AS SecondHighestSalary </div><div class="line">FROM Employee </div><div class="line">WHERE Salary&lt;(SELECT MAX(Salary) FROM Employee);</div></pre></td></tr></table></figure>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/SQL/" class="article-tag-list-link color4">SQL</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/05/08/LeetCode-176-Second-Highest-Salary/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-LeetCode-196-Delete-Duplicate-Emails" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/05/08/LeetCode-196-Delete-Duplicate-Emails/">LeetCode 196.Delete Duplicate Emails</a>
+    </h1>
+  
+
+        
+        <a href="/2017/05/08/LeetCode-196-Delete-Duplicate-Emails/" class="archive-article-date">
+  	<time datetime="2017-05-08T04:19:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-08</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>问题描述：</p>
+<p>Write a SQL query to delete all duplicate email entries in a table named <code>Person</code>, keeping only unique emails based on its <em>smallest</em> <strong>Id</strong>.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">+----+------------------+</div><div class="line">| Id | Email            |</div><div class="line">+----+------------------+</div><div class="line">| 1  | john@example.com |</div><div class="line">| 2  | bob@example.com  |</div><div class="line">| 3  | john@example.com |</div><div class="line">+----+------------------+</div><div class="line">Id is the primary key column for this table.</div></pre></td></tr></table></figure>
+<p>For example, after running your query, the above <code>Person</code> table should have the following rows:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">+----+------------------+</div><div class="line">| Id | Email            |</div><div class="line">+----+------------------+</div><div class="line">| 1  | john@example.com |</div><div class="line">| 2  | bob@example.com  |</div><div class="line">+----+------------------+</div></pre></td></tr></table></figure>
+<p>问题求解：</p>
+<p>要求在原表中对Email重复的记录进行删除，仅保留Id值最小的一条记录。</p>
+<p>涉及到多表删除。</p>
+<p>先根据Email进行分组，筛选出组内记录数大于1（即包含重复记录）的分组，选取组内最小Id值和对应Email字段作为一张新表。（则新表包含唯一Email记录）</p>
+<p>对照新表删去原表中Email字段相同但ID号大于新表的记录（即得到与新表相同的结果）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">DELETE t1 FROM Person as t1 ,</div><div class="line">(SELECT MIN(Id) as ID,Email FROM Person GROUP BY Email HAVING count(Email)&gt;1) as t2 </div><div class="line">WHERE t1.Email=t2.Email </div><div class="line">AND t1.ID&gt;t2.ID;</div></pre></td></tr></table></figure>
+<p>也可以连接后从原表删除指定记录：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">DELETE t1 FROM Person as t1 </div><div class="line">left join (SELECT MIN(Id) as ID,Email FROM Person GROUP BY Email HAVING count(Email)&gt;1) as t2</div><div class="line">on t1.Email=t2.Email </div><div class="line">WHERE t1.ID&gt;t2.ID;</div></pre></td></tr></table></figure>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/SQL/" class="article-tag-list-link color4">SQL</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/05/08/LeetCode-196-Delete-Duplicate-Emails/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-LeetCode-197-Rising-Temperature" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/05/08/LeetCode-197-Rising-Temperature/">LeetCode 197.Rising Temperature</a>
+    </h1>
+  
+
+        
+        <a href="/2017/05/08/LeetCode-197-Rising-Temperature/" class="archive-article-date">
+  	<time datetime="2017-05-08T04:06:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-08</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>问题描述：</p>
+<p>Given a <code>Weather</code> table, write a SQL query to find all dates’ Ids with higher temperature compared to its previous (yesterday’s) dates.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">+---------+------------+------------------+</div><div class="line">| Id(INT) | Date(DATE) | Temperature(INT) |</div><div class="line">+---------+------------+------------------+</div><div class="line">|       1 | 2015-01-01 |               10 |</div><div class="line">|       2 | 2015-01-02 |               25 |</div><div class="line">|       3 | 2015-01-03 |               20 |</div><div class="line">|       4 | 2015-01-04 |               30 |</div><div class="line">+---------+------------+------------------+</div></pre></td></tr></table></figure>
+<p>For example, return the following Ids for the above Weather table:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">+----+</div><div class="line">| Id |</div><div class="line">+----+</div><div class="line">|  2 |</div><div class="line">|  4 |</div><div class="line">+----+</div></pre></td></tr></table></figure>
+<p>问题求解：</p>
+<p>可以对 <code>Weather</code> 表相邻两天的记录进行连接，筛选出前一天气温低于后一天的记录</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">SELECT b.Id FROM Weather AS a </div><div class="line">join Weather AS b </div><div class="line">ON TO_DAYS(a.DATE)=TO_DAYS(b.DATE)-1 </div><div class="line">WHERE a.Temperature&lt;b.Temperature;</div></pre></td></tr></table></figure>
+<p>可以在连接时加以限定：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">SELECT b.Id FROM Weather a </div><div class="line">join Weather b </div><div class="line">ON TO_DAYS(a.DATE)=TO_DAYS(b.DATE)-1 </div><div class="line">AND a.Temperature&lt;b.Temperature;</div></pre></td></tr></table></figure>
+<p>也可以不连接直接进行多表查询：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">SELECT b.Id FROM Weather a ,Weather b </div><div class="line">WHERE TO_DAYS(a.DATE)=TO_DAYS(b.DATE)-1 </div><div class="line">AND a.Temperature&lt;b.Temperature;</div></pre></td></tr></table></figure>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/SQL/" class="article-tag-list-link color4">SQL</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/05/08/LeetCode-197-Rising-Temperature/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-LeetCode-183-Customers-Who-Never-Order" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/05/08/LeetCode-183-Customers-Who-Never-Order/">LeetCode 183.Customers Who Never Order</a>
+    </h1>
+  
+
+        
+        <a href="/2017/05/08/LeetCode-183-Customers-Who-Never-Order/" class="archive-article-date">
+  	<time datetime="2017-05-08T03:50:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-08</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>问题描述：</p>
+<p>Suppose that a website contains two tables, the <code>Customers</code> table and the <code>Orders</code> table. Write a SQL query to find all customers who never order anything.</p>
+<p>Table: <code>Customers</code>.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">+----+-------+</div><div class="line">| Id | Name  |</div><div class="line">+----+-------+</div><div class="line">| 1  | Joe   |</div><div class="line">| 2  | Henry |</div><div class="line">| 3  | Sam   |</div><div class="line">| 4  | Max   |</div><div class="line">+----+-------+</div></pre></td></tr></table></figure>
+<p>Table: <code>Orders</code>.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">+----+------------+</div><div class="line">| Id | CustomerId |</div><div class="line">+----+------------+</div><div class="line">| 1  | 3          |</div><div class="line">| 2  | 1          |</div><div class="line">+----+------------+</div></pre></td></tr></table></figure>
+<p>Using the above tables as example, return the following:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">+-----------+</div><div class="line">| Customers |</div><div class="line">+-----------+</div><div class="line">| Henry     |</div><div class="line">| Max       |</div><div class="line">+-----------+</div></pre></td></tr></table></figure>
+<p>问题求解：</p>
+<p>可以用<code>Customers</code>表左外连接 <code>Orders</code> 表，然后使用条件语句查询连接结果中O.Id字段值为NULL的记录：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">SELECT C.Name as Customers FROM Customers C </div><div class="line">left Join Orders O </div><div class="line">on C.Id=O.CustomerId </div><div class="line">WHERE O.Id IS NULL;</div></pre></td></tr></table></figure>
+<p>也可以使用NOT IN:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">SELECT C.Name as Customers FROM Customers C </div><div class="line">WHERE C.Id NOT IN (SELECT CustomerId FROM Orders);</div></pre></td></tr></table></figure>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/SQL/" class="article-tag-list-link color4">SQL</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/05/08/LeetCode-183-Customers-Who-Never-Order/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-LeetCode-181-Employees-Earning-More-Than-Their-Managers" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/05/08/LeetCode-181-Employees-Earning-More-Than-Their-Managers/">LeetCode 181.Employees Earning More Than Their Managers</a>
+    </h1>
+  
+
+        
+        <a href="/2017/05/08/LeetCode-181-Employees-Earning-More-Than-Their-Managers/" class="archive-article-date">
+  	<time datetime="2017-05-08T03:41:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-08</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>问题描述：</p>
+<p>The <code>Employee</code> table holds all employees including their managers. Every employee has an Id, and there is also a column for the manager Id.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">+----+-------+--------+-----------+</div><div class="line">| Id | Name  | Salary | ManagerId |</div><div class="line">+----+-------+--------+-----------+</div><div class="line">| 1  | Joe   | 70000  | 3         |</div><div class="line">| 2  | Henry | 80000  | 4         |</div><div class="line">| 3  | Sam   | 60000  | NULL      |</div><div class="line">| 4  | Max   | 90000  | NULL      |</div><div class="line">+----+-------+--------+-----------+</div></pre></td></tr></table></figure>
+<p>Given the <code>Employee</code> table, write a SQL query that finds out employees who earn more than their managers. For the above table, Joe is the only employee who earns more than his manager.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">+----------+</div><div class="line">| Employee |</div><div class="line">+----------+</div><div class="line">| Joe      |</div><div class="line">+----------+</div></pre></td></tr></table></figure>
+<p>问题求解:</p>
+<p>可以对<code>Employee</code> 表自身进行连接，连接后选取满足限定条件“employee who earns more than his manager”的记录的Name字段值。</p>
+<p>注意：一定按照题目要求为查询结果指定别名。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">SELECT e.Name as Employee FROM Employee as e </div><div class="line">join Employee as m </div><div class="line">on e.ManagerId=m.ID </div><div class="line">WHERE e.Salary&gt;m.Salary;</div></pre></td></tr></table></figure>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/SQL/" class="article-tag-list-link color4">SQL</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/05/08/LeetCode-181-Employees-Earning-More-Than-Their-Managers/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-LeetCode-175-Combine-Two-Tables" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/05/08/LeetCode-175-Combine-Two-Tables/">LeetCode 175.Combine Two Tables</a>
+    </h1>
+  
+
+        
+        <a href="/2017/05/08/LeetCode-175-Combine-Two-Tables/" class="archive-article-date">
+  	<time datetime="2017-05-08T03:35:44.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-08</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>问题描述：</p>
+<p>Table: <code>Person</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">+-------------+---------+</div><div class="line">| Column Name | Type    |</div><div class="line">+-------------+---------+</div><div class="line">| PersonId    | int     |</div><div class="line">| FirstName   | varchar |</div><div class="line">| LastName    | varchar |</div><div class="line">+-------------+---------+</div><div class="line">PersonId is the primary key column for this table.</div></pre></td></tr></table></figure>
+<p>Table: <code>Address</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">+-------------+---------+</div><div class="line">| Column Name | Type    |</div><div class="line">+-------------+---------+</div><div class="line">| AddressId   | int     |</div><div class="line">| PersonId    | int     |</div><div class="line">| City        | varchar |</div><div class="line">| State       | varchar |</div><div class="line">+-------------+---------+</div><div class="line">AddressId is the primary key column for this table.</div></pre></td></tr></table></figure>
+<p>Write a SQL query for a report that provides the following information for each person in the Person table, regardless if there is an address for each of those people:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">FirstName, LastName, City, State</div></pre></td></tr></table></figure>
+<p>问题求解：</p>
+<p>由于<code>regardless if there is an address for each of those people</code>  使用 <code>Person</code> 表左连接 <code>Address</code>表，查询指定字段：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">SELECT P.FirstName,P.LastName,A.City,A.State </div><div class="line">FROM Person as P left join Address as A </div><div class="line">on P.PersonId=A.PersonId</div></pre></td></tr></table></figure>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/SQL/" class="article-tag-list-link color4">SQL</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/05/08/LeetCode-175-Combine-Two-Tables/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-LeetCode-182-Duplicate-Emails" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/05/08/LeetCode-182-Duplicate-Emails/">LeetCode 182.Duplicate Emails</a>
+    </h1>
+  
+
+        
+        <a href="/2017/05/08/LeetCode-182-Duplicate-Emails/" class="archive-article-date">
+  	<time datetime="2017-05-08T03:23:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-08</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>问题描述：</p>
+<p>Write a SQL query to find all duplicate emails in a table named <code>Person</code>.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">+----+---------+</div><div class="line">| Id | Email   |</div><div class="line">+----+---------+</div><div class="line">| 1  | a@b.com |</div><div class="line">| 2  | c@d.com |</div><div class="line">| 3  | a@b.com |</div><div class="line">+----+---------+</div></pre></td></tr></table></figure>
+<p>For example, your query should return the following for the above table:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">+---------+</div><div class="line">| Email   |</div><div class="line">+---------+</div><div class="line">| a@b.com |</div><div class="line">+---------+</div></pre></td></tr></table></figure>
+<p>问题求解：</p>
+<p>按Email分组查询并筛选出记录数目大于1的分组，选择其Email字段：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">SELECT Email FROM Person </div><div class="line">GROUP BY Email </div><div class="line">HAVING count(Email)&gt;1;</div></pre></td></tr></table></figure>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/SQL/" class="article-tag-list-link color4">SQL</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/05/08/LeetCode-182-Duplicate-Emails/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
     <article id="post-Numpy笔记补充" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -398,508 +892,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2017/05/04/《利用Python进行数据分析》范例数据集-babynames/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-《利用Python进行数据分析》范例数据集-MovieLens" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/03/《利用Python进行数据分析》范例数据集-MovieLens/">《利用Python进行数据分析》范例数据集_MovieLens</a>
-    </h1>
-  
-
-        
-        <a href="/2017/05/03/《利用Python进行数据分析》范例数据集-MovieLens/" class="archive-article-date">
-  	<time datetime="2017-05-03T14:27:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-03</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</div></pre></td></tr></table></figure>
-<p>加载.dat文件中的数据：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">unames=[<span class="string">'user_id'</span>,<span class="string">'gender'</span>,<span class="string">'age'</span>,<span class="string">'occupation'</span>,<span class="string">'zip'</span>]</div><div class="line">path=<span class="string">'/home/milhaven1733/Desktop/Data Analyst/pydata-book-master/ch02/movielens/users.dat'</span></div><div class="line">users=pd.read_table(path,sep=<span class="string">'::'</span>,header=<span class="keyword">None</span>,names=unames,engine = <span class="string">'python'</span>)</div></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">rnames=[<span class="string">'user_id'</span>,<span class="string">'movie_id'</span>,<span class="string">'rating'</span>,<span class="string">'timestamp'</span>]</div><div class="line">path=<span class="string">'/home/milhaven1733/Desktop/Data Analyst/pydata-book-master/ch02/movielens/ratings.dat'</span></div><div class="line">ratings=pd.read_table(path,sep=<span class="string">'::'</span>,header=<span class="keyword">None</span>,names=rnames,engine = <span class="string">'python'</span>)</div></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">mnames=[<span class="string">'movie_id'</span>,<span class="string">'title'</span>,<span class="string">'genres'</span>]</div><div class="line">path=<span class="string">'/home/milhaven1733/Desktop/Data Analyst/pydata-book-master/ch02/movielens/movies.dat'</span></div><div class="line">movies=pd.read_table(path,sep=<span class="string">'::'</span>,header=<span class="keyword">None</span>,names=mnames,engine = <span class="string">'python'</span>)</div></pre></td></tr></table></figure>
-        
-          <a class="article-more-a" href="/2017/05/03/《利用Python进行数据分析》范例数据集-MovieLens/#more">查看更多 >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/数据分析/" class="article-tag-list-link color5">数据分析</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/05/03/《利用Python进行数据分析》范例数据集-MovieLens/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-《利用Python进行数据分析》范例数据集-usagov-bitly-data" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/03/《利用Python进行数据分析》范例数据集-usagov-bitly-data/">《利用Python进行数据分析》范例数据集:usagov_bitly_data</a>
-    </h1>
-  
-
-        
-        <a href="/2017/05/03/《利用Python进行数据分析》范例数据集-usagov-bitly-data/" class="archive-article-date">
-  	<time datetime="2017-05-03T08:56:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-03</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>读取生成.gov或.mil短链接的用户数据文本文件（文本中每行的为JSON）</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">path=<span class="string">'/home/milhaven1733/Desktop/Data Analyst/pydata-book-master/ch02/usagov_bitly_data2012-03-16-1331923249.txt'</span></div></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">open(path).readline()</div></pre></td></tr></table></figure>
-<p>Outs:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&apos;&#123; &quot;a&quot;: &quot;Mozilla\\/5.0 (Windows NT 6.1; WOW64) AppleWebKit\\/535.11 (KHTML, like Gecko) Chrome\\/17.0.963.78 Safari\\/535.11&quot;, &quot;c&quot;: &quot;US&quot;, &quot;nk&quot;: 1, &quot;tz&quot;: &quot;America\\/New_York&quot;, &quot;gr&quot;: &quot;MA&quot;, &quot;g&quot;: &quot;A6qOVH&quot;, &quot;h&quot;: &quot;wfLQtf&quot;, &quot;l&quot;: &quot;orofrog&quot;, &quot;al&quot;: &quot;en-US,en;q=0.8&quot;, &quot;hh&quot;: &quot;1.usa.gov&quot;, &quot;r&quot;: &quot;http:\\/\\/www.facebook.com\\/l\\/7AQEFzjSi\\/1.usa.gov\\/wfLQtf&quot;, &quot;u&quot;: &quot;http:\\/\\/www.ncbi.nlm.nih.gov\\/pubmed\\/22415991&quot;, &quot;t&quot;: 1331923247, &quot;hc&quot;: 1331822918, &quot;cy&quot;: &quot;Danvers&quot;, &quot;ll&quot;: [ 42.576698, -70.954903 ] &#125;\n&apos;</div></pre></td></tr></table></figure>
-<p>用Python的JSON模块将JSON字符串转换为Python字典对象</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> json</div></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">records=[json.loads(line) <span class="keyword">for</span> line <span class="keyword">in</span> open(path)]</div></pre></td></tr></table></figure>
-        
-          <a class="article-more-a" href="/2017/05/03/《利用Python进行数据分析》范例数据集-usagov-bitly-data/#more">查看更多 >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/数据分析/" class="article-tag-list-link color5">数据分析</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/05/03/《利用Python进行数据分析》范例数据集-usagov-bitly-data/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-A-B-test概览" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/02/A-B-test概览/">A/B test概览</a>
-    </h1>
-  
-
-        
-        <a href="/2017/05/02/A-B-test概览/" class="archive-article-date">
-  	<time datetime="2017-05-02T00:56:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-02</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="A-B-tests"><a href="#A-B-tests" class="headerlink" title="A/B tests"></a>A/B tests</h4><h5 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h5><p>通过尝试可能的改变，寻找用户更喜欢的方式，更科学的确定如何优化网站或移动应用——根据数据作出决定。</p>
-<h5 id="步骤："><a href="#步骤：" class="headerlink" title="步骤："></a>步骤：</h5><ul>
-<li>设计任务</li>
-<li>选择指标</li>
-<li>分析结果</li>
-</ul>
-<h4 id="关于A-B-test"><a href="#关于A-B-test" class="headerlink" title="关于A/B test"></a>关于A/B test</h4><p>用于在线测试的常规方法，用来测试新产品或新功能。</p>
-<h4 id="何时使用A-B-tests"><a href="#何时使用A-B-tests" class="headerlink" title="何时使用A/B tests"></a>何时使用A/B tests</h4><p>不适合使用的情境：</p>
-<ul>
-<li><p>在线购物网站：网站是否全面、是否存在用户想购买但无法提供的商品</p>
-<p>（测试无法确认是否提供了所有商品）</p>
-</li>
-<li><p>免费使用的网站考虑是否提供更高级的付费功能</p>
-<p>（无法全面测试高级服务是否是好的商业决策）</p>
-</li>
-<li><p>汽车销售网站：考虑变更是否使顾客再次访问网站或向朋友推荐</p>
-<p>（短时间内无法测试效果）</p>
-</li>
-<li><p>某家公司：测试改变品牌logo的效果</p>
-<p>（改变logo对于客户冲击较大，可能需要时间适应，短时间内采集的数据意义不大）</p>
-</li>
-</ul>
-<p>适合使用的情境：</p>
-<ul>
-<li><p>为用户提供电影推荐的网站：测试新的推荐排序算法</p>
-<p>（有明确的对照组和实验组和明确的评估改变的指标）</p>
-</li>
-<li><p>是否改变网站基础架构的后台（可能影响页面加载速度、用户可以看到的显示结果等）</p>
-<p>（如果计算机能够同时运行两个版本，则可以对变化结果进行测试）</p>
-</li>
-<li><p>某移动应用：测试改变应用首页的效果</p>
-<p>（明确的对照组和实验组、更容易选择评估改变的指标）</p>
-</li>
-</ul>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/数据分析/" class="article-tag-list-link color5">数据分析</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/05/02/A-B-test概览/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-利用matplotlib-finance-模块获取财经数据" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/29/利用matplotlib-finance-模块获取财经数据/">利用matplotlib.finance 模块获取财经数据</a>
-    </h1>
-  
-
-        
-        <a href="/2017/04/29/利用matplotlib-finance-模块获取财经数据/" class="archive-article-date">
-  	<time datetime="2017-04-28T16:00:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-29</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>从matplotlib.finance模块引入quotes_historical_yahoo_ochl（获取雅虎财经股票历史数据）</p>
-<p>datetime.today()获取当天信息，start设置为一年前的今天。</p>
-<p>quotes_historical_yahoo_ochl()方法需要三个参数，上市公司股票代码，历史数据起始日期，终止日期。</p>
-<p>来查询中国移动一年来的股票数据，并转化为DataFrame：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">from matplotlib.finance import quotes_historical_yahoo_ochl</div><div class="line">from datetime import *</div><div class="line">import pandas as pd</div><div class="line">today=datetime.today()</div><div class="line">start=(today.year-1,today.month,today.day)</div><div class="line">quotes=quotes_historical_yahoo_ochl(&apos;0941.HK&apos;,start,today)</div><div class="line">df=pd.DataFrame(quotes)</div><div class="line">print df</div></pre></td></tr></table></figure>
-<p>表格六列分别表示日期、开盘价、收盘价、最高价、最低价、成交价。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/数据分析/" class="article-tag-list-link color5">数据分析</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/04/29/利用matplotlib-finance-模块获取财经数据/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-Python数据统计和可视化" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/28/Python数据统计和可视化/">Python数据统计和可视化</a>
-    </h1>
-  
-
-        
-        <a href="/2017/04/28/Python数据统计和可视化/" class="archive-article-date">
-  	<time datetime="2017-04-28T02:16:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-28</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="数据整理"><a href="#数据整理" class="headerlink" title="数据整理"></a>数据整理</h4><p>日期转化</p>
-<p>获取的某组信息中，日期的表示方法为格里高利历法(Gregorian calendar)，要转化为通常的日期表示方法，可以使用datetime.date.fromordinal()方法：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">date.fromordinal(736082)</div><div class="line">Out[19]:</div><div class="line">datetime.date(2016, 4, 28)</div></pre></td></tr></table></figure>
-<p>对于Series，可以使用apply整体转化：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">quotesdf[&apos;date&apos;]=quotesdf[&apos;date&apos;].apply(int).apply(date.fromordinal)</div></pre></td></tr></table></figure>
-        
-          <a class="article-more-a" href="/2017/04/28/Python数据统计和可视化/#more">查看更多 >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/数据分析/" class="article-tag-list-link color5">数据分析</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/04/28/Python数据统计和可视化/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-Series-DateFrame" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/27/Series-DateFrame/">Series&amp;DateFrame</a>
-    </h1>
-  
-
-        
-        <a href="/2017/04/27/Series-DateFrame/" class="archive-article-date">
-  	<time datetime="2017-04-27T01:12:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-27</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="Series"><a href="#Series" class="headerlink" title="Series"></a>Series</h3><ul>
-<li>定长有序字典</li>
-<li>包含数据和索引</li>
-</ul>
-        
-          <a class="article-more-a" href="/2017/04/27/Series-DateFrame/#more">查看更多 >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/数据分析/" class="article-tag-list-link color5">数据分析</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/04/27/Series-DateFrame/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-《Python数据分析实战》笔记-1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/27/《Python数据分析实战》笔记-1/">《Python数据分析实战》笔记-1</a>
-    </h1>
-  
-
-        
-        <a href="/2017/04/27/《Python数据分析实战》笔记-1/" class="archive-article-date">
-  	<time datetime="2017-04-27T00:52:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-27</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="关于NumPy库"><a href="#关于NumPy库" class="headerlink" title="关于NumPy库"></a>关于NumPy库</h3><h4 id="ndarray（N维数组）"><a href="#ndarray（N维数组）" class="headerlink" title="ndarray（N维数组）"></a>ndarray（N维数组）</h4><ul>
-<li>同质元素（几乎所有元素类型、大小都相同）组成</li>
-<li>数据类型由dtype指定</li>
-<li>大小固定（创建后大小不发生改变）</li>
-</ul>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/数据分析/" class="article-tag-list-link color5">数据分析</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/04/27/《Python数据分析实战》笔记-1/">展开全文 >></a>
         </p>
       
 

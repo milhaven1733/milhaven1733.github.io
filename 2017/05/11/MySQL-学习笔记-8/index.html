@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>MySQL-学习笔记-8 | 再吃一口橙子</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="MySQL存储过程简介SQL命令执行流程：  如果能省略其中语法分析和编译的过程，执行效率就能大大提高——存储过程 关于存储过程： 是SQL语句和控制语句的预编译集合，以一个名称存储并作为一个单元处理。 存储在数据库内，可以有应用程序调用执行，允许用户声明变量、进行流程控制。 可以接受参数并返回多个返回值。 执行效率高：只在第一次执行时进行语法分析和编译，再次调用时直接运用编译的结果 存储过程优点">
+  <meta name="description" content="MySQL存储过程简介SQL命令执行流程：  如果能省略其中语法分析和编译的过程，执行效率就能大大提高——存储过程 关于存储过程： 是SQL语句和控制语句的预编译集合，以一个名称存储并作为一个单元处理。 存储在数据库内，可以有应用程序调用执行，允许用户声明变量、进行流程控制。 可以接受参数并返回多个返回值。 执行效率高：只在第一次执行时进行语法分析和编译，再次调用时直接运用编译的结果">
 <meta name="keywords">
 <meta property="og:type" content="article">
 <meta property="og:title" content="MySQL-学习笔记-8">
 <meta property="og:url" content="http://yoursite.com/2017/05/11/MySQL-学习笔记-8/index.html">
 <meta property="og:site_name" content="再吃一口橙子">
-<meta property="og:description" content="MySQL存储过程简介SQL命令执行流程：  如果能省略其中语法分析和编译的过程，执行效率就能大大提高——存储过程 关于存储过程： 是SQL语句和控制语句的预编译集合，以一个名称存储并作为一个单元处理。 存储在数据库内，可以有应用程序调用执行，允许用户声明变量、进行流程控制。 可以接受参数并返回多个返回值。 执行效率高：只在第一次执行时进行语法分析和编译，再次调用时直接运用编译的结果 存储过程优点">
+<meta property="og:description" content="MySQL存储过程简介SQL命令执行流程：  如果能省略其中语法分析和编译的过程，执行效率就能大大提高——存储过程 关于存储过程： 是SQL语句和控制语句的预编译集合，以一个名称存储并作为一个单元处理。 存储在数据库内，可以有应用程序调用执行，允许用户声明变量、进行流程控制。 可以接受参数并返回多个返回值。 执行效率高：只在第一次执行时进行语法分析和编译，再次调用时直接运用编译的结果">
 <meta property="og:image" content="http://yoursite.com/2017/05/11/MySQL-学习笔记-8/">
-<meta property="og:updated_time" content="2017-05-11T07:07:03.357Z">
+<meta property="og:updated_time" content="2017-05-11T07:18:46.235Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MySQL-学习笔记-8">
-<meta name="twitter:description" content="MySQL存储过程简介SQL命令执行流程：  如果能省略其中语法分析和编译的过程，执行效率就能大大提高——存储过程 关于存储过程： 是SQL语句和控制语句的预编译集合，以一个名称存储并作为一个单元处理。 存储在数据库内，可以有应用程序调用执行，允许用户声明变量、进行流程控制。 可以接受参数并返回多个返回值。 执行效率高：只在第一次执行时进行语法分析和编译，再次调用时直接运用编译的结果 存储过程优点">
+<meta name="twitter:description" content="MySQL存储过程简介SQL命令执行流程：  如果能省略其中语法分析和编译的过程，执行效率就能大大提高——存储过程 关于存储过程： 是SQL语句和控制语句的预编译集合，以一个名称存储并作为一个单元处理。 存储在数据库内，可以有应用程序调用执行，允许用户声明变量、进行流程控制。 可以接受参数并返回多个返回值。 执行效率高：只在第一次执行时进行语法分析和编译，再次调用时直接运用编译的结果">
 <meta name="twitter:image" content="http://yoursite.com/2017/05/11/MySQL-学习笔记-8/">
   
     <link rel="alternative" href="/atom.xml" title="再吃一口橙子" type="application/atom+xml">
@@ -200,6 +200,7 @@
 <p>存储在数据库内，可以有应用程序调用执行，允许用户声明变量、进行流程控制。</p>
 <p>可以接受参数并返回多个返回值。</p>
 <p>执行效率高：只在第一次执行时进行语法分析和编译，再次调用时直接运用编译的结果</p>
+<a id="more"></a>
 <p>存储过程优点：</p>
 <ul>
 <li>增强SQL语句功能和灵活性（过程内可写控制语句，有很强灵活性，可以完成较复杂的判断、运算等）</li>

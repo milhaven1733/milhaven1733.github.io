@@ -195,65 +195,9 @@
 <p>存储在数据库内，可以有应用程序调用执行，允许用户声明变量、进行流程控制。</p>
 <p>可以接受参数并返回多个返回值。</p>
 <p>执行效率高：只在第一次执行时进行语法分析和编译，再次调用时直接运用编译的结果</p>
-<p>存储过程优点：</p>
-<ul>
-<li>增强SQL语句功能和灵活性（过程内可写控制语句，有很强灵活性，可以完成较复杂的判断、运算等）</li>
-<li>实现较快执行速度（将编译结果储存在内存中）</li>
-<li>减少网络流量（提交数据量减少）</li>
-</ul>
-<h4 id="存储过程语法结构解析"><a href="#存储过程语法结构解析" class="headerlink" title="存储过程语法结构解析"></a>存储过程语法结构解析</h4><p>创建存储过程：</p>
-<p>CREATE</p>
-<p>[DEFINER = { user|CURRENT_USER}]</p>
-<p>PROCEDURE sp_name ([proc_parameter[,…]])</p>
-<p>[characteristic …]routine_body</p>
-<p>proc_parameter:</p>
-<p>[IN|OUT|INOUT]param_name type</p>
-<p>参数类型：</p>
-<p>IN：表示该参数的值必须在调用存储过程时指定<br>OUT：表示该参数的值可以被存储过程改变，并且可以返回<br>INOUT：表示该参数的值在调用时指定，并且可以被改变和返回</p>
-<p>[characteristic …]特性类型：</p>
-<p>CONTAINS SQL 表示包含SQL语句但不包含读或写数据的语句</p>
-<p>NO SQL 表示不包含SQL语句</p>
-<p>READS SQL DATA 表示包含读数据的语句，但不包含写数据的语句</p>
-<p>MODIFIES SQL DATA   表示包含写数据的语句</p>
-<p>默认的是CONTAINS SQL</p>
-<p>SQL SECURITY特征可以用来指定存储过程该用创建者的许可来执行，还是使用调用者的许可来执行。默认值是DEFINER</p>
-<p>过程体：</p>
-<ul>
-<li>由合法SQL语句构成</li>
-<li>可以为任意增删改查或多表连接等SQL语句</li>
-<li>复合结构要包含在BEGIN…END语句中</li>
-</ul>
-<h4 id="创建不带参数的存储过程"><a href="#创建不带参数的存储过程" class="headerlink" title="创建不带参数的存储过程"></a>创建不带参数的存储过程</h4><p>创建查看当前版本信息的存储过程：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mysql&gt; CREATE PROCEDURE sp1() SELECT VERSION();</div></pre></td></tr></table></figure>
-<p>调用存储过程：</p>
-<p>CALL sp_name([proc_parameter[,…]])</p>
-<p>CALL sp_name[()]</p>
-<p>存储过程在封装时如果不带有参数，调用时可以加也可以不加小括号，但如果有参数，则调用时一定要加括号和参数,如：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">+-----------+</div><div class="line">| VERSION() |</div><div class="line">+-----------+</div><div class="line">| 5.7.15-1  |</div><div class="line">+-----------+</div><div class="line"></div><div class="line">mysql&gt; CALL sp1();</div><div class="line">+-----------+</div><div class="line">| VERSION() |</div><div class="line">+-----------+</div><div class="line">| 5.7.15-1  |</div><div class="line">+-----------+</div></pre></td></tr></table></figure>
-<h4 id="创建带有IN类型参数的存储过程"><a href="#创建带有IN类型参数的存储过程" class="headerlink" title="创建带有IN类型参数的存储过程"></a>创建带有IN类型参数的存储过程</h4><p>错误示范：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">CREATE PROCEDURE removeUserById(IN id INT UNSIGNED)</div><div class="line">    -&gt; BEGIN</div><div class="line">    -&gt; DELETE FROM users WHERE id = id;</div><div class="line">    -&gt; END</div><div class="line">    -&gt; $$</div></pre></td></tr></table></figure>
-<p>使用该存储过程从某张表中删除记录会导致所有记录被删除，原因是参数名称不能和记录表中的字段名称相同。</p>
-<p>修改存储过程可以修改注释，内容类型但无法修改过程体。</p>
-<p>正确创建过程：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">mysql&gt; DELIMITER $$                                                               mysql&gt; CREATE PROCEDURE removeUser(IN p_id INT UNSIGNED)</div><div class="line">    -&gt; BEGIN</div><div class="line">    -&gt; DELETE FROM users WHERE id=p_id;</div><div class="line">    -&gt; END</div><div class="line">    -&gt; $$</div></pre></td></tr></table></figure>
-<p>删除一条记录:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">mysql&gt; CALL removeUser(7); </div><div class="line">Query OK, 0 rows affected (0.00 sec)</div></pre></td></tr></table></figure>
-<p>查看记录是否被删除</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">mysql&gt; SELECT * FROM users WHERE id=7;</div><div class="line">Empty set (0.00 sec)</div></pre></td></tr></table></figure>
-<h4 id="创建带有IN和OUT类型参数的存储过程"><a href="#创建带有IN和OUT类型参数的存储过程" class="headerlink" title="创建带有IN和OUT类型参数的存储过程"></a>创建带有IN和OUT类型参数的存储过程</h4><p>对上一个存储过程添加功能：删除记录并返回剩余记录数：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">mysql&gt; CREATE PROCEDURE RUARU(IN p_id INT UNSIGNED,OUT userNums INT UNSIGNED)     </div><div class="line">	-&gt; BEGIN                                                                         </div><div class="line">	-&gt; DELETE FROM users WHERE id=P_id;</div><div class="line">    -&gt; SELECT count(id) FROM users INTO userNums;</div><div class="line">    -&gt; END                                                                            </div><div class="line">    -&gt; $$</div></pre></td></tr></table></figure>
-<p>调用存储过程，并创建一个变量来接收OUT值：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">mysql&gt; CALL RUARU(12,@nums);</div><div class="line">Query OK, 1 row affected (0.04 sec)</div><div class="line">mysql&gt; SELECT @nums;</div><div class="line">+-------+</div><div class="line">| @nums |</div><div class="line">+-------+</div><div class="line">|    16 |</div><div class="line">+-------+</div></pre></td></tr></table></figure>
-<p>在过程体或函数体中声明的变量为局部变量</p>
-<p>而通过SELECT、SELECT…INTO、SET语句声明的变量为用户变量，可对当前客户端生效。</p>
-<h4 id="创建带有多个OUT类型参数的存储过程"><a href="#创建带有多个OUT类型参数的存储过程" class="headerlink" title="创建带有多个OUT类型参数的存储过程"></a>创建带有多个OUT类型参数的存储过程</h4><p>创建根据年龄删除用户的存储过程，返回被删除的记录数和剩余的记录数。</p>
-<p>row_count()函数：返回插入、删除、更新（即被影响）的记录总数。</p>
-<p>创建存储过程：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">mysql&gt; DELIMITER //</div><div class="line">mysql&gt; CREATE PROCEDURE RUARI(IN p_age SMALLINT UNSIGNED,OUT deleteUsers SMALLINT UNSIGNED,OUT userCount SMALLINT UNSIGNED)</div><div class="line">    -&gt; BEGIN</div><div class="line">    -&gt; DELETE FROM users WHERE age=p_age;</div><div class="line">    -&gt; SELECT ROW_COUNT() INTO deleteUsers;</div><div class="line">    -&gt; SELECT COUNT(id) FROM users INTO userCount;</div><div class="line">    -&gt; END</div><div class="line">    -&gt; //</div></pre></td></tr></table></figure>
-<p>删除年龄为23的记录:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">mysql&gt; SELECT count(id) FROM users WHERE age=23;</div><div class="line">+-----------+</div><div class="line">| count(id) |</div><div class="line">+-----------+</div><div class="line">|         5 |</div><div class="line">+-----------+</div><div class="line">mysql&gt; CALL RUARI(23,@a,@b);</div><div class="line">Query OK, 1 row affected (0.04 sec)</div><div class="line">mysql&gt; SELECT count(id) FROM users WHERE age=23;</div><div class="line">+-----------+</div><div class="line">| count(id) |</div><div class="line">+-----------+</div><div class="line">|         0 |</div><div class="line">+-----------+</div></pre></td></tr></table></figure>
-<p>查看返回的结果：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">mysql&gt; SELECT @a,@b;</div><div class="line">+------+------+</div><div class="line">| @a   | @b   |</div><div class="line">+------+------+</div><div class="line">|    5 |    8 |</div><div class="line">+------+------+</div></pre></td></tr></table></figure>
+        
+          <a class="article-more-a" href="/2017/05/11/MySQL-学习笔记-8/#more">查看更多 >></a>
+        
       
 
       

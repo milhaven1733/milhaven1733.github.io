@@ -15,7 +15,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/05/02/A-B-test概览/index.html">
 <meta property="og:site_name" content="再吃一口橙子">
 <meta property="og:description" content="A/B tests作用通过尝试可能的改变，寻找用户更喜欢的方式，更科学的确定如何优化网站或移动应用——根据数据作出决定。 步骤： 设计任务 选择指标 分析结果  关于A/B test用于在线测试的常规方法，用来测试新产品或新功能。 何时使用A/B tests不适合使用的情境：  在线购物网站：网站是否全面、是否存在用户想购买但无法提供的商品 （测试无法确认是否提供了所有商品）  免费使用的网站考虑">
-<meta property="og:updated_time" content="2017-05-04T13:39:54.310Z">
+<meta property="og:updated_time" content="2017-05-10T16:59:12.236Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="A/B test概览">
 <meta name="twitter:description" content="A/B tests作用通过尝试可能的改变，寻找用户更喜欢的方式，更科学的确定如何优化网站或移动应用——根据数据作出决定。 步骤： 设计任务 选择指标 分析结果  关于A/B test用于在线测试的常规方法，用来测试新产品或新功能。 何时使用A/B tests不适合使用的情境：  在线购物网站：网站是否全面、是否存在用户想购买但无法提供的商品 （测试无法确认是否提供了所有商品）  免费使用的网站考虑">
@@ -224,6 +224,45 @@
 <p>（明确的对照组和实验组、更容易选择评估改变的指标）</p>
 </li>
 </ul>
+<h4 id="其他技巧"><a href="#其他技巧" class="headerlink" title="其他技巧"></a>其他技巧</h4><p>对于A/B test不太适用的场景，可以运用其他收集用户数据的方式加以测试或对A/B test进行补充，如：</p>
+<ul>
+<li>通过检查或观察记录用户在网站上的操作日志得出造成用户行为改变的原因的假设，并设计实验，完成随机化实验和前瞻性分析（验证假设的过程与AB测试可以互为补充）</li>
+<li>从用户体验研究到focus group、调查和人为评价得出许多深入的定性数据作为AB测试得到的宽泛的定量数据的补充</li>
+</ul>
+<h4 id="在线A-B-test-的特点"><a href="#在线A-B-test-的特点" class="headerlink" title="在线A/B test 的特点"></a>在线A/B test 的特点</h4><p>区别于医学上的临床实验和传统农业领域上的测试，在线A/B test具有特点：</p>
+<ul>
+<li>数据量大，但分辨率低（很难真正得知用户的具体信息）</li>
+</ul>
+<p>A/B test目的：</p>
+<p>确认用户是否喜欢新的产品或功能，必须设计一个合理且返回可复验的结果的测试。</p>
+<h4 id="商业案例概述"><a href="#商业案例概述" class="headerlink" title="商业案例概述"></a>商业案例概述</h4><p>对于教育网站“Audacity”,对用户行为构建客户漏斗模型，开始设计一个简单的测试过程，验证对网站主页进行某项变更后是否增加探索课程的学生，即从漏斗模型的第一层（homepage visits）移动到第二层（exploring the site）</p>
+<h4 id="度量选择"><a href="#度量选择" class="headerlink" title="度量选择"></a>度量选择</h4><p>如何定量地测量“改进”的效果：</p>
+<ul>
+<li>完成课程的学生数量？ 完成课程时间过长，作为测量指标太耗时间，不现实。</li>
+<li>进入课程页面按钮的实际点击量？ 有意义但不能反映各实验组的比率。</li>
+<li>点击（比）率 $$(\frac{Number\ of\ clicks}{Number\ of\ page\ views})$$ 部分用户可能不止点击一次，使结果参考性降低</li>
+<li>点击概率 $$(\frac{unique\ visitors\ who\ clicks}{unique\ visitors\ to\ page})$$</li>
+</ul>
+<p>通常来说，测试可用性选择比率（测试某个按钮在众多按钮中被点击的频繁性），测试总影响采用概率（测试进入二级页面的用户比率）</p>
+<p>将假设更新为，变更将提高按钮的点击概率（并假设最终可以提高终极业务指标——课程完成总数）</p>
+<h4 id="估计点击概率"><a href="#估计点击概率" class="headerlink" title="估计点击概率"></a>估计点击概率</h4><ul>
+<li>变更网站，捕捉用户点击事件。</li>
+<li>计算比率：计算页面访问总数和点击总数</li>
+<li>计算概率：对于每个页面访问，仅计算一个子点击（将每个页面访问匹配所有子点击）</li>
+</ul>
+<h4 id="重复实验"><a href="#重复实验" class="headerlink" title="重复实验"></a>重复实验</h4><p>在得到一组数据并根据数据做出预测后，需要重复进行测量。</p>
+<h4 id="分布类型"><a href="#分布类型" class="headerlink" title="分布类型"></a>分布类型</h4><p>由于是否点击的数据不是连续数据，而是有成功失败两种结果，适合使用二项分布对结果进行分析。</p>
+<h4 id="关于二项分布"><a href="#关于二项分布" class="headerlink" title="关于二项分布"></a>关于二项分布</h4><p>对于一项试验，成功的概率为p，失败的概率为（1-p），当增大试验次数N时，成功概率的分布会趋近于正态分布</p>
+<p>$$mean=p$$</p>
+<p>$$std=\sqrt{\frac{p(1-p)}{N}}$$ </p>
+<p>二项分布使用条件：</p>
+<ul>
+<li>必须有两个不同结果</li>
+<li>事件必须独立</li>
+<li>事件要遵循同一种分布</li>
+</ul>
+<h4 id="置信区间"><a href="#置信区间" class="headerlink" title="置信区间"></a>置信区间</h4><p>可以使用样本二项分布的标准误差公式来估计整体概率的变化程度。</p>
+<p>如果置信区间为95%，则不断重复试验，最终得到均值附近的区间，有95%几率覆盖真正的值。</p>
 
       
 

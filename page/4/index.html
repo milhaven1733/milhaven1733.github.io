@@ -10,7 +10,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta property="og:type" content="website">
 <meta property="og:title" content="再吃一口橙子">
-<meta property="og:url" content="http://yoursite.com/page/2/index.html">
+<meta property="og:url" content="http://yoursite.com/page/4/index.html">
 <meta property="og:site_name" content="再吃一口橙子">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="再吃一口橙子">
@@ -167,146 +167,31 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-MySQL-学习笔记-7" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-t检验笔记" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/06/MySQL-学习笔记-7/">MySQL-学习笔记-7</a>
+      <a class="article-title" href="/2017/04/09/t检验笔记/">t检验笔记</a>
     </h1>
   
 
         
-        <a href="/2017/05/06/MySQL-学习笔记-7/" class="archive-article-date">
-  	<time datetime="2017-05-06T06:54:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-06</time>
+        <a href="/2017/04/09/t检验笔记/" class="archive-article-date">
+  	<time datetime="2017-04-09T08:17:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-09</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="自定义函数"><a href="#自定义函数" class="headerlink" title="自定义函数"></a>自定义函数</h3><h4 id="关于自定义函数"><a href="#关于自定义函数" class="headerlink" title="关于自定义函数"></a>关于自定义函数</h4><p>用户自定义函数（user-defined function UDF）是一种对MySQL扩展的途径，其用法和内置函数相同。 </p>
-<p>必要条件：</p>
-<ul>
-<li>参数（可以有零个，一个、多个）</li>
-<li>返回值（均具有）</li>
-</ul>
+        <h2 id="t检验-第二部分"><a href="#t检验-第二部分" class="headerlink" title="t检验_第二部分"></a>t检验_第二部分</h2><h3 id="效应量（effect-size）"><a href="#效应量（effect-size）" class="headerlink" title="效应量（effect size）"></a>效应量（effect size）</h3><p>实验性研究中，表示处理效应的大小</p>
+<p>非实验性研究中，表示变量之间关系强度</p>
+<p>t/z检验中效应量衡量指标——均值差异（mean difference）</p>
         
-          <a class="article-more-a" href="/2017/05/06/MySQL-学习笔记-7/#more">查看更多 >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/SQL/" class="article-tag-list-link color4">SQL</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/05/06/MySQL-学习笔记-7/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-《利用Python进行数据分析》范例数据集-babynames" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/04/《利用Python进行数据分析》范例数据集-babynames/">《利用Python进行数据分析》范例数据集_babynames</a>
-    </h1>
-  
-
-        
-        <a href="/2017/05/04/《利用Python进行数据分析》范例数据集-babynames/" class="archive-article-date">
-  	<time datetime="2017-05-04T10:34:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-04</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>《利用Python进行数据分析》范例数据集-babynames</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</div></pre></td></tr></table></figure>
-<p>载入包含1880年美国新出生婴儿名字统计数据的文件</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">path=<span class="string">'/home/milhaven1733/Desktop/Data Analyst/pydata-book-master/ch02/names/yob1880.txt'</span></div></pre></td></tr></table></figure>
-<p>加载为DataFrame</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">names1880=pd.read_csv(path,names=[<span class="string">'names'</span>,<span class="string">'sex'</span>,<span class="string">'birth'</span>])</div></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">names1880.head()</div></pre></td></tr></table></figure>
-<table>
-<thead>
-<tr>
-<th></th>
-<th>names</th>
-<th>sex</th>
-<th>birth</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>0</td>
-<td>Mary</td>
-<td>F</td>
-<td>7065</td>
-</tr>
-<tr>
-<td>1</td>
-<td>Anna</td>
-<td>F</td>
-<td>2604</td>
-</tr>
-<tr>
-<td>2</td>
-<td>Emma</td>
-<td>F</td>
-<td>2003</td>
-</tr>
-<tr>
-<td>3</td>
-<td>Elizabeth</td>
-<td>F</td>
-<td>1939</td>
-</tr>
-<tr>
-<td>4</td>
-<td>Minnie</td>
-<td>F</td>
-<td>1746</td>
-</tr>
-</tbody>
-</table>
-        
-          <a class="article-more-a" href="/2017/05/04/《利用Python进行数据分析》范例数据集-babynames/#more">查看更多 >></a>
+          <a class="article-more-a" href="/2017/04/09/t检验笔记/#more">查看更多 >></a>
         
       
 
@@ -330,7 +215,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2017/05/04/《利用Python进行数据分析》范例数据集-babynames/">展开全文 >></a>
+          <a class="article-more-a" href="/2017/04/09/t检验笔记/">展开全文 >></a>
         </p>
       
 
@@ -348,33 +233,31 @@
 
 
   
-    <article id="post-《利用Python进行数据分析》范例数据集-MovieLens" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-hello-world" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/03/《利用Python进行数据分析》范例数据集-MovieLens/">《利用Python进行数据分析》范例数据集_MovieLens</a>
+      <a class="article-title" href="/2017/04/09/hello-world/">Hello World</a>
     </h1>
   
 
         
-        <a href="/2017/05/03/《利用Python进行数据分析》范例数据集-MovieLens/" class="archive-article-date">
-  	<time datetime="2017-05-03T14:27:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-03</time>
+        <a href="/2017/04/09/hello-world/" class="archive-article-date">
+  	<time datetime="2017-04-08T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-09</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</div></pre></td></tr></table></figure>
-<p>加载.dat文件中的数据：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">unames=[<span class="string">'user_id'</span>,<span class="string">'gender'</span>,<span class="string">'age'</span>,<span class="string">'occupation'</span>,<span class="string">'zip'</span>]</div><div class="line">path=<span class="string">'/home/milhaven1733/Desktop/Data Analyst/pydata-book-master/ch02/movielens/users.dat'</span></div><div class="line">users=pd.read_table(path,sep=<span class="string">'::'</span>,header=<span class="keyword">None</span>,names=unames,engine = <span class="string">'python'</span>)</div></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">rnames=[<span class="string">'user_id'</span>,<span class="string">'movie_id'</span>,<span class="string">'rating'</span>,<span class="string">'timestamp'</span>]</div><div class="line">path=<span class="string">'/home/milhaven1733/Desktop/Data Analyst/pydata-book-master/ch02/movielens/ratings.dat'</span></div><div class="line">ratings=pd.read_table(path,sep=<span class="string">'::'</span>,header=<span class="keyword">None</span>,names=rnames,engine = <span class="string">'python'</span>)</div></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">mnames=[<span class="string">'movie_id'</span>,<span class="string">'title'</span>,<span class="string">'genres'</span>]</div><div class="line">path=<span class="string">'/home/milhaven1733/Desktop/Data Analyst/pydata-book-master/ch02/movielens/movies.dat'</span></div><div class="line">movies=pd.read_table(path,sep=<span class="string">'::'</span>,header=<span class="keyword">None</span>,names=mnames,engine = <span class="string">'python'</span>)</div></pre></td></tr></table></figure>
+        <p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
         
-          <a class="article-more-a" href="/2017/05/03/《利用Python进行数据分析》范例数据集-MovieLens/#more">查看更多 >></a>
+          <a class="article-more-a" href="/2017/04/09/hello-world/#more">查看更多 >></a>
         
       
 
@@ -384,567 +267,10 @@
       
       
       
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/数据分析/" class="article-tag-list-link color5">数据分析</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2017/05/03/《利用Python进行数据分析》范例数据集-MovieLens/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-《利用Python进行数据分析》范例数据集-usagov-bitly-data" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/03/《利用Python进行数据分析》范例数据集-usagov-bitly-data/">《利用Python进行数据分析》范例数据集:usagov_bitly_data</a>
-    </h1>
-  
-
-        
-        <a href="/2017/05/03/《利用Python进行数据分析》范例数据集-usagov-bitly-data/" class="archive-article-date">
-  	<time datetime="2017-05-03T08:56:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-03</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>读取生成.gov或.mil短链接的用户数据文本文件（文本中每行的为JSON）</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">path=<span class="string">'/home/milhaven1733/Desktop/Data Analyst/pydata-book-master/ch02/usagov_bitly_data2012-03-16-1331923249.txt'</span></div></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">open(path).readline()</div></pre></td></tr></table></figure>
-<p>Outs:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&apos;&#123; &quot;a&quot;: &quot;Mozilla\\/5.0 (Windows NT 6.1; WOW64) AppleWebKit\\/535.11 (KHTML, like Gecko) Chrome\\/17.0.963.78 Safari\\/535.11&quot;, &quot;c&quot;: &quot;US&quot;, &quot;nk&quot;: 1, &quot;tz&quot;: &quot;America\\/New_York&quot;, &quot;gr&quot;: &quot;MA&quot;, &quot;g&quot;: &quot;A6qOVH&quot;, &quot;h&quot;: &quot;wfLQtf&quot;, &quot;l&quot;: &quot;orofrog&quot;, &quot;al&quot;: &quot;en-US,en;q=0.8&quot;, &quot;hh&quot;: &quot;1.usa.gov&quot;, &quot;r&quot;: &quot;http:\\/\\/www.facebook.com\\/l\\/7AQEFzjSi\\/1.usa.gov\\/wfLQtf&quot;, &quot;u&quot;: &quot;http:\\/\\/www.ncbi.nlm.nih.gov\\/pubmed\\/22415991&quot;, &quot;t&quot;: 1331923247, &quot;hc&quot;: 1331822918, &quot;cy&quot;: &quot;Danvers&quot;, &quot;ll&quot;: [ 42.576698, -70.954903 ] &#125;\n&apos;</div></pre></td></tr></table></figure>
-<p>用Python的JSON模块将JSON字符串转换为Python字典对象</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> json</div></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">records=[json.loads(line) <span class="keyword">for</span> line <span class="keyword">in</span> open(path)]</div></pre></td></tr></table></figure>
-        
-          <a class="article-more-a" href="/2017/05/03/《利用Python进行数据分析》范例数据集-usagov-bitly-data/#more">查看更多 >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/数据分析/" class="article-tag-list-link color5">数据分析</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/05/03/《利用Python进行数据分析》范例数据集-usagov-bitly-data/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-A-B-test概览" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/02/A-B-test概览/">A/B test概览</a>
-    </h1>
-  
-
-        
-        <a href="/2017/05/02/A-B-test概览/" class="archive-article-date">
-  	<time datetime="2017-05-02T00:56:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-02</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="A-B-tests"><a href="#A-B-tests" class="headerlink" title="A/B tests"></a>A/B tests</h4><h5 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h5><p>通过尝试可能的改变，寻找用户更喜欢的方式，更科学的确定如何优化网站或移动应用——根据数据作出决定。</p>
-<h5 id="步骤："><a href="#步骤：" class="headerlink" title="步骤："></a>步骤：</h5><ul>
-<li>设计任务</li>
-<li>选择指标</li>
-<li>分析结果</li>
-</ul>
-<h4 id="关于A-B-test"><a href="#关于A-B-test" class="headerlink" title="关于A/B test"></a>关于A/B test</h4><p>用于在线测试的常规方法，用来测试新产品或新功能。</p>
-<h4 id="何时使用A-B-tests"><a href="#何时使用A-B-tests" class="headerlink" title="何时使用A/B tests"></a>何时使用A/B tests</h4><p>不适合使用的情境：</p>
-<ul>
-<li><p>在线购物网站：网站是否全面、是否存在用户想购买但无法提供的商品</p>
-<p>（测试无法确认是否提供了所有商品）</p>
-</li>
-<li><p>免费使用的网站考虑是否提供更高级的付费功能</p>
-<p>（无法全面测试高级服务是否是好的商业决策）</p>
-</li>
-<li><p>汽车销售网站：考虑变更是否使顾客再次访问网站或向朋友推荐</p>
-<p>（短时间内无法测试效果）</p>
-</li>
-<li><p>某家公司：测试改变品牌logo的效果</p>
-<p>（改变logo对于客户冲击较大，可能需要时间适应，短时间内采集的数据意义不大）</p>
-</li>
-</ul>
-<p>适合使用的情境：</p>
-<ul>
-<li><p>为用户提供电影推荐的网站：测试新的推荐排序算法</p>
-<p>（有明确的对照组和实验组和明确的评估改变的指标）</p>
-</li>
-<li><p>是否改变网站基础架构的后台（可能影响页面加载速度、用户可以看到的显示结果等）</p>
-<p>（如果计算机能够同时运行两个版本，则可以对变化结果进行测试）</p>
-</li>
-<li><p>某移动应用：测试改变应用首页的效果</p>
-<p>（明确的对照组和实验组、更容易选择评估改变的指标）</p>
-</li>
-</ul>
-<h4 id="其他技巧"><a href="#其他技巧" class="headerlink" title="其他技巧"></a>其他技巧</h4><p>对于A/B test不太适用的场景，可以运用其他收集用户数据的方式加以测试或对A/B test进行补充，如：</p>
-<ul>
-<li>通过检查或观察记录用户在网站上的操作日志得出造成用户行为改变的原因的假设，并设计实验，完成随机化实验和前瞻性分析（验证假设的过程与AB测试可以互为补充）</li>
-<li>从用户体验研究到focus group、调查和人为评价得出许多深入的定性数据作为AB测试得到的宽泛的定量数据的补充</li>
-</ul>
-<h4 id="在线A-B-test-的特点"><a href="#在线A-B-test-的特点" class="headerlink" title="在线A/B test 的特点"></a>在线A/B test 的特点</h4><p>区别于医学上的临床实验和传统农业领域上的测试，在线A/B test具有特点：</p>
-<ul>
-<li>数据量大，但分辨率低（很难真正得知用户的具体信息）</li>
-</ul>
-<p>A/B test目的：</p>
-<p>确认用户是否喜欢新的产品或功能，必须设计一个合理且返回可复验的结果的测试。</p>
-<h4 id="商业案例概述"><a href="#商业案例概述" class="headerlink" title="商业案例概述"></a>商业案例概述</h4><p>对于教育网站“Audacity”,对用户行为构建客户漏斗模型，开始设计一个简单的测试过程，验证对网站主页进行某项变更后是否增加探索课程的学生，即从漏斗模型的第一层（homepage visits）移动到第二层（exploring the site）</p>
-<h4 id="度量选择"><a href="#度量选择" class="headerlink" title="度量选择"></a>度量选择</h4><p>如何定量地测量“改进”的效果：</p>
-<ul>
-<li>完成课程的学生数量？ 完成课程时间过长，作为测量指标太耗时间，不现实。</li>
-<li>进入课程页面按钮的实际点击量？ 有意义但不能反映各实验组的比率。</li>
-<li>点击（比）率 $$(\frac{Number\ of\ clicks}{Number\ of\ page\ views})$$ 部分用户可能不止点击一次，使结果参考性降低</li>
-<li>点击概率 $$(\frac{unique\ visitors\ who\ clicks}{unique\ visitors\ to\ page})$$</li>
-</ul>
-<p>通常来说，测试可用性选择比率（测试某个按钮在众多按钮中被点击的频繁性），测试总影响采用概率（测试进入二级页面的用户比率）</p>
-<p>将假设更新为，变更将提高按钮的点击概率（并假设最终可以提高终极业务指标——课程完成总数）</p>
-<h4 id="估计点击概率"><a href="#估计点击概率" class="headerlink" title="估计点击概率"></a>估计点击概率</h4><ul>
-<li>变更网站，捕捉用户点击事件。</li>
-<li>计算比率：计算页面访问总数和点击总数</li>
-<li>计算概率：对于每个页面访问，仅计算一个子点击（将每个页面访问匹配所有子点击）</li>
-</ul>
-<h4 id="重复实验"><a href="#重复实验" class="headerlink" title="重复实验"></a>重复实验</h4><p>在得到一组数据并根据数据做出预测后，需要重复进行测量。</p>
-<h4 id="分布类型"><a href="#分布类型" class="headerlink" title="分布类型"></a>分布类型</h4><p>由于是否点击的数据不是连续数据，而是有成功失败两种结果，适合使用二项分布对结果进行分析。</p>
-<h4 id="关于二项分布"><a href="#关于二项分布" class="headerlink" title="关于二项分布"></a>关于二项分布</h4><p>对于一项试验，成功的概率为p，失败的概率为（1-p），当增大试验次数N时，成功概率的分布会趋近于正态分布</p>
-<p>$$mean=p$$</p>
-<p>$$std=\sqrt{\frac{p(1-p)}{N}}$$ </p>
-<p>二项分布使用条件：</p>
-<ul>
-<li>必须有两个不同结果</li>
-<li>事件必须独立</li>
-<li>事件要遵循同一种分布</li>
-</ul>
-<h4 id="置信区间"><a href="#置信区间" class="headerlink" title="置信区间"></a>置信区间</h4><p>可以使用样本二项分布的标准误差公式来估计整体概率的变化程度。</p>
-<p>如果置信区间为95%，则不断重复试验，最终得到均值附近的区间，有95%几率覆盖真正的值。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/数据分析/" class="article-tag-list-link color5">数据分析</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/05/02/A-B-test概览/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-利用matplotlib-finance-模块获取财经数据" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/29/利用matplotlib-finance-模块获取财经数据/">利用matplotlib.finance 模块获取财经数据</a>
-    </h1>
-  
-
-        
-        <a href="/2017/04/29/利用matplotlib-finance-模块获取财经数据/" class="archive-article-date">
-  	<time datetime="2017-04-28T16:00:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-29</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>从matplotlib.finance模块引入quotes_historical_yahoo_ochl（获取雅虎财经股票历史数据）</p>
-<p>datetime.today()获取当天信息，start设置为一年前的今天。</p>
-<p>quotes_historical_yahoo_ochl()方法需要三个参数，上市公司股票代码，历史数据起始日期，终止日期。</p>
-<p>来查询中国移动一年来的股票数据，并转化为DataFrame：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">from matplotlib.finance import quotes_historical_yahoo_ochl</div><div class="line">from datetime import *</div><div class="line">import pandas as pd</div><div class="line">today=datetime.today()</div><div class="line">start=(today.year-1,today.month,today.day)</div><div class="line">quotes=quotes_historical_yahoo_ochl(&apos;0941.HK&apos;,start,today)</div><div class="line">df=pd.DataFrame(quotes)</div><div class="line">print df</div></pre></td></tr></table></figure>
-<p>表格六列分别表示日期、开盘价、收盘价、最高价、最低价、成交价。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/数据分析/" class="article-tag-list-link color5">数据分析</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/04/29/利用matplotlib-finance-模块获取财经数据/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-Python数据统计和可视化" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/28/Python数据统计和可视化/">Python数据统计和可视化</a>
-    </h1>
-  
-
-        
-        <a href="/2017/04/28/Python数据统计和可视化/" class="archive-article-date">
-  	<time datetime="2017-04-28T02:16:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-28</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="数据整理"><a href="#数据整理" class="headerlink" title="数据整理"></a>数据整理</h4><p>日期转化</p>
-<p>获取的某组信息中，日期的表示方法为格里高利历法(Gregorian calendar)，要转化为通常的日期表示方法，可以使用datetime.date.fromordinal()方法：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">date.fromordinal(736082)</div><div class="line">Out[19]:</div><div class="line">datetime.date(2016, 4, 28)</div></pre></td></tr></table></figure>
-<p>对于Series，可以使用apply整体转化：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">quotesdf[&apos;date&apos;]=quotesdf[&apos;date&apos;].apply(int).apply(date.fromordinal)</div></pre></td></tr></table></figure>
-        
-          <a class="article-more-a" href="/2017/04/28/Python数据统计和可视化/#more">查看更多 >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/数据分析/" class="article-tag-list-link color5">数据分析</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/04/28/Python数据统计和可视化/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-Series-DateFrame" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/27/Series-DateFrame/">Series&amp;DateFrame</a>
-    </h1>
-  
-
-        
-        <a href="/2017/04/27/Series-DateFrame/" class="archive-article-date">
-  	<time datetime="2017-04-27T01:12:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-27</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="Series"><a href="#Series" class="headerlink" title="Series"></a>Series</h3><ul>
-<li>定长有序字典</li>
-<li>包含数据和索引</li>
-</ul>
-        
-          <a class="article-more-a" href="/2017/04/27/Series-DateFrame/#more">查看更多 >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/数据分析/" class="article-tag-list-link color5">数据分析</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/04/27/Series-DateFrame/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-《Python数据分析实战》笔记-1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/27/《Python数据分析实战》笔记-1/">《Python数据分析实战》笔记-1</a>
-    </h1>
-  
-
-        
-        <a href="/2017/04/27/《Python数据分析实战》笔记-1/" class="archive-article-date">
-  	<time datetime="2017-04-27T00:52:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-27</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="关于NumPy库"><a href="#关于NumPy库" class="headerlink" title="关于NumPy库"></a>关于NumPy库</h3><h4 id="ndarray（N维数组）"><a href="#ndarray（N维数组）" class="headerlink" title="ndarray（N维数组）"></a>ndarray（N维数组）</h4><ul>
-<li>同质元素（几乎所有元素类型、大小都相同）组成</li>
-<li>数据类型由dtype指定</li>
-<li>大小固定（创建后大小不发生改变）</li>
-</ul>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/数据分析/" class="article-tag-list-link color5">数据分析</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/04/27/《Python数据分析实战》笔记-1/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-MySQL-学习笔记-6" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/25/MySQL-学习笔记-6/">MySQL-学习笔记-6</a>
-    </h1>
-  
-
-        
-        <a href="/2017/04/25/MySQL-学习笔记-6/" class="archive-article-date">
-  	<time datetime="2017-04-25T08:40:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-25</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="运算符与函数"><a href="#运算符与函数" class="headerlink" title="运算符与函数"></a>运算符与函数</h3><h4 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h4><p>按照功能划分：</p>
-<ul>
-<li>字符函数</li>
-<li>数值运算符和函数</li>
-<li>比较运算符和函数</li>
-<li>日期时间函数</li>
-<li>信息函数</li>
-<li>聚合函数</li>
-<li>加密函数</li>
-</ul>
-        
-          <a class="article-more-a" href="/2017/04/25/MySQL-学习笔记-6/#more">查看更多 >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/SQL/" class="article-tag-list-link color4">SQL</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/04/25/MySQL-学习笔记-6/">展开全文 >></a>
+          <a class="article-more-a" href="/2017/04/09/hello-world/">展开全文 >></a>
         </p>
       
 
@@ -964,7 +290,7 @@
   
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/3/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span>
     </nav>
   
 

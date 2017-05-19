@@ -60,6 +60,8 @@
 	        
 				<li><a href="/categories/Excel/">Excel学习</a></li>
 	        
+				<li><a href="/categories/Machine_Learning/">机器学习</a></li>
+	        
 			</ul>
 		</nav>
 		<nav class="header-smart-menu">
@@ -124,6 +126,8 @@
 			
 				
 			
+				
+			
 			
 			
 			<nav class="header-nav">
@@ -144,13 +148,15 @@
 				<ul style="width: 70%">
 				
 				
-					<li style="width: 25%"><a href="/">主页</a></li>
+					<li style="width: 20%"><a href="/">主页</a></li>
 		        
-					<li style="width: 25%"><a href="/categories/SQL/">SQL学习</a></li>
+					<li style="width: 20%"><a href="/categories/SQL/">SQL学习</a></li>
 		        
-					<li style="width: 25%"><a href="/categories/数据分析/">数据分析</a></li>
+					<li style="width: 20%"><a href="/categories/数据分析/">数据分析</a></li>
 		        
-					<li style="width: 25%"><a href="/categories/Excel/">Excel学习</a></li>
+					<li style="width: 20%"><a href="/categories/Excel/">Excel学习</a></li>
+		        
+					<li style="width: 20%"><a href="/categories/Machine_Learning/">机器学习</a></li>
 		        
 				</ul>
 			</nav>
@@ -166,6 +172,68 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <article id="post-机器学习入门-1-朴素贝叶斯" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/05/19/机器学习入门-1-朴素贝叶斯/">机器学习入门(1) 朴素贝叶斯</a>
+    </h1>
+  
+
+        
+        <a href="/2017/05/19/机器学习入门-1-朴素贝叶斯/" class="archive-article-date">
+  	<time datetime="2017-05-19T02:07:47.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-19</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>test</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Machine_Learning/" class="article-tag-list-link color2">Machine_Learning</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/05/19/机器学习入门-1-朴素贝叶斯/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
   
     <article id="post-A-B-test-实验中的政策与伦理问题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -776,75 +844,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2017/05/08/LeetCode-183-Customers-Who-Never-Order/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-LeetCode-181-Employees-Earning-More-Than-Their-Managers" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/08/LeetCode-181-Employees-Earning-More-Than-Their-Managers/">LeetCode 181.Employees Earning More Than Their Managers</a>
-    </h1>
-  
-
-        
-        <a href="/2017/05/08/LeetCode-181-Employees-Earning-More-Than-Their-Managers/" class="archive-article-date">
-  	<time datetime="2017-05-08T03:41:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-08</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>问题描述：</p>
-<p>The <code>Employee</code> table holds all employees including their managers. Every employee has an Id, and there is also a column for the manager Id.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">+----+-------+--------+-----------+</div><div class="line">| Id | Name  | Salary | ManagerId |</div><div class="line">+----+-------+--------+-----------+</div><div class="line">| 1  | Joe   | 70000  | 3         |</div><div class="line">| 2  | Henry | 80000  | 4         |</div><div class="line">| 3  | Sam   | 60000  | NULL      |</div><div class="line">| 4  | Max   | 90000  | NULL      |</div><div class="line">+----+-------+--------+-----------+</div></pre></td></tr></table></figure>
-<p>Given the <code>Employee</code> table, write a SQL query that finds out employees who earn more than their managers. For the above table, Joe is the only employee who earns more than his manager.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">+----------+</div><div class="line">| Employee |</div><div class="line">+----------+</div><div class="line">| Joe      |</div><div class="line">+----------+</div></pre></td></tr></table></figure>
-<p>问题求解:</p>
-<p>可以对<code>Employee</code> 表自身进行连接，连接后选取满足限定条件“employee who earns more than his manager”的记录的Name字段值。</p>
-<p>注意：一定按照题目要求为查询结果指定别名。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">SELECT e.Name as Employee FROM Employee as e </div><div class="line">join Employee as m </div><div class="line">on e.ManagerId=m.ID </div><div class="line">WHERE e.Salary&gt;m.Salary;</div></pre></td></tr></table></figure>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/SQL/" class="article-tag-list-link color4">SQL</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/05/08/LeetCode-181-Employees-Earning-More-Than-Their-Managers/">展开全文 >></a>
         </p>
       
 

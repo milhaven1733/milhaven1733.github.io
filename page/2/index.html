@@ -173,6 +173,151 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-LeetCode-197-Rising-Temperature" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/05/08/LeetCode-197-Rising-Temperature/">LeetCode 197.Rising Temperature</a>
+    </h1>
+  
+
+        
+        <a href="/2017/05/08/LeetCode-197-Rising-Temperature/" class="archive-article-date">
+  	<time datetime="2017-05-08T04:06:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-08</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>问题描述：</p>
+<p>Given a <code>Weather</code> table, write a SQL query to find all dates’ Ids with higher temperature compared to its previous (yesterday’s) dates.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">+---------+------------+------------------+</div><div class="line">| Id(INT) | Date(DATE) | Temperature(INT) |</div><div class="line">+---------+------------+------------------+</div><div class="line">|       1 | 2015-01-01 |               10 |</div><div class="line">|       2 | 2015-01-02 |               25 |</div><div class="line">|       3 | 2015-01-03 |               20 |</div><div class="line">|       4 | 2015-01-04 |               30 |</div><div class="line">+---------+------------+------------------+</div></pre></td></tr></table></figure>
+<p>For example, return the following Ids for the above Weather table:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">+----+</div><div class="line">| Id |</div><div class="line">+----+</div><div class="line">|  2 |</div><div class="line">|  4 |</div><div class="line">+----+</div></pre></td></tr></table></figure>
+<p>问题求解：</p>
+<p>可以对 <code>Weather</code> 表相邻两天的记录进行连接，筛选出前一天气温低于后一天的记录</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">SELECT b.Id FROM Weather AS a </div><div class="line">join Weather AS b </div><div class="line">ON TO_DAYS(a.DATE)=TO_DAYS(b.DATE)-1 </div><div class="line">WHERE a.Temperature&lt;b.Temperature;</div></pre></td></tr></table></figure>
+<p>可以在连接时加以限定：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">SELECT b.Id FROM Weather a </div><div class="line">join Weather b </div><div class="line">ON TO_DAYS(a.DATE)=TO_DAYS(b.DATE)-1 </div><div class="line">AND a.Temperature&lt;b.Temperature;</div></pre></td></tr></table></figure>
+<p>也可以不连接直接进行多表查询：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">SELECT b.Id FROM Weather a ,Weather b </div><div class="line">WHERE TO_DAYS(a.DATE)=TO_DAYS(b.DATE)-1 </div><div class="line">AND a.Temperature&lt;b.Temperature;</div></pre></td></tr></table></figure>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/SQL/" class="article-tag-list-link color4">SQL</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/05/08/LeetCode-197-Rising-Temperature/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-LeetCode-183-Customers-Who-Never-Order" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/05/08/LeetCode-183-Customers-Who-Never-Order/">LeetCode 183.Customers Who Never Order</a>
+    </h1>
+  
+
+        
+        <a href="/2017/05/08/LeetCode-183-Customers-Who-Never-Order/" class="archive-article-date">
+  	<time datetime="2017-05-08T03:50:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-08</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>问题描述：</p>
+<p>Suppose that a website contains two tables, the <code>Customers</code> table and the <code>Orders</code> table. Write a SQL query to find all customers who never order anything.</p>
+<p>Table: <code>Customers</code>.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">+----+-------+</div><div class="line">| Id | Name  |</div><div class="line">+----+-------+</div><div class="line">| 1  | Joe   |</div><div class="line">| 2  | Henry |</div><div class="line">| 3  | Sam   |</div><div class="line">| 4  | Max   |</div><div class="line">+----+-------+</div></pre></td></tr></table></figure>
+<p>Table: <code>Orders</code>.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">+----+------------+</div><div class="line">| Id | CustomerId |</div><div class="line">+----+------------+</div><div class="line">| 1  | 3          |</div><div class="line">| 2  | 1          |</div><div class="line">+----+------------+</div></pre></td></tr></table></figure>
+<p>Using the above tables as example, return the following:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">+-----------+</div><div class="line">| Customers |</div><div class="line">+-----------+</div><div class="line">| Henry     |</div><div class="line">| Max       |</div><div class="line">+-----------+</div></pre></td></tr></table></figure>
+<p>问题求解：</p>
+<p>可以用<code>Customers</code>表左外连接 <code>Orders</code> 表，然后使用条件语句查询连接结果中O.Id字段值为NULL的记录：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">SELECT C.Name as Customers FROM Customers C </div><div class="line">left Join Orders O </div><div class="line">on C.Id=O.CustomerId </div><div class="line">WHERE O.Id IS NULL;</div></pre></td></tr></table></figure>
+<p>也可以使用NOT IN:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">SELECT C.Name as Customers FROM Customers C </div><div class="line">WHERE C.Id NOT IN (SELECT CustomerId FROM Orders);</div></pre></td></tr></table></figure>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/SQL/" class="article-tag-list-link color4">SQL</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/05/08/LeetCode-183-Customers-Who-Never-Order/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
     <article id="post-LeetCode-181-Employees-Earning-More-Than-Their-Managers" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -750,141 +895,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2017/05/03/《利用Python进行数据分析》范例数据集-usagov-bitly-data/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-利用matplotlib-finance-模块获取财经数据" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/29/利用matplotlib-finance-模块获取财经数据/">利用matplotlib.finance 模块获取财经数据</a>
-    </h1>
-  
-
-        
-        <a href="/2017/04/29/利用matplotlib-finance-模块获取财经数据/" class="archive-article-date">
-  	<time datetime="2017-04-28T16:00:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-29</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>从matplotlib.finance模块引入quotes_historical_yahoo_ochl（获取雅虎财经股票历史数据）</p>
-<p>datetime.today()获取当天信息，start设置为一年前的今天。</p>
-<p>quotes_historical_yahoo_ochl()方法需要三个参数，上市公司股票代码，历史数据起始日期，终止日期。</p>
-<p>来查询中国移动一年来的股票数据，并转化为DataFrame：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">from matplotlib.finance import quotes_historical_yahoo_ochl</div><div class="line">from datetime import *</div><div class="line">import pandas as pd</div><div class="line">today=datetime.today()</div><div class="line">start=(today.year-1,today.month,today.day)</div><div class="line">quotes=quotes_historical_yahoo_ochl(&apos;0941.HK&apos;,start,today)</div><div class="line">df=pd.DataFrame(quotes)</div><div class="line">print df</div></pre></td></tr></table></figure>
-<p>表格六列分别表示日期、开盘价、收盘价、最高价、最低价、成交价。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/数据分析/" class="article-tag-list-link color5">数据分析</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/04/29/利用matplotlib-finance-模块获取财经数据/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-Python数据统计和可视化" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/28/Python数据统计和可视化/">Python数据统计和可视化</a>
-    </h1>
-  
-
-        
-        <a href="/2017/04/28/Python数据统计和可视化/" class="archive-article-date">
-  	<time datetime="2017-04-28T02:16:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-28</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="数据整理"><a href="#数据整理" class="headerlink" title="数据整理"></a>数据整理</h4><p>日期转化</p>
-<p>获取的某组信息中，日期的表示方法为格里高利历法(Gregorian calendar)，要转化为通常的日期表示方法，可以使用datetime.date.fromordinal()方法：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">date.fromordinal(736082)</div><div class="line">Out[19]:</div><div class="line">datetime.date(2016, 4, 28)</div></pre></td></tr></table></figure>
-<p>对于Series，可以使用apply整体转化：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">quotesdf[&apos;date&apos;]=quotesdf[&apos;date&apos;].apply(int).apply(date.fromordinal)</div></pre></td></tr></table></figure>
-        
-          <a class="article-more-a" href="/2017/04/28/Python数据统计和可视化/#more">查看更多 >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/数据分析/" class="article-tag-list-link color5">数据分析</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/04/28/Python数据统计和可视化/">展开全文 >></a>
         </p>
       
 

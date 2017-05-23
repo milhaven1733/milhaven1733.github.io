@@ -173,6 +173,141 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-利用matplotlib-finance-模块获取财经数据" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/29/利用matplotlib-finance-模块获取财经数据/">利用matplotlib.finance 模块获取财经数据</a>
+    </h1>
+  
+
+        
+        <a href="/2017/04/29/利用matplotlib-finance-模块获取财经数据/" class="archive-article-date">
+  	<time datetime="2017-04-28T16:00:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-29</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>从matplotlib.finance模块引入quotes_historical_yahoo_ochl（获取雅虎财经股票历史数据）</p>
+<p>datetime.today()获取当天信息，start设置为一年前的今天。</p>
+<p>quotes_historical_yahoo_ochl()方法需要三个参数，上市公司股票代码，历史数据起始日期，终止日期。</p>
+<p>来查询中国移动一年来的股票数据，并转化为DataFrame：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">from matplotlib.finance import quotes_historical_yahoo_ochl</div><div class="line">from datetime import *</div><div class="line">import pandas as pd</div><div class="line">today=datetime.today()</div><div class="line">start=(today.year-1,today.month,today.day)</div><div class="line">quotes=quotes_historical_yahoo_ochl(&apos;0941.HK&apos;,start,today)</div><div class="line">df=pd.DataFrame(quotes)</div><div class="line">print df</div></pre></td></tr></table></figure>
+<p>表格六列分别表示日期、开盘价、收盘价、最高价、最低价、成交价。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/数据分析/" class="article-tag-list-link color5">数据分析</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/04/29/利用matplotlib-finance-模块获取财经数据/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-Python数据统计和可视化" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/28/Python数据统计和可视化/">Python数据统计和可视化</a>
+    </h1>
+  
+
+        
+        <a href="/2017/04/28/Python数据统计和可视化/" class="archive-article-date">
+  	<time datetime="2017-04-28T02:16:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-28</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="数据整理"><a href="#数据整理" class="headerlink" title="数据整理"></a>数据整理</h4><p>日期转化</p>
+<p>获取的某组信息中，日期的表示方法为格里高利历法(Gregorian calendar)，要转化为通常的日期表示方法，可以使用datetime.date.fromordinal()方法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">date.fromordinal(736082)</div><div class="line">Out[19]:</div><div class="line">datetime.date(2016, 4, 28)</div></pre></td></tr></table></figure>
+<p>对于Series，可以使用apply整体转化：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">quotesdf[&apos;date&apos;]=quotesdf[&apos;date&apos;].apply(int).apply(date.fromordinal)</div></pre></td></tr></table></figure>
+        
+          <a class="article-more-a" href="/2017/04/28/Python数据统计和可视化/#more">查看更多 >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/数据分析/" class="article-tag-list-link color5">数据分析</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/04/28/Python数据统计和可视化/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
     <article id="post-Series-DateFrame" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -700,144 +835,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2017/04/20/MySQL-学习笔记-4/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-关于udacity学生数据集的t检验分析" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/19/关于udacity学生数据集的t检验分析/">关于udacity学生数据集的t检验分析</a>
-    </h1>
-  
-
-        
-        <a href="/2017/04/19/关于udacity学生数据集的t检验分析/" class="archive-article-date">
-  	<time datetime="2017-04-19T14:23:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-19</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h4><p>上一次，应用udacity提供的学生数据集，我们熟悉数据分析的基本流程，完成了数据的获取、导入、整理、取样、分类等步骤，也得到了相应的推测结论。但由于没有经过统计学检查，得到的只是未经证实的试验性结论。</p>
-<p>因此，这一次我希望选取上次分析过程中得到的几个采样方法有代表的数据样本，对其进行统计学上的检验，看看分析结果是否能验证上次做出的一些预测或推论。</p>
-        
-          <a class="article-more-a" href="/2017/04/19/关于udacity学生数据集的t检验分析/#more">查看更多 >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/数据分析/" class="article-tag-list-link color5">数据分析</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/04/19/关于udacity学生数据集的t检验分析/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-利用udacity学生数据集实践数据分析过程" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/19/利用udacity学生数据集实践数据分析过程/">利用udacity学生数据集实践数据分析过程</a>
-    </h1>
-  
-
-        
-        <a href="/2017/04/19/利用udacity学生数据集实践数据分析过程/" class="archive-article-date">
-  	<time datetime="2017-04-19T03:22:06.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-19</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="利用udacity学生数据集实践数据分析过程"><a href="#利用udacity学生数据集实践数据分析过程" class="headerlink" title="利用udacity学生数据集实践数据分析过程"></a>利用udacity学生数据集实践数据分析过程</h3><h4 id="数据采集与清理"><a href="#数据采集与清理" class="headerlink" title="数据采集与清理"></a>数据采集与清理</h4><p><strong>数据分析中的数据来源</strong></p>
-<ul>
-<li>下载数据文件</li>
-<li>从API中获取 </li>
-<li>从网页收集 </li>
-<li>合并多种不同格式数据</li>
-</ul>
-<p>在这次实践中，我们采用下载数据文件的方式。（将课程提供的三个csv数据集下载至本地)</p>
-<p>接下来，需要对数据文件进行数据整理使数据能够用于分类及分析。</p>
-<p>就要先了解我们下载的csv文件。</p>
-        
-          <a class="article-more-a" href="/2017/04/19/利用udacity学生数据集实践数据分析过程/#more">查看更多 >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/数据分析/" class="article-tag-list-link color5">数据分析</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/04/19/利用udacity学生数据集实践数据分析过程/">展开全文 >></a>
         </p>
       
 

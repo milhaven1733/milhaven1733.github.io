@@ -6,14 +6,23 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives | 再吃一口橙子</title>
+  <title>机器学习入门(2) 支持向量机(SVM) | 再吃一口橙子</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="再吃一口橙子">
-<meta property="og:url" content="http://yoursite.com/archives/index.html">
+  <meta name="description" content="分隔线算法：支持向量机（support vector machine） 核心：寻找介于两个类别的数据之间的一条separating line/hyperplane(超平面) 输入：两个类别的数据。输出：一条分隔线 最优分隔线好的分隔线的特点：最大化了到两分类最近点的距离（通常称为间隔:margin） 健壮性(robust)强，不容易出现分类误差（不易受noise干扰） SVM内部原理：to  ma">
+<meta name="keywords">
+<meta property="og:type" content="article">
+<meta property="og:title" content="机器学习入门(2) 支持向量机(SVM)">
+<meta property="og:url" content="http://yoursite.com/2017/05/22/机器学习入门-2-支持向量机-SVM/index.html">
 <meta property="og:site_name" content="再吃一口橙子">
+<meta property="og:description" content="分隔线算法：支持向量机（support vector machine） 核心：寻找介于两个类别的数据之间的一条separating line/hyperplane(超平面) 输入：两个类别的数据。输出：一条分隔线 最优分隔线好的分隔线的特点：最大化了到两分类最近点的距离（通常称为间隔:margin） 健壮性(robust)强，不容易出现分类误差（不易受noise干扰） SVM内部原理：to  ma">
+<meta property="og:image" content="http://yoursite.com/2017/05/22/机器学习入门-2-支持向量机-SVM/1.png">
+<meta property="og:image" content="http://yoursite.com/2017/05/22/机器学习入门-2-支持向量机-SVM/2.png">
+<meta property="og:image" content="http://yoursite.com/2017/05/22/机器学习入门-2-支持向量机-SVM/3.png">
+<meta property="og:updated_time" content="2017-05-23T02:31:58.727Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="再吃一口橙子">
+<meta name="twitter:title" content="机器学习入门(2) 支持向量机(SVM)">
+<meta name="twitter:description" content="分隔线算法：支持向量机（support vector machine） 核心：寻找介于两个类别的数据之间的一条separating line/hyperplane(超平面) 输入：两个类别的数据。输出：一条分隔线 最优分隔线好的分隔线的特点：最大化了到两分类最近点的距离（通常称为间隔:margin） 健壮性(robust)强，不容易出现分类误差（不易受noise干扰） SVM内部原理：to  ma">
+<meta name="twitter:image" content="http://yoursite.com/2017/05/22/机器学习入门-2-支持向量机-SVM/1.png">
   
     <link rel="alternative" href="/atom.xml" title="再吃一口橙子" type="application/atom+xml">
   
@@ -171,37 +180,87 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-机器学习入门-2-支持向量机-SVM" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      机器学习入门(2) 支持向量机(SVM)
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/22/机器学习入门-2-支持向量机-SVM/" class="archive-article-date">
+
+        
+        <a href="/2017/05/22/机器学习入门-2-支持向量机-SVM/" class="archive-article-date">
   	<time datetime="2017-05-22T09:19:06.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-22</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/22/机器学习入门-2-支持向量机-SVM/">机器学习入门(2) 支持向量机(SVM)</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="分隔线"><a href="#分隔线" class="headerlink" title="分隔线"></a>分隔线</h4><p>算法：支持向量机（support vector machine）</p>
+<p>核心：寻找介于两个类别的数据之间的一条separating line/hyperplane(超平面)</p>
+<p>输入：两个类别的数据。输出：一条分隔线</p>
+<h4 id="最优分隔线"><a href="#最优分隔线" class="headerlink" title="最优分隔线"></a>最优分隔线</h4><p>好的分隔线的特点：最大化了到两分类最近点的距离（通常称为间隔:margin）</p>
+<p>健壮性(robust)强，不容易出现分类误差（不易受noise干扰）</p>
+<p>SVM内部原理：to  maximize robustness</p>
+<h4 id="首要条件"><a href="#首要条件" class="headerlink" title="首要条件"></a>首要条件</h4><p>SVM总是先考虑正确分类标签，再对间隔进行最大化（先尽力保证分类正确）</p>
+<p>如下图选择可以正确分类的分隔线，而不是首要考虑最大化：</p>
+<p><img src="/2017/05/22/机器学习入门-2-支持向量机-SVM/1.png" alt=""></p>
+<h4 id="对异常值的响应"><a href="#对异常值的响应" class="headerlink" title="对异常值的响应"></a>对异常值的响应</h4><p>当数据集中存在异常值，使可以分隔两个类的决策面不存在，SVM会产生一个决策边界，将一类数据中的异常值直接归于另一类，同时使间距最大化。</p>
+<h4 id="SKlearn-amp-SVM"><a href="#SKlearn-amp-SVM" class="headerlink" title="SKlearn&amp;SVM"></a>SKlearn&amp;SVM</h4><p>分类器创建、训练数据集与标签拟合过程：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">from sklearn import svm</div><div class="line">x=[[0,0],[1,1]]</div><div class="line">y=[0,1]</div><div class="line">clf=svm.SVC()</div><div class="line">clf.fit(x,y)</div></pre></td></tr></table></figure>
+<p>注意：SVM生成的决策面为一条直线（区别于朴素贝叶斯）</p>
+<p>同样，可以对预测结果进行准确率计算：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">pred=clf.predict(features_test)</div><div class="line">from sklearn.metrics import accuracy_score</div><div class="line">acc = accuracy_score(pred, labels_test)</div></pre></td></tr></table></figure>
+<h4 id="非线性SVM"><a href="#非线性SVM" class="headerlink" title="非线性SVM"></a>非线性SVM</h4><p>常规的SVM给出的决策面是线性的，对于一些数据集无法给出好的线性决策面，如：</p>
+<p><img src="/2017/05/22/机器学习入门-2-支持向量机-SVM/2.png" alt=""></p>
+<p>此时，对于每个数据点的数据特征(x,y),引入一个新特征：</p>
+<p>$$x^2+y^2$$</p>
+<p>在以上三个特征上运行SVM，将得到一个决策面（新特征值为各数据点到原点距离的平方，可根据距离找到划分的超平面）</p>
+<p>其他特征值引入：</p>
+<p><img src="/2017/05/22/机器学习入门-2-支持向量机-SVM/3.png" alt=""></p>
+<p>传入<code>|x|</code> 将左侧数据点按沿y轴翻转，可以划分线性决策面</p>
+<h4 id="kernel-trick"><a href="#kernel-trick" class="headerlink" title="kernel trick"></a>kernel trick</h4><p>存在一些函数，获取低维度输入空间或特征空间，将其映射到高维度空间。（将不可线性分离的内容变为可分离）</p>
+<p>称为<strong>核函数</strong> 。</p>
+<p>可以应用kernel trick将输入空间扩大维度，再使用SVM分离数据点。</p>
 
-        <div class="article-info info-on-right">
-          
-          
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃小鱼干~<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/alipay.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
@@ -214,363 +273,106 @@
 	</div>
 
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/05/22/机器学习入门-2-支持向量机-SVM/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/19/A-B-test-选择和测量指标/" class="archive-article-date">
-  	<time datetime="2017-05-19T14:36:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-19</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/19/A-B-test-选择和测量指标/">A/B test 选择和测量指标</a>
-    </h1>
-  
 
-        <div class="article-info info-on-right">
-          
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/数据分析/" class="article-tag-list-link color5">数据分析</a>
-        		</li>
-      		
-		</ul>
-	</div>
+  
+<nav id="article-nav">
+  
+    <a href="/2017/05/19/A-B-test-选择和测量指标/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          A/B test 选择和测量指标
+        
+      </div>
+    </a>
+  
+  
+</nav>
 
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/19/机器学习入门-1-朴素贝叶斯/" class="archive-article-date">
-  	<time datetime="2017-05-19T02:07:47.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-19</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/19/机器学习入门-1-朴素贝叶斯/">机器学习入门(1) 朴素贝叶斯</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/机器学习/" class="article-tag-list-link color5">机器学习</a>
-        		</li>
-      		
-		</ul>
-	</div>
 
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/18/A-B-test-实验中的政策与伦理问题/" class="archive-article-date">
-  	<time datetime="2017-05-18T14:56:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-18</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/18/A-B-test-实验中的政策与伦理问题/">A/B test_实验中的政策与伦理问题</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/数据分析/" class="article-tag-list-link color5">数据分析</a>
-        		</li>
-      		
-		</ul>
-	</div>
 
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/11/A-B-test概览/" class="archive-article-date">
-  	<time datetime="2017-05-11T12:35:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-11</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/11/A-B-test概览/">A/B tests概览</a>
-    </h1>
+    <div class="duoshuo"></div>
   
 
-        <div class="article-info info-on-right">
-          
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/数据分析/" class="article-tag-list-link color5">数据分析</a>
-        		</li>
-      		
-		</ul>
-	</div>
 
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/11/《利用Python进行数据分析》笔记——数据加载、存储与文件格式/" class="archive-article-date">
-  	<time datetime="2017-05-11T09:03:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-11</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/11/《利用Python进行数据分析》笔记——数据加载、存储与文件格式/">《利用Python进行数据分析》笔记——数据加载、存储与文件格式</a>
-    </h1>
-  
+<section id="comments">
+  <div id="disqus_thread"></div>
+    <script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'milhaven1733'; // required: replace example with your forum shortname
 
-        <div class="article-info info-on-right">
-          
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/数据分析/" class="article-tag-list-link color5">数据分析</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/11/MySQL-学习笔记-8/" class="archive-article-date">
-  	<time datetime="2017-05-11T02:37:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-11</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/11/MySQL-学习笔记-8/">MySQL-学习笔记-8</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/SQL/" class="article-tag-list-link color4">SQL</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/11/Pandas-学习笔记/" class="archive-article-date">
-  	<time datetime="2017-05-10T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-11</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/11/Pandas-学习笔记/">《利用Python进行数据分析》笔记——pandas入门</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/数据分析/" class="article-tag-list-link color5">数据分析</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/08/LeetCode-176-Second-Highest-Salary/" class="archive-article-date">
-  	<time datetime="2017-05-08T04:40:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-08</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/08/LeetCode-176-Second-Highest-Salary/">LeetCode 176.Second Highest Salary</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/SQL/" class="article-tag-list-link color4">SQL</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/08/LeetCode-196-Delete-Duplicate-Emails/" class="archive-article-date">
-  	<time datetime="2017-05-08T04:19:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-08</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/08/LeetCode-196-Delete-Duplicate-Emails/">LeetCode 196.Delete Duplicate Emails</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/SQL/" class="article-tag-list-link color4">SQL</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><a class="page-number" href="/archives/page/3/">3</a><a class="page-number" href="/archives/page/4/">4</a><a class="extend next" rel="next" href="/archives/page/2/">Next &raquo;</a>
-    </nav>
-  
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</section>
 
 
           </div>
@@ -593,8 +395,8 @@
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

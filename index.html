@@ -173,6 +173,154 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-机器学习入门-2-支持向量机-SVM" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/05/22/机器学习入门-2-支持向量机-SVM/">机器学习入门(2) 支持向量机(SVM)</a>
+    </h1>
+  
+
+        
+        <a href="/2017/05/22/机器学习入门-2-支持向量机-SVM/" class="archive-article-date">
+  	<time datetime="2017-05-22T09:19:06.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-22</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="分隔线"><a href="#分隔线" class="headerlink" title="分隔线"></a>分隔线</h4><p>算法：支持向量机（support vector machine）</p>
+<p>核心：寻找介于两个类别的数据之间的一条separating line/hyperplane(超平面)</p>
+<p>输入：两个类别的数据。输出：一条分隔线</p>
+<h4 id="最优分隔线"><a href="#最优分隔线" class="headerlink" title="最优分隔线"></a>最优分隔线</h4><p>好的分隔线的特点：最大化了到两分类最近点的距离（通常称为间隔:margin）</p>
+<p>健壮性(robust)强，不容易出现分类误差（不易受noise干扰）</p>
+<p>SVM内部原理：to  maximize robustness</p>
+<h4 id="首要条件"><a href="#首要条件" class="headerlink" title="首要条件"></a>首要条件</h4><p>SVM总是先考虑正确分类标签，再对间隔进行最大化（先尽力保证分类正确）</p>
+<p>如下图选择可以正确分类的分隔线，而不是首要考虑最大化：</p>
+<p><img src="/2017/05/22/机器学习入门-2-支持向量机-SVM/1.png" alt=""></p>
+<h4 id="对异常值的响应"><a href="#对异常值的响应" class="headerlink" title="对异常值的响应"></a>对异常值的响应</h4><p>当数据集中存在异常值，使可以分隔两个类的决策面不存在，SVM会产生一个决策边界，将一类数据中的异常值直接归于另一类，同时使间距最大化。</p>
+<h4 id="SKlearn-amp-SVM"><a href="#SKlearn-amp-SVM" class="headerlink" title="SKlearn&amp;SVM"></a>SKlearn&amp;SVM</h4><p>分类器创建、训练数据集与标签拟合过程：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">from sklearn import svm</div><div class="line">x=[[0,0],[1,1]]</div><div class="line">y=[0,1]</div><div class="line">clf=svm.SVC()</div><div class="line">clf.fit(x,y)</div></pre></td></tr></table></figure>
+<p>注意：SVM生成的决策面为一条直线（区别于朴素贝叶斯）</p>
+<p>同样，可以对预测结果进行准确率计算：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">pred=clf.predict(features_test)</div><div class="line">from sklearn.metrics import accuracy_score</div><div class="line">acc = accuracy_score(pred, labels_test)</div></pre></td></tr></table></figure>
+<h4 id="非线性SVM"><a href="#非线性SVM" class="headerlink" title="非线性SVM"></a>非线性SVM</h4><p>常规的SVM给出的决策面是线性的，对于一些数据集无法给出好的线性决策面，如：</p>
+<p><img src="/2017/05/22/机器学习入门-2-支持向量机-SVM/2.png" alt=""></p>
+<p>此时，对于每个数据点的数据特征(x,y),引入一个新特征：</p>
+<p>$$x^2+y^2$$</p>
+<p>在以上三个特征上运行SVM，将得到一个决策面（新特征值为各数据点到原点距离的平方，可根据距离找到划分的超平面）</p>
+<p>其他特征值引入：</p>
+<p><img src="/2017/05/22/机器学习入门-2-支持向量机-SVM/3.png" alt=""></p>
+<p>传入<code>|x|</code> 将左侧数据点按沿y轴翻转，可以划分线性决策面</p>
+<h4 id="kernel-trick"><a href="#kernel-trick" class="headerlink" title="kernel trick"></a>kernel trick</h4><p>存在一些函数，获取低维度输入空间或特征空间，将其映射到高维度空间。（将不可线性分离的内容变为可分离）</p>
+<p>称为<strong>核函数</strong> 。</p>
+<p>可以应用kernel trick将输入空间扩大维度，再使用SVM分离数据点。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/机器学习/" class="article-tag-list-link color5">机器学习</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/05/22/机器学习入门-2-支持向量机-SVM/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-A-B-test-选择和测量指标" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/05/19/A-B-test-选择和测量指标/">A/B test 选择和测量指标</a>
+    </h1>
+  
+
+        
+        <a href="/2017/05/19/A-B-test-选择和测量指标/" class="archive-article-date">
+  	<time datetime="2017-05-19T14:36:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-19</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/数据分析/" class="article-tag-list-link color5">数据分析</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/05/19/A-B-test-选择和测量指标/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
     <article id="post-机器学习入门-1-朴素贝叶斯" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -707,151 +855,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2017/05/08/LeetCode-196-Delete-Duplicate-Emails/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-LeetCode-197-Rising-Temperature" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/08/LeetCode-197-Rising-Temperature/">LeetCode 197.Rising Temperature</a>
-    </h1>
-  
-
-        
-        <a href="/2017/05/08/LeetCode-197-Rising-Temperature/" class="archive-article-date">
-  	<time datetime="2017-05-08T04:06:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-08</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>问题描述：</p>
-<p>Given a <code>Weather</code> table, write a SQL query to find all dates’ Ids with higher temperature compared to its previous (yesterday’s) dates.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">+---------+------------+------------------+</div><div class="line">| Id(INT) | Date(DATE) | Temperature(INT) |</div><div class="line">+---------+------------+------------------+</div><div class="line">|       1 | 2015-01-01 |               10 |</div><div class="line">|       2 | 2015-01-02 |               25 |</div><div class="line">|       3 | 2015-01-03 |               20 |</div><div class="line">|       4 | 2015-01-04 |               30 |</div><div class="line">+---------+------------+------------------+</div></pre></td></tr></table></figure>
-<p>For example, return the following Ids for the above Weather table:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">+----+</div><div class="line">| Id |</div><div class="line">+----+</div><div class="line">|  2 |</div><div class="line">|  4 |</div><div class="line">+----+</div></pre></td></tr></table></figure>
-<p>问题求解：</p>
-<p>可以对 <code>Weather</code> 表相邻两天的记录进行连接，筛选出前一天气温低于后一天的记录</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">SELECT b.Id FROM Weather AS a </div><div class="line">join Weather AS b </div><div class="line">ON TO_DAYS(a.DATE)=TO_DAYS(b.DATE)-1 </div><div class="line">WHERE a.Temperature&lt;b.Temperature;</div></pre></td></tr></table></figure>
-<p>可以在连接时加以限定：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">SELECT b.Id FROM Weather a </div><div class="line">join Weather b </div><div class="line">ON TO_DAYS(a.DATE)=TO_DAYS(b.DATE)-1 </div><div class="line">AND a.Temperature&lt;b.Temperature;</div></pre></td></tr></table></figure>
-<p>也可以不连接直接进行多表查询：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">SELECT b.Id FROM Weather a ,Weather b </div><div class="line">WHERE TO_DAYS(a.DATE)=TO_DAYS(b.DATE)-1 </div><div class="line">AND a.Temperature&lt;b.Temperature;</div></pre></td></tr></table></figure>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/SQL/" class="article-tag-list-link color4">SQL</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/05/08/LeetCode-197-Rising-Temperature/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-LeetCode-183-Customers-Who-Never-Order" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/08/LeetCode-183-Customers-Who-Never-Order/">LeetCode 183.Customers Who Never Order</a>
-    </h1>
-  
-
-        
-        <a href="/2017/05/08/LeetCode-183-Customers-Who-Never-Order/" class="archive-article-date">
-  	<time datetime="2017-05-08T03:50:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-08</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>问题描述：</p>
-<p>Suppose that a website contains two tables, the <code>Customers</code> table and the <code>Orders</code> table. Write a SQL query to find all customers who never order anything.</p>
-<p>Table: <code>Customers</code>.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">+----+-------+</div><div class="line">| Id | Name  |</div><div class="line">+----+-------+</div><div class="line">| 1  | Joe   |</div><div class="line">| 2  | Henry |</div><div class="line">| 3  | Sam   |</div><div class="line">| 4  | Max   |</div><div class="line">+----+-------+</div></pre></td></tr></table></figure>
-<p>Table: <code>Orders</code>.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">+----+------------+</div><div class="line">| Id | CustomerId |</div><div class="line">+----+------------+</div><div class="line">| 1  | 3          |</div><div class="line">| 2  | 1          |</div><div class="line">+----+------------+</div></pre></td></tr></table></figure>
-<p>Using the above tables as example, return the following:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">+-----------+</div><div class="line">| Customers |</div><div class="line">+-----------+</div><div class="line">| Henry     |</div><div class="line">| Max       |</div><div class="line">+-----------+</div></pre></td></tr></table></figure>
-<p>问题求解：</p>
-<p>可以用<code>Customers</code>表左外连接 <code>Orders</code> 表，然后使用条件语句查询连接结果中O.Id字段值为NULL的记录：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">SELECT C.Name as Customers FROM Customers C </div><div class="line">left Join Orders O </div><div class="line">on C.Id=O.CustomerId </div><div class="line">WHERE O.Id IS NULL;</div></pre></td></tr></table></figure>
-<p>也可以使用NOT IN:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">SELECT C.Name as Customers FROM Customers C </div><div class="line">WHERE C.Id NOT IN (SELECT CustomerId FROM Orders);</div></pre></td></tr></table></figure>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/SQL/" class="article-tag-list-link color4">SQL</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/05/08/LeetCode-183-Customers-Who-Never-Order/">展开全文 >></a>
         </p>
       
 

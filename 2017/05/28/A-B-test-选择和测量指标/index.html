@@ -8,14 +8,22 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>A/B test 选择和测量指标 | 再吃一口橙子</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="keywords">
+  <meta name="description" content="概述实验指标的创建过程：  Define [定义一套指标]（从指标的高层概念到数据捕获方面的实际意义） Build intuition [建立直觉]（关于指标敏感性和稳健性） Characterize [描述]（关于指标差异性）">
+<meta name="keywords">
 <meta property="og:type" content="article">
 <meta property="og:title" content="A/B test 选择和测量指标">
-<meta property="og:url" content="http://yoursite.com/2017/05/19/A-B-test-选择和测量指标/index.html">
+<meta property="og:url" content="http://yoursite.com/2017/05/28/A-B-test-选择和测量指标/index.html">
 <meta property="og:site_name" content="再吃一口橙子">
-<meta property="og:updated_time" content="2017-05-19T14:38:15.369Z">
+<meta property="og:description" content="概述实验指标的创建过程：  Define [定义一套指标]（从指标的高层概念到数据捕获方面的实际意义） Build intuition [建立直觉]（关于指标敏感性和稳健性） Characterize [描述]（关于指标差异性）">
+<meta property="og:image" content="http://yoursite.com/2017/05/28/A-B-test-选择和测量指标/1.png">
+<meta property="og:image" content="http://yoursite.com/2017/05/28/A-B-test-选择和测量指标/2.png">
+<meta property="og:image" content="http://yoursite.com/2017/05/28/A-B-test-选择和测量指标/3.png">
+<meta property="og:image" content="http://yoursite.com/2017/05/28/A-B-test-选择和测量指标/4.png">
+<meta property="og:updated_time" content="2017-05-28T19:38:20.095Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="A/B test 选择和测量指标">
+<meta name="twitter:description" content="概述实验指标的创建过程：  Define [定义一套指标]（从指标的高层概念到数据捕获方面的实际意义） Build intuition [建立直觉]（关于指标敏感性和稳健性） Characterize [描述]（关于指标差异性）">
+<meta name="twitter:image" content="http://yoursite.com/2017/05/28/A-B-test-选择和测量指标/1.png">
   
     <link rel="alternative" href="/atom.xml" title="再吃一口橙子" type="application/atom+xml">
   
@@ -185,15 +193,293 @@
   
 
         
-        <a href="/2017/05/19/A-B-test-选择和测量指标/" class="archive-article-date">
-  	<time datetime="2017-05-19T14:36:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-19</time>
+        <a href="/2017/05/28/A-B-test-选择和测量指标/" class="archive-article-date">
+  	<time datetime="2017-05-28T14:36:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-28</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <h4 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h4><p>实验指标的创建过程：</p>
+<ul>
+<li>Define [定义一套指标]（从指标的高层概念到数据捕获方面的实际意义）</li>
+<li>Build intuition [建立直觉]（关于指标敏感性和稳健性）</li>
+<li>Characterize [描述]（关于指标差异性）</li>
+</ul>
+<a id="more"></a>
+<h4 id="指标定义"><a href="#指标定义" class="headerlink" title="指标定义"></a>指标定义</h4><ul>
+<li>invariant（sanity） checking（不变量/完整性检查）指标</li>
+</ul>
+<p>如：对比实验组与对照组的总体是否相同，可检查两组中总体的数量或分布是否相同——完整性检查</p>
+<ul>
+<li>evaluation（评估）指标</li>
+</ul>
+<p>高级指标（如收益、市场份额、用户量）——&gt;细节指标（用户体验、页面停留时间等）</p>
+<p>定义过程：</p>
+<ul>
+<li>为指标提出高级概念（一句话总结）</li>
+<li>确定细节（如测试活跃用户，怎样算活跃？）</li>
+<li>将独立的数据总结为指标的值（如取一些描述统计量）</li>
+</ul>
+<p>在评估时，选取一个独立的指标还是一套指标要应需求而定</p>
+<p>可将多个指标组合成一个复合指标（或称OEC，overall evaluation criterion 综合评估标准）</p>
+<p>但综合指标较难于定义或容易过度优化导致一些指标被忽略</p>
+<p>最后，要考虑指标是否普遍适用（generally applicable），理想状况是某个指标适用于A/B test的整套测试过程</p>
+<h4 id="难以测量的指标"><a href="#难以测量的指标" class="headerlink" title="难以测量的指标"></a>难以测量的指标</h4><ul>
+<li>无法访问/获取的数据</li>
+<li>需要耗费很长时间才能采集到的指标</li>
+</ul>
+<p>例如：</p>
+<ul>
+<li>某在线教育网站学生返回学习第二门课程的比率（收集周期过长）</li>
+<li>某购物网站的消费者“幸福指数” （难以收集、测量）</li>
+<li>搜索引擎用户搜索到他们要寻找的信息的概率 （无法获取）</li>
+</ul>
+<h4 id="定义指标的技巧"><a href="#定义指标的技巧" class="headerlink" title="定义指标的技巧"></a>定义指标的技巧</h4><p>作用：生成新的指标创意、验证已有的指标、深度挖掘用户体验、提供分析和观察技巧</p>
+<p>方式：surveys、retrospective analyses（回顾性分析）、focus group（焦点小组）</p>
+<p>​    （用于新指标brainstorm或验证可用的指标）</p>
+<ul>
+<li>外部数据<ul>
+<li>采集其他细节的数据与用户数据结合</li>
+<li>调查用户，从已有来源获取用于营销或其他目的的数据</li>
+<li>“学术研究”数据。探索关于指标建立的论文等，寻找相关的研究或结果</li>
+</ul>
+</li>
+</ul>
+<p>采集用户附加数据的方法：</p>
+<p>维度：数据深度、参与人数</p>
+<ul>
+<li><p>UER （user experience reserach-用户体验研究）</p>
+<p>对少数用户进行深度研究</p>
+<ul>
+<li>有益于brainstorm（提出想法、修改测试、将问题转化为可以用来评估A/B test的指标）</li>
+<li>使用特殊实验（如采用眼球追踪摄像头观测用户行为得出无法从网页上获取的数据）</li>
+<li>使结果有效化（vaildate result）如回顾性分析</li>
+</ul>
+</li>
+<li><p>焦点小组（focus  group）</p>
+<p>将一群用户或潜在用户组织在一起进行讨论（交流广度加大但深度减小）</p>
+<ul>
+<li>可以提出假设性问题，收集反馈</li>
+<li>利用群体思维和意见减小风险</li>
+</ul>
+</li>
+<li><p>调查（与更多用户交流得到更具量化性的数据，但深度较弱，或不具有个体自定义性）</p>
+<ul>
+<li><p>对无法直接测量得出的数据很有用</p>
+<p>但注意要小心对待调查结果，不能直接将调查结果和使用观察性方法计算的结果进行比较</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="技巧示例"><a href="#技巧示例" class="headerlink" title="技巧示例"></a>技巧示例</h4><p>上述技巧如何用于验证“用户漏斗”中的指标或漏斗中未涵盖而在头脑风暴中产生的新指标？</p>
+<ul>
+<li><p>关于用户访问量和课程完成率</p>
+<p>可以对比页面访问量、课程完成率与其他公司的可用外部指标</p>
+<p>当发现完成率较低，可以进行UER来调查原因（可以观察用户行为发现在某些方面存在需要跟踪、改进的部分）</p>
+<p>在UER阶段，可能会考虑到通过回顾性分析验证一些指标的变化，或实施新的实验看指标随作出变更的变化</p>
+</li>
+<li><p>对于“学员是否找到工作、课程是否有帮助”</p>
+<p>指标无法测量、通过邮件等调查会有所帮助</p>
+<p>但由于内部指标和参与调查人数不匹配，调查获得的数据不能与指标数据直接比较</p>
+</li>
+</ul>
+<p>一些实例：</p>
+<ul>
+<li><p>测量学员返回学习第二门课程的比率</p>
+<p>对用户进行调查，如果在调查中找到可测量的指标，可将其用作实验中的替代指标</p>
+</li>
+<li><p>测量用户“幸福”指数</p>
+<p>可以进行弹窗调查或小型UER</p>
+</li>
+<li><p>测试搜索引擎用户找到所需信息的比率</p>
+<p>存在多个替代指标，如：</p>
+<ul>
+<li>搜索页面耗时长短</li>
+<li>用户是否点击任何结果</li>
+<li>是否尝试用不同方法获取正确信息</li>
+</ul>
+<p>也可以采用UER或人工评估</p>
+</li>
+<li><p>测量某课程用户参与度</p>
+<ul>
+<li>调查，询问学员如何参与课程，将调查回应作为一个代替指标</li>
+<li>UER。观察学员如何与课程互动</li>
+<li>回顾性分析。查看完成课程学员的共同行为</li>
+</ul>
+</li>
+<li><p>购物网站测试是否需要增加产品</p>
+<ul>
+<li>焦点小组</li>
+<li>数据（从其他购物网站获取外部数据）</li>
+</ul>
+</li>
+<li><p>某网站测试广告放置位置</p>
+<ul>
+<li>外部数据（用页面停留时间、鼠标悬浮事件等作为广告浏览信息的替代指标）</li>
+<li>UER，观察用户更关注哪些广告，找出相关指标。或使用历史数据评估相对点击量作为浏览量的一个替代指标</li>
+<li>回顾性分析</li>
+</ul>
+</li>
+</ul>
+<h4 id="指标定义和数据捕捉"><a href="#指标定义和数据捕捉" class="headerlink" title="指标定义和数据捕捉"></a>指标定义和数据捕捉</h4><p>高级概念——&gt;认识充分的定义，要经过：</p>
+<ul>
+<li>完全准确定义计算指标过程中要查看的数据</li>
+<li>指标如何概括（计算）</li>
+</ul>
+<p>是否真的理解指标中的变更能否由系统产生？（是否能辨别出不现实的变更）</p>
+<p>例子：如果计算点击概率？</p>
+<ul>
+<li><p>首先判断我们观察的事件中，哪些对该指标有价值，怎样结合这些事件</p>
+<p>（如观察点击总量和网页浏览总量 或查看用户的cookie，访问网页时是否产生点击事件）</p>
+</li>
+</ul>
+<p>其他细节问题</p>
+<ul>
+<li>数据统计的时间区间。如统计一天的点击概率，访问网页和点击按钮之间跨越了某天的0点，是将两个事件分开还是作为同一天的数据。</li>
+<li>数据统计的技术问题。如JS pings发送204请求来捕获点击率，但某些浏览器不支持JS或会产生失效率，点击率会因为浏览器、平台不同而产生差别，必须明白差异产生的真正原因</li>
+</ul>
+<h4 id="指标定义示例"><a href="#指标定义示例" class="headerlink" title="指标定义示例"></a>指标定义示例</h4><p>高级指标：点击概率 $$click-through-probability=\frac{user-who- click}{user-who-visit}$$</p>
+<p>如何完全定义：</p>
+<ul>
+<li>两个事件是否来自同一用户？（可通过cookie判断）</li>
+<li>可以将同一用户（或cookie）多久内的访问量算作一次（选取时间段）</li>
+</ul>
+<p>完全定义1：Cookie 概率 for each time interval $$\frac{cookies-that-clicks}{cookies}$$</p>
+<p>完全定义2：网页流量概率 for each time interval $$\frac{pageviews-who -clicks}{pageviews}$$</p>
+<p>完全定义3：总点击数除以网页浏览量总数——比例$$\frac{clicks}{pageviews}$$</p>
+<h4 id="过滤和分隔"><a href="#过滤和分隔" class="headerlink" title="过滤和分隔"></a>过滤和分隔</h4><p>指标筛选：</p>
+<p>如果做出的更改只影响部分流量，如影响某个国家或某个平台的流量，或指标只针对部分群体，筛选指标可以使结果更具敏感性、数据不出现偏差。</p>
+<p>同时在筛选时，要注意检查确保不是由于网站、指标或日志导致一些怪异的用户行为会话。</p>
+<p>如何检查:</p>
+<p>切分数据。（在不相交的集合中计算指标）</p>
+<p>进行是否筛选指标的分析时，要明确期望或不期望发生的变化，在查看数据时才能发现是否存在问题。</p>
+<p>示例：</p>
+<p>分隔后，查看数据的各个部分对于评估指标各部分差异很有作用。</p>
+<p>如统计总活跃cookie数量随时间变化的趋势，得到过去四周中每天活跃的cookie数量，发现一些固定的周间变化以及一个突出的峰值，为核实峰值的出现是否出于偶然可以用每个数据点除以一周前的对应数据点或除以一年前的对应数据点，如果依然出现显眼的峰值，则说明峰值不是由周内或年内的特定因素下的变化产生的。</p>
+<p>此时可以查看群体各部分的该指标，观察峰值在各部分统一出现还是由某一部分造成，确定了问题出现的部分，可以更好地确定异常值是否由异常行为造成。</p>
+<p>现在，假设网页中JS的点击跟踪可能有问题（移动端和PC端记录次数不同），怎样的方法可能可以确认该问题是否实际存在？</p>
+<ul>
+<li>对不同平台分别绘制点击概率和点击率变化图形加以比较</li>
+</ul>
+<p><img src="/2017/05/28/A-B-test-选择和测量指标/1.png" alt=""></p>
+<p>移动端点击概率实际较低但点击率明显更高，说明点击跟踪出现了问题</p>
+<h4 id="总指标（summary-metrics）"><a href="#总指标（summary-metrics）" class="headerlink" title="总指标（summary metrics）"></a>总指标（summary metrics）</h4><p>独立事件的总结，如：总访问cookie，进而总结为每周平均访问量等</p>
+<p>当事件测量指标为数字时，就产生了一整套供选择的总指标（mean，median，50%，75%）</p>
+<p>选择具体描述时，需要考虑其敏感性和稳健性，也要根据指标分布状态来选择描述值</p>
+<p>（敏感性：能够在未来测试中发现变更）</p>
+<p>常用总指标类型：</p>
+<ul>
+<li>sums/counts</li>
+<li>distribution metrics（mean、median、percentile）</li>
+<li>probabilities /rates</li>
+<li>ratios</li>
+</ul>
+<h4 id="敏感性和健壮性"><a href="#敏感性和健壮性" class="headerlink" title="敏感性和健壮性"></a>敏感性和健壮性</h4><p>健壮性：当不发生一些有意义的事件时，指标不会发生太大改变。</p>
+<p>如：mean容易受异常值影响，健壮性差。</p>
+<p>如何测量：</p>
+<ul>
+<li><p>进行实验或使用已有实验</p>
+<p>做出更改，查看关注的指标是否做出响应</p>
+<p>或测试未作出修改时，指标是否产生差异</p>
+</li>
+<li><p>对记录进行回顾性分析</p>
+<p>看之前做出更改时指标的变化或直接查看指标历史分析出现变更的原因</p>
+</li>
+</ul>
+<p>示例：</p>
+<p>指标：视频加载延迟时长</p>
+<p>采用某描述值作为总指标。</p>
+<ul>
+<li><p>回顾性分析</p>
+<p>对于具有可比性的几个视频（如大小相等）绘制延迟分布密度曲线，选取不同的总指标，查看变化：</p>
+<p><img src="/2017/05/28/A-B-test-选择和测量指标/2.png" alt=""></p>
+<p>90%、99%分布有波动，不够稳健。</p>
+<p>（当然也需要事先排除导致波动出现的一些潜在因素）</p>
+</li>
+<li><p>利用已有的实验</p>
+<p>利用之前做过的关于调整分辨率的实验绘制密度曲线并查看总指标的变化</p>
+<p><img src="/2017/05/28/A-B-test-选择和测量指标/3.png" alt=""></p>
+<p>median、80%指标未发生我们关心的更改、敏感性差。</p>
+</li>
+</ul>
+<h4 id="偏差：相对？or-绝对？"><a href="#偏差：相对？or-绝对？" class="headerlink" title="偏差：相对？or 绝对？"></a>偏差：相对？or 绝对？</h4><p>确定如何计算实验组和对照组之间的比较。</p>
+<p>刚建立实验、指标体系时，通常采取差值。</p>
+<p>差值存在：</p>
+<ul>
+<li><p>绝对变化</p>
+</li>
+<li><p>相对变化（百分比变化）</p>
+<p>优势：</p>
+<ul>
+<li>仅需要选择一个随时间趋于稳定的practical significance boundary</li>
+<li>指标可能随时间变化，使用相对变化可以保持practical significance boundary不变</li>
+</ul>
+<p>劣势：</p>
+<ul>
+<li>差异性</li>
+</ul>
+<p>（对指标不够了解时，尽量使用绝对偏差）</p>
+</li>
+</ul>
+<h4 id="差异性（variability）"><a href="#差异性（variability）" class="headerlink" title="差异性（variability）"></a>差异性（variability）</h4><p>从统计学角度对差异性提出更严谨的定义</p>
+<p>计算方式：</p>
+<ul>
+<li>理论计算（对于一些标准的数据，如人口统计数据）得出置信区间</li>
+</ul>
+<p>示例：</p>
+<p>计算置信区间，首先需要：</p>
+<ul>
+<li>指标方差（或标准差）</li>
+<li>指标分布情况</li>
+</ul>
+<p>如当指标呈现二项分布</p>
+<p>$$SE=\sqrt{\frac{\hat p(1-\hat p)}{N}}$$</p>
+<p>N越大，二项分布越趋于正态分布</p>
+<p>其他指标分布形式及方差计算：</p>
+<p><img src="/2017/05/28/A-B-test-选择和测量指标/4.png" alt=""></p>
+<ul>
+<li>中位数、百分比的分布取决于基础数据分布</li>
+<li>count往往更易于分析，差异通常成正态分布，差异的方差为各变量方差之和</li>
+<li>概率（比率）通常会呈泊松分布，差异的方差为均值</li>
+</ul>
+<h4 id="非参数方法"><a href="#非参数方法" class="headerlink" title="非参数方法"></a>非参数方法</h4><ul>
+<li>针对难以计算出方差的指标。</li>
+<li>无需对分布情况作出假设</li>
+<li>计算可能更复杂，但实用</li>
+</ul>
+<p>如：</p>
+<h5 id="符号检验"><a href="#符号检验" class="headerlink" title="符号检验"></a>符号检验</h5><p>如开展为期二十天的A/B test，前十五天，实验组测量结果均高于对照组，可以通过差异符号检验，用类似二项分布方法来计算结果发生的概率</p>
+<p>缺点：</p>
+<p>无法估计效应的大小</p>
+<p>优点：</p>
+<p>操作简单适用性强</p>
+<p>如何检测达到实际显著性水平：</p>
+<ul>
+<li>根据样本数据计算经验方差（数据正态分布时可直接用于计算置信区间）</li>
+<li>计算非参数置信区间（数据分布不太标准或想要更严谨的分析）</li>
+</ul>
+<h4 id="实证差异性"><a href="#实证差异性" class="headerlink" title="实证差异性"></a>实证差异性</h4><p>对于指标方差，需要对数据潜在分布作出假设。</p>
+<p>对于复杂指标，分布可能会比较离奇，需要对方差empirical estimate而不是通过分析计算。</p>
+<p>然而即使是简单指标，对方差的估计还是会出现低估状况。</p>
+<p>如何解决：</p>
+<ul>
+<li><p>运行多个A/A test</p>
+<p>对比两个对照组，检测内部潜在的差异性</p>
+<p>可用于测试复杂的实验体系</p>
+</li>
+<li><p>运行一个大规模A/A test</p>
+<p>利用统计学中的bootstrap（自助法），将样本随机划分为多个小样本群并进行对比</p>
+<p>对于比较复杂的指标，可以采用bootstrap对比分析估计结果，若不一致，可以考虑运行多个A/A test</p>
+</li>
+</ul>
+<h4 id="关于A-A-test"><a href="#关于A-A-test" class="headerlink" title="关于A/A test"></a>关于A/A test</h4><ul>
+<li>已计算置信区间，检查A/A test结果是否符合预期（完整性检查）</li>
+<li>预测方差，计算置信区间</li>
+<li>从A/A test结果中直接估计置信区间</li>
+</ul>
+
       
 
       
@@ -288,7 +574,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/05/19/A-B-test-选择和测量指标/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/05/28/A-B-test-选择和测量指标/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -302,20 +588,15 @@
   
 <nav id="article-nav">
   
-    <a href="/2017/05/19/机器学习入门-1-朴素贝叶斯/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2017/05/26/《利用Python进行数据分析》笔记-数据规整化：清理、转换、合并、重塑/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          机器学习入门(1) 朴素贝叶斯
+          《利用Python进行数据分析》笔记-数据规整化：清理、转换、合并、重塑
         
       </div>
     </a>
   
-  
-    <a href="/2017/05/22/机器学习入门-2-支持向量机-SVM/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">机器学习入门(2) 支持向量机(SVM)</div>
-      <i class="icon-circle-right"></i>
-    </a>
   
 </nav>
 

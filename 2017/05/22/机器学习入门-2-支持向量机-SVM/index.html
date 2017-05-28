@@ -18,7 +18,10 @@
 <meta property="og:image" content="http://yoursite.com/2017/05/22/机器学习入门-2-支持向量机-SVM/1.png">
 <meta property="og:image" content="http://yoursite.com/2017/05/22/机器学习入门-2-支持向量机-SVM/2.png">
 <meta property="og:image" content="http://yoursite.com/2017/05/22/机器学习入门-2-支持向量机-SVM/3.png">
-<meta property="og:updated_time" content="2017-05-23T02:31:58.727Z">
+<meta property="og:image" content="http://yoursite.com/2017/05/22/机器学习入门-2-支持向量机-SVM/gamma.png">
+<meta property="og:image" content="http://yoursite.com/2017/05/22/机器学习入门-2-支持向量机-SVM/c1.png">
+<meta property="og:image" content="http://yoursite.com/2017/05/22/机器学习入门-2-支持向量机-SVM/c1000.png">
+<meta property="og:updated_time" content="2017-05-23T13:42:35.333Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="机器学习入门(2) 支持向量机(SVM)">
 <meta name="twitter:description" content="分隔线算法：支持向量机（support vector machine） 核心：寻找介于两个类别的数据之间的一条separating line/hyperplane(超平面) 输入：两个类别的数据。输出：一条分隔线 最优分隔线好的分隔线的特点：最大化了到两分类最近点的距离（通常称为间隔:margin） 健壮性(robust)强，不容易出现分类误差（不易受noise干扰） SVM内部原理：to  ma">
@@ -226,6 +229,36 @@
 <h4 id="kernel-trick"><a href="#kernel-trick" class="headerlink" title="kernel trick"></a>kernel trick</h4><p>存在一些函数，获取低维度输入空间或特征空间，将其映射到高维度空间。（将不可线性分离的内容变为可分离）</p>
 <p>称为<strong>核函数</strong> 。</p>
 <p>可以应用kernel trick将输入空间扩大维度，再使用SVM分离数据点。</p>
+<p>可以为决策函数制定不同的核函数，如在当前使用的SVC(支持向量分类器——一种SVM)中：</p>
+<blockquote>
+<p>class sklearn.svm.<code>SVC</code>(<em>C=1.0</em>, <em>kernel=’rbf’</em>, <em>degree=3</em>, <em>gamma=’auto’</em>, <em>coef0=0.0</em>, <em>shrinking=True</em>, <em>probability=False</em>, <em>tol=0.001</em>, <em>cache_size=200</em>, <em>class_weight=None</em>, <em>verbose=False</em>, <em>max_iter=-1</em>, <em>decision_function_shape=None</em>, <em>random_state=None</em>)</p>
+</blockquote>
+<p>可以通过 <code>kernel</code> 参数指定核的类型</p>
+<p>如生成直线决策边界</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">clf=svm.SVC(kernel=&apos;linear&apos;)</div></pre></td></tr></table></figure>
+<p>可以选用的kernel类型：</p>
+<p>linear（线性）    poly（多项式）    rbf（径向基函数）    sigmoid（S形）等</p>
+<p>也可以调用自己编写的核函数。</p>
+<h4 id="其他参数"><a href="#其他参数" class="headerlink" title="其他参数"></a>其他参数</h4><h5 id="gamma"><a href="#gamma" class="headerlink" title="gamma"></a>gamma</h5><blockquote>
+<p>Kernel coefficient for ‘rbf’, ‘poly’ and ‘sigmoid’. Higher the value of gamma, will try to exact  fit the as per training data set i.e. generalization error and cause over-fitting problem.</p>
+<p>If gamma is ‘auto’ then 1/n_features will be used instead.</p>
+</blockquote>
+<p>gamma值越高，训练程度越精准，也容易导致过拟合现象</p>
+<p>如gamma=1000，kernel=’rbf’时分类图像：</p>
+<p><img src="/2017/05/22/机器学习入门-2-支持向量机-SVM/gamma.png" alt=""></p>
+<h5 id="C（惩罚系数）"><a href="#C（惩罚系数）" class="headerlink" title="C（惩罚系数）"></a>C（惩罚系数）</h5><p>C用来控制光滑决策边界与正确分类所有训练点之间的度。C越大，相当于惩罚松弛变量，希望松弛变量接近0，即对误分类的惩罚增大，趋向于对训练集全分对的情况，这样对训练集测试时准确率很高，但泛化能力弱。C值小，对误分类的惩罚减小，允许容错，将他们当成噪声点，泛化能力较强。</p>
+<p>如对比C=1(默认值)与C=1000时的分类：</p>
+<p><img src="/2017/05/22/机器学习入门-2-支持向量机-SVM/c1.png" alt=""><img src="/2017/05/22/机器学习入门-2-支持向量机-SVM/c1000.png" alt=""></p>
+<h4 id="过度拟合（overfitting）"><a href="#过度拟合（overfitting）" class="headerlink" title="过度拟合（overfitting）"></a>过度拟合（overfitting）</h4><p>过拟合：算法产生了过于复杂的分类结果。</p>
+<p>上述几个参数的选取均可能导致过度拟合。</p>
+<p>可以使用测试集测试检测出现过度拟合的程度。    </p>
+<h4 id="SVM的优缺点"><a href="#SVM的优缺点" class="headerlink" title="SVM的优缺点"></a>SVM的优缺点</h4><p>优点：在具有复杂领域和明显分隔边界的情况下表现良好</p>
+<p>不足：在海量数据集和noise过多的数据集中表现一般（处理时间长，处理独立证据不如bayes）</p>
+<p>在某些使用情境下，对算法速度要求非常高，如:</p>
+<ul>
+<li>标记信用卡诈骗，并在诈骗交易完成前进行拦截</li>
+<li>声音识别，如 Siri</li>
+</ul>
 
       
 
@@ -335,15 +368,20 @@
   
 <nav id="article-nav">
   
-    <a href="/2017/05/19/A-B-test-选择和测量指标/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2017/05/19/机器学习入门-1-朴素贝叶斯/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          A/B test 选择和测量指标
+          机器学习入门(1) 朴素贝叶斯
         
       </div>
     </a>
   
+  
+    <a href="/2017/05/26/《利用Python进行数据分析》笔记-数据规整化：清理、转换、合并、重塑/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">《利用Python进行数据分析》笔记-数据规整化：清理、转换、合并、重塑</div>
+      <i class="icon-circle-right"></i>
+    </a>
   
 </nav>
 

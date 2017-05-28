@@ -173,6 +173,80 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-LeetCode-196-Delete-Duplicate-Emails" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/05/08/LeetCode-196-Delete-Duplicate-Emails/">LeetCode 196.Delete Duplicate Emails</a>
+    </h1>
+  
+
+        
+        <a href="/2017/05/08/LeetCode-196-Delete-Duplicate-Emails/" class="archive-article-date">
+  	<time datetime="2017-05-08T04:19:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-08</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>问题描述：</p>
+<p>Write a SQL query to delete all duplicate email entries in a table named <code>Person</code>, keeping only unique emails based on its <em>smallest</em> <strong>Id</strong>.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">+----+------------------+</div><div class="line">| Id | Email            |</div><div class="line">+----+------------------+</div><div class="line">| 1  | john@example.com |</div><div class="line">| 2  | bob@example.com  |</div><div class="line">| 3  | john@example.com |</div><div class="line">+----+------------------+</div><div class="line">Id is the primary key column for this table.</div></pre></td></tr></table></figure>
+<p>For example, after running your query, the above <code>Person</code> table should have the following rows:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">+----+------------------+</div><div class="line">| Id | Email            |</div><div class="line">+----+------------------+</div><div class="line">| 1  | john@example.com |</div><div class="line">| 2  | bob@example.com  |</div><div class="line">+----+------------------+</div></pre></td></tr></table></figure>
+<p>问题求解：</p>
+<p>要求在原表中对Email重复的记录进行删除，仅保留Id值最小的一条记录。</p>
+<p>涉及到多表删除。</p>
+<p>先根据Email进行分组，筛选出组内记录数大于1（即包含重复记录）的分组，选取组内最小Id值和对应Email字段作为一张新表。（则新表包含唯一Email记录）</p>
+<p>对照新表删去原表中Email字段相同但ID号大于新表的记录（即得到与新表相同的结果）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">DELETE t1 FROM Person as t1 ,</div><div class="line">(SELECT MIN(Id) as ID,Email FROM Person GROUP BY Email HAVING count(Email)&gt;1) as t2 </div><div class="line">WHERE t1.Email=t2.Email </div><div class="line">AND t1.ID&gt;t2.ID;</div></pre></td></tr></table></figure>
+<p>也可以连接后从原表删除指定记录：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">DELETE t1 FROM Person as t1 </div><div class="line">left join (SELECT MIN(Id) as ID,Email FROM Person GROUP BY Email HAVING count(Email)&gt;1) as t2</div><div class="line">on t1.Email=t2.Email </div><div class="line">WHERE t1.ID&gt;t2.ID;</div></pre></td></tr></table></figure>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/SQL/" class="article-tag-list-link color4">SQL</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/05/08/LeetCode-196-Delete-Duplicate-Emails/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
     <article id="post-LeetCode-197-Rising-Temperature" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -824,77 +898,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2017/05/03/《利用Python进行数据分析》范例数据集-MovieLens/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-《利用Python进行数据分析》范例数据集-usagov-bitly-data" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/03/《利用Python进行数据分析》范例数据集-usagov-bitly-data/">《利用Python进行数据分析》范例数据集:usagov_bitly_data</a>
-    </h1>
-  
-
-        
-        <a href="/2017/05/03/《利用Python进行数据分析》范例数据集-usagov-bitly-data/" class="archive-article-date">
-  	<time datetime="2017-05-03T08:56:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-03</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>读取生成.gov或.mil短链接的用户数据文本文件（文本中每行的为JSON）</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">path=<span class="string">'/home/milhaven1733/Desktop/Data Analyst/pydata-book-master/ch02/usagov_bitly_data2012-03-16-1331923249.txt'</span></div></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">open(path).readline()</div></pre></td></tr></table></figure>
-<p>Outs:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&apos;&#123; &quot;a&quot;: &quot;Mozilla\\/5.0 (Windows NT 6.1; WOW64) AppleWebKit\\/535.11 (KHTML, like Gecko) Chrome\\/17.0.963.78 Safari\\/535.11&quot;, &quot;c&quot;: &quot;US&quot;, &quot;nk&quot;: 1, &quot;tz&quot;: &quot;America\\/New_York&quot;, &quot;gr&quot;: &quot;MA&quot;, &quot;g&quot;: &quot;A6qOVH&quot;, &quot;h&quot;: &quot;wfLQtf&quot;, &quot;l&quot;: &quot;orofrog&quot;, &quot;al&quot;: &quot;en-US,en;q=0.8&quot;, &quot;hh&quot;: &quot;1.usa.gov&quot;, &quot;r&quot;: &quot;http:\\/\\/www.facebook.com\\/l\\/7AQEFzjSi\\/1.usa.gov\\/wfLQtf&quot;, &quot;u&quot;: &quot;http:\\/\\/www.ncbi.nlm.nih.gov\\/pubmed\\/22415991&quot;, &quot;t&quot;: 1331923247, &quot;hc&quot;: 1331822918, &quot;cy&quot;: &quot;Danvers&quot;, &quot;ll&quot;: [ 42.576698, -70.954903 ] &#125;\n&apos;</div></pre></td></tr></table></figure>
-<p>用Python的JSON模块将JSON字符串转换为Python字典对象</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> json</div></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">records=[json.loads(line) <span class="keyword">for</span> line <span class="keyword">in</span> open(path)]</div></pre></td></tr></table></figure>
-        
-          <a class="article-more-a" href="/2017/05/03/《利用Python进行数据分析》范例数据集-usagov-bitly-data/#more">查看更多 >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/数据分析/" class="article-tag-list-link color5">数据分析</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/05/03/《利用Python进行数据分析》范例数据集-usagov-bitly-data/">展开全文 >></a>
         </p>
       
 

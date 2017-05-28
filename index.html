@@ -173,6 +173,363 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-A-B-test-选择和测量指标" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/05/28/A-B-test-选择和测量指标/">A/B test 选择和测量指标</a>
+    </h1>
+  
+
+        
+        <a href="/2017/05/28/A-B-test-选择和测量指标/" class="archive-article-date">
+  	<time datetime="2017-05-28T14:36:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-28</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h4><p>实验指标的创建过程：</p>
+<ul>
+<li>Define [定义一套指标]（从指标的高层概念到数据捕获方面的实际意义）</li>
+<li>Build intuition [建立直觉]（关于指标敏感性和稳健性）</li>
+<li>Characterize [描述]（关于指标差异性）</li>
+</ul>
+        
+          <a class="article-more-a" href="/2017/05/28/A-B-test-选择和测量指标/#more">查看更多 >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/数据分析/" class="article-tag-list-link color5">数据分析</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/05/28/A-B-test-选择和测量指标/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-《利用Python进行数据分析》笔记-数据规整化：清理、转换、合并、重塑" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/05/26/《利用Python进行数据分析》笔记-数据规整化：清理、转换、合并、重塑/">《利用Python进行数据分析》笔记-数据规整化：清理、转换、合并、重塑</a>
+    </h1>
+  
+
+        
+        <a href="/2017/05/26/《利用Python进行数据分析》笔记-数据规整化：清理、转换、合并、重塑/" class="archive-article-date">
+  	<time datetime="2017-05-26T02:27:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-26</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="合并数据集"><a href="#合并数据集" class="headerlink" title="合并数据集"></a>合并数据集</h3><h4 id="SQL风格的merge"><a href="#SQL风格的merge" class="headerlink" title="SQL风格的merge"></a>SQL风格的merge</h4><p>pandas的merge方法默认将重叠的列名作为键，也可以显式指定。</p>
+<p>连接方式默认为内连接</p>
+<p>（多对多连接产生笛卡尔积）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">df1=DataFrame(&#123;&apos;lkey&apos;:[&apos;b&apos;,&apos;b&apos;,&apos;a&apos;,&apos;c&apos;,&apos;a&apos;,&apos;b&apos;],&apos;data1&apos;:range(6)&#125;)</div><div class="line">df2=DataFrame(&#123;&apos;rkey&apos;:[&apos;a&apos;,&apos;b&apos;,&apos;a&apos;,&apos;b&apos;,&apos;d&apos;],&apos;data2&apos;:range(5)&#125;)</div><div class="line">pd.merge(df1,df2,left_on=&apos;lkey&apos;,right_on=&apos;rkey&apos;)</div></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>data1</th>
+<th>lkey</th>
+<th>data2</th>
+<th>rkey</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>0</td>
+<td>b</td>
+<td>1</td>
+<td>b</td>
+</tr>
+<tr>
+<td>1</td>
+<td>0</td>
+<td>b</td>
+<td>3</td>
+<td>b</td>
+</tr>
+<tr>
+<td>2</td>
+<td>1</td>
+<td>b</td>
+<td>1</td>
+<td>b</td>
+</tr>
+<tr>
+<td>3</td>
+<td>1</td>
+<td>b</td>
+<td>3</td>
+<td>b</td>
+</tr>
+<tr>
+<td>4</td>
+<td>5</td>
+<td>b</td>
+<td>1</td>
+<td>b</td>
+</tr>
+<tr>
+<td>5</td>
+<td>5</td>
+<td>b</td>
+<td>3</td>
+<td>b</td>
+</tr>
+<tr>
+<td>6</td>
+<td>2</td>
+<td>a</td>
+<td>0</td>
+<td>a</td>
+</tr>
+<tr>
+<td>7</td>
+<td>2</td>
+<td>a</td>
+<td>2</td>
+<td>a</td>
+</tr>
+<tr>
+<td>8</td>
+<td>4</td>
+<td>a</td>
+<td>0</td>
+<td>a</td>
+</tr>
+<tr>
+<td>9</td>
+<td>4</td>
+<td>a</td>
+<td>2</td>
+<td>a</td>
+</tr>
+</tbody>
+</table>
+<p>要根据多个键进行合并，可传入由列名组成的list</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">left=DataFrame(&#123;&apos;key1&apos;:[&apos;foo&apos;,&apos;foo&apos;,&apos;bar&apos;],&apos;key2&apos;:[&apos;one&apos;,&apos;two&apos;,&apos;one&apos;],&apos;lval&apos;:[1,2,3]&#125;)</div><div class="line">right=DataFrame(&#123;&apos;key1&apos;:[&apos;foo&apos;,&apos;foo&apos;,&apos;bar&apos;,&apos;bar&apos;],&apos;key2&apos;:[&apos;one&apos;,&apos;one&apos;,&apos;one&apos;,&apos;two&apos;],&apos;lval&apos;:[4,5,6,7]&#125;)</div><div class="line">pd.merge(left,right,on=[&apos;key1&apos;,&apos;key2&apos;])</div></pre></td></tr></table></figure>
+<p>或：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">left=DataFrame(&#123;&apos;lkey1&apos;:[&apos;foo&apos;,&apos;foo&apos;,&apos;bar&apos;],&apos;lkey2&apos;:[&apos;one&apos;,&apos;two&apos;,&apos;one&apos;],&apos;lval&apos;:[1,2,3]&#125;)</div><div class="line">right=DataFrame(&#123;&apos;rkey1&apos;:[&apos;foo&apos;,&apos;foo&apos;,&apos;bar&apos;,&apos;bar&apos;],&apos;rkey2&apos;:[&apos;one&apos;,&apos;one&apos;,&apos;one&apos;,&apos;two&apos;],&apos;lval&apos;:[4,5,6,7]&#125;)</div><div class="line">pd.merge(left,right,left_on=[&apos;lkey1&apos;,&apos;lkey2&apos;],right_on=[&apos;rkey1&apos;,&apos;rkey2&apos;])</div></pre></td></tr></table></figure>
+<p>处理重复列名，可以使用suffixes选项指定附加在重叠列名上的字符后缀：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pd.merge(left,right,on=[&apos;key1&apos;],suffixes=(&apos;_x&apos;,&apos;_y&apos;))</div></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>key1</th>
+<th>key2_x</th>
+<th>lval</th>
+<th>key2_y</th>
+<th>rval</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>foo</td>
+<td>one</td>
+<td>1</td>
+<td>one</td>
+<td>4</td>
+</tr>
+<tr>
+<td>1</td>
+<td>foo</td>
+<td>one</td>
+<td>1</td>
+<td>one</td>
+<td>5</td>
+</tr>
+<tr>
+<td>2</td>
+<td>foo</td>
+<td>two</td>
+<td>2</td>
+<td>one</td>
+<td>4</td>
+</tr>
+<tr>
+<td>3</td>
+<td>foo</td>
+<td>two</td>
+<td>2</td>
+<td>one</td>
+<td>5</td>
+</tr>
+<tr>
+<td>4</td>
+<td>bar</td>
+<td>one</td>
+<td>3</td>
+<td>one</td>
+<td>6</td>
+</tr>
+<tr>
+<td>5</td>
+<td>bar</td>
+<td>one</td>
+<td>3</td>
+<td>two</td>
+<td>7</td>
+</tr>
+</tbody>
+</table>
+<h4 id="按索引合并"><a href="#按索引合并" class="headerlink" title="按索引合并"></a>按索引合并</h4><p>连接时，索引可以作为连接键——指定<code>left_index=Ture</code>或<code>right_index=True</code></p>
+<p>对于层次化索引，必须以列表形式说明作为合并键的多个列</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">left=DataFrame(&#123;&apos;key1&apos;:[&apos;Ohio&apos;,&apos;Ohio&apos;,&apos;Ohio&apos;,&apos;Nevada&apos;,&apos;Nevada&apos;],&apos;key2&apos;:[2000,2001,2002,2001,2002],&apos;data&apos;:range(5)&#125;)</div><div class="line">right=DataFrame(np.arange(12).reshape((6,2)),index=[[&apos;Nevada&apos;,&apos;Nevada&apos;,&apos;Ohio&apos;,&apos;Ohio&apos;,&apos;Ohio&apos;,&apos;Ohio&apos;],[2001,2000,2000,2000,2001,2002]],columns=[&apos;envent1&apos;,&apos;envent2&apos;])</div><div class="line">pd.merge(left,right,left_on=[&apos;key1&apos;,&apos;key2&apos;],right_index=True,how=&apos;left&apos;) #左外连接</div></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>data</th>
+<th>key1</th>
+<th>key2</th>
+<th>envent1</th>
+<th>envent2</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>0</td>
+<td>Ohio</td>
+<td>2000</td>
+<td>4.0</td>
+<td>5.0</td>
+</tr>
+<tr>
+<td>0</td>
+<td>0</td>
+<td>Ohio</td>
+<td>2000</td>
+<td>6.0</td>
+<td>7.0</td>
+</tr>
+<tr>
+<td>1</td>
+<td>1</td>
+<td>Ohio</td>
+<td>2001</td>
+<td>8.0</td>
+<td>9.0</td>
+</tr>
+<tr>
+<td>2</td>
+<td>2</td>
+<td>Ohio</td>
+<td>2002</td>
+<td>10.0</td>
+<td>11.0</td>
+</tr>
+<tr>
+<td>3</td>
+<td>3</td>
+<td>Nevada</td>
+<td>2001</td>
+<td>0.0</td>
+<td>1.0</td>
+</tr>
+<tr>
+<td>4</td>
+<td>4</td>
+<td>Nevada</td>
+<td>2002</td>
+<td>NaN</td>
+<td>NaN</td>
+</tr>
+</tbody>
+</table>
+<p>join方法可以更方便的实现索引合并</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">left.join(right,how=&apos;……&apos;)</div></pre></td></tr></table></figure>
+<p>还可以支持调用DF的某列与参数DF的索引之间的连接</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">left.join(right,on=&apos;left的列名&apos;)</div></pre></td></tr></table></figure>
+<p>轴向连接</p>
+<p>concat方法可以指定连接的轴向：（默认axis=0）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line">In [32]:</div><div class="line">s1=pd.Series([0,1],index=[&apos;a&apos;,&apos;b&apos;])</div><div class="line">s2=pd.Series([2,3,4],index=[&apos;c&apos;,&apos;d&apos;,&apos;e&apos;])</div><div class="line">s3=pd.Series([5,6],index=[&apos;f&apos;,&apos;g&apos;])</div><div class="line">s4=pd.concat([s1*5,s3])</div><div class="line">s4</div><div class="line">Out[32]:</div><div class="line">a    0</div><div class="line">b    5</div><div class="line">f    5</div><div class="line">g    6</div><div class="line">dtype: int64</div><div class="line"></div><div class="line">In [37]:</div><div class="line">pd.concat([s1,s4],axis=0)</div><div class="line">Out[37]:</div><div class="line">a    0</div><div class="line">b    1</div><div class="line">a    0</div><div class="line">b    5</div><div class="line">f    5</div><div class="line">g    6</div><div class="line">dtype: int64</div><div class="line">In [36]:</div><div class="line">inner</div><div class="line">pd.concat([s1,s4],axis=1,join=&apos;inner&apos;)</div><div class="line">Out[36]:</div><div class="line">	0	1</div><div class="line">a	0	0</div><div class="line">b	1	5</div></pre></td></tr></table></figure>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/数据分析/" class="article-tag-list-link color5">数据分析</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/05/26/《利用Python进行数据分析》笔记-数据规整化：清理、转换、合并、重塑/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
     <article id="post-机器学习入门-2-支持向量机-SVM" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -219,6 +576,36 @@
 <h4 id="kernel-trick"><a href="#kernel-trick" class="headerlink" title="kernel trick"></a>kernel trick</h4><p>存在一些函数，获取低维度输入空间或特征空间，将其映射到高维度空间。（将不可线性分离的内容变为可分离）</p>
 <p>称为<strong>核函数</strong> 。</p>
 <p>可以应用kernel trick将输入空间扩大维度，再使用SVM分离数据点。</p>
+<p>可以为决策函数制定不同的核函数，如在当前使用的SVC(支持向量分类器——一种SVM)中：</p>
+<blockquote>
+<p>class sklearn.svm.<code>SVC</code>(<em>C=1.0</em>, <em>kernel=’rbf’</em>, <em>degree=3</em>, <em>gamma=’auto’</em>, <em>coef0=0.0</em>, <em>shrinking=True</em>, <em>probability=False</em>, <em>tol=0.001</em>, <em>cache_size=200</em>, <em>class_weight=None</em>, <em>verbose=False</em>, <em>max_iter=-1</em>, <em>decision_function_shape=None</em>, <em>random_state=None</em>)</p>
+</blockquote>
+<p>可以通过 <code>kernel</code> 参数指定核的类型</p>
+<p>如生成直线决策边界</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">clf=svm.SVC(kernel=&apos;linear&apos;)</div></pre></td></tr></table></figure>
+<p>可以选用的kernel类型：</p>
+<p>linear（线性）    poly（多项式）    rbf（径向基函数）    sigmoid（S形）等</p>
+<p>也可以调用自己编写的核函数。</p>
+<h4 id="其他参数"><a href="#其他参数" class="headerlink" title="其他参数"></a>其他参数</h4><h5 id="gamma"><a href="#gamma" class="headerlink" title="gamma"></a>gamma</h5><blockquote>
+<p>Kernel coefficient for ‘rbf’, ‘poly’ and ‘sigmoid’. Higher the value of gamma, will try to exact  fit the as per training data set i.e. generalization error and cause over-fitting problem.</p>
+<p>If gamma is ‘auto’ then 1/n_features will be used instead.</p>
+</blockquote>
+<p>gamma值越高，训练程度越精准，也容易导致过拟合现象</p>
+<p>如gamma=1000，kernel=’rbf’时分类图像：</p>
+<p><img src="/2017/05/22/机器学习入门-2-支持向量机-SVM/gamma.png" alt=""></p>
+<h5 id="C（惩罚系数）"><a href="#C（惩罚系数）" class="headerlink" title="C（惩罚系数）"></a>C（惩罚系数）</h5><p>C用来控制光滑决策边界与正确分类所有训练点之间的度。C越大，相当于惩罚松弛变量，希望松弛变量接近0，即对误分类的惩罚增大，趋向于对训练集全分对的情况，这样对训练集测试时准确率很高，但泛化能力弱。C值小，对误分类的惩罚减小，允许容错，将他们当成噪声点，泛化能力较强。</p>
+<p>如对比C=1(默认值)与C=1000时的分类：</p>
+<p><img src="/2017/05/22/机器学习入门-2-支持向量机-SVM/c1.png" alt=""><img src="/2017/05/22/机器学习入门-2-支持向量机-SVM/c1000.png" alt=""></p>
+<h4 id="过度拟合（overfitting）"><a href="#过度拟合（overfitting）" class="headerlink" title="过度拟合（overfitting）"></a>过度拟合（overfitting）</h4><p>过拟合：算法产生了过于复杂的分类结果。</p>
+<p>上述几个参数的选取均可能导致过度拟合。</p>
+<p>可以使用测试集测试检测出现过度拟合的程度。    </p>
+<h4 id="SVM的优缺点"><a href="#SVM的优缺点" class="headerlink" title="SVM的优缺点"></a>SVM的优缺点</h4><p>优点：在具有复杂领域和明显分隔边界的情况下表现良好</p>
+<p>不足：在海量数据集和noise过多的数据集中表现一般（处理时间长，处理独立证据不如bayes）</p>
+<p>在某些使用情境下，对算法速度要求非常高，如:</p>
+<ul>
+<li>标记信用卡诈骗，并在诈骗交易完成前进行拦截</li>
+<li>声音识别，如 Siri</li>
+</ul>
 
       
 
@@ -243,67 +630,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2017/05/22/机器学习入门-2-支持向量机-SVM/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-A-B-test-选择和测量指标" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/19/A-B-test-选择和测量指标/">A/B test 选择和测量指标</a>
-    </h1>
-  
-
-        
-        <a href="/2017/05/19/A-B-test-选择和测量指标/" class="archive-article-date">
-  	<time datetime="2017-05-19T14:36:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-19</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/数据分析/" class="article-tag-list-link color5">数据分析</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/05/19/A-B-test-选择和测量指标/">展开全文 >></a>
         </p>
       
 
@@ -781,80 +1107,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2017/05/08/LeetCode-176-Second-Highest-Salary/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-LeetCode-196-Delete-Duplicate-Emails" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/08/LeetCode-196-Delete-Duplicate-Emails/">LeetCode 196.Delete Duplicate Emails</a>
-    </h1>
-  
-
-        
-        <a href="/2017/05/08/LeetCode-196-Delete-Duplicate-Emails/" class="archive-article-date">
-  	<time datetime="2017-05-08T04:19:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-08</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>问题描述：</p>
-<p>Write a SQL query to delete all duplicate email entries in a table named <code>Person</code>, keeping only unique emails based on its <em>smallest</em> <strong>Id</strong>.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">+----+------------------+</div><div class="line">| Id | Email            |</div><div class="line">+----+------------------+</div><div class="line">| 1  | john@example.com |</div><div class="line">| 2  | bob@example.com  |</div><div class="line">| 3  | john@example.com |</div><div class="line">+----+------------------+</div><div class="line">Id is the primary key column for this table.</div></pre></td></tr></table></figure>
-<p>For example, after running your query, the above <code>Person</code> table should have the following rows:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">+----+------------------+</div><div class="line">| Id | Email            |</div><div class="line">+----+------------------+</div><div class="line">| 1  | john@example.com |</div><div class="line">| 2  | bob@example.com  |</div><div class="line">+----+------------------+</div></pre></td></tr></table></figure>
-<p>问题求解：</p>
-<p>要求在原表中对Email重复的记录进行删除，仅保留Id值最小的一条记录。</p>
-<p>涉及到多表删除。</p>
-<p>先根据Email进行分组，筛选出组内记录数大于1（即包含重复记录）的分组，选取组内最小Id值和对应Email字段作为一张新表。（则新表包含唯一Email记录）</p>
-<p>对照新表删去原表中Email字段相同但ID号大于新表的记录（即得到与新表相同的结果）</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">DELETE t1 FROM Person as t1 ,</div><div class="line">(SELECT MIN(Id) as ID,Email FROM Person GROUP BY Email HAVING count(Email)&gt;1) as t2 </div><div class="line">WHERE t1.Email=t2.Email </div><div class="line">AND t1.ID&gt;t2.ID;</div></pre></td></tr></table></figure>
-<p>也可以连接后从原表删除指定记录：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">DELETE t1 FROM Person as t1 </div><div class="line">left join (SELECT MIN(Id) as ID,Email FROM Person GROUP BY Email HAVING count(Email)&gt;1) as t2</div><div class="line">on t1.Email=t2.Email </div><div class="line">WHERE t1.ID&gt;t2.ID;</div></pre></td></tr></table></figure>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/SQL/" class="article-tag-list-link color4">SQL</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/05/08/LeetCode-196-Delete-Duplicate-Emails/">展开全文 >></a>
         </p>
       
 

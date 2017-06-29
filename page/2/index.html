@@ -173,6 +173,140 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Pandas-学习笔记" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/05/11/Pandas-学习笔记/">《利用Python进行数据分析》笔记——pandas入门</a>
+    </h1>
+  
+
+        
+        <a href="/2017/05/11/Pandas-学习笔记/" class="archive-article-date">
+  	<time datetime="2017-05-10T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-11</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="数据结构相关"><a href="#数据结构相关" class="headerlink" title="数据结构相关"></a>数据结构相关</h3><h4 id="Series"><a href="#Series" class="headerlink" title="Series"></a>Series</h4><p>pandas的isnull、notnull函数可用于检测缺失数据：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">aSer</div><div class="line">Out[3]:</div><div class="line">AXP      86.40</div><div class="line">CSCO    122.64</div><div class="line">BA       99.44</div><div class="line">AAPL       NaN</div><div class="line">dtype: object</div><div class="line">In [4]:</div><div class="line">pd.isnull(aSer)</div><div class="line">Out[4]:</div><div class="line">AXP     False</div><div class="line">CSCO    False</div><div class="line">BA      False</div><div class="line">AAPL     True</div><div class="line">dtype: bool</div><div class="line">In [5]:</div><div class="line">pd.notnull(aSer)</div><div class="line">Out[5]:</div><div class="line">AXP      True</div><div class="line">CSCO     True</div><div class="line">BA       True</div><div class="line">AAPL    False</div><div class="line">dtype: bool</div></pre></td></tr></table></figure>
+<p>Series的索引可以通过赋值方式就地修改。</p>
+        
+          <a class="article-more-a" href="/2017/05/11/Pandas-学习笔记/#more">查看更多 >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/数据分析/" class="article-tag-list-link color5">数据分析</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/05/11/Pandas-学习笔记/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-LeetCode-176-Second-Highest-Salary" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/05/08/LeetCode-176-Second-Highest-Salary/">LeetCode 176.Second Highest Salary</a>
+    </h1>
+  
+
+        
+        <a href="/2017/05/08/LeetCode-176-Second-Highest-Salary/" class="archive-article-date">
+  	<time datetime="2017-05-08T04:40:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-08</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>问题描述：</p>
+<p>Write a SQL query to get the second highest salary from the <code>Employee</code> table.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">+----+--------+</div><div class="line">| Id | Salary |</div><div class="line">+----+--------+</div><div class="line">| 1  | 100    |</div><div class="line">| 2  | 200    |</div><div class="line">| 3  | 300    |</div><div class="line">+----+--------+</div></pre></td></tr></table></figure>
+<p>For example, given the above Employee table, the second highest salary is <code>200</code>. If there is no second highest salary, then the query should return <code>null</code>.</p>
+<p>问题求解：</p>
+<p>可以先查询出最高的Salary，再从原表中选取Salary低于此最高值的记录作为结果，最后再利用max函数选取结果中的最大值，即第二高的Salary。</p>
+<p>注意提交结果时使用题目指定的别名。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">SELECT MAX(Salary) AS SecondHighestSalary </div><div class="line">FROM Employee </div><div class="line">WHERE Salary&lt;(SELECT MAX(Salary) FROM Employee);</div></pre></td></tr></table></figure>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/SQL/" class="article-tag-list-link color4">SQL</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/05/08/LeetCode-176-Second-Highest-Salary/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
     <article id="post-LeetCode-196-Delete-Duplicate-Emails" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -735,189 +869,9 @@
 
 
   
-    <article id="post-《利用Python进行数据分析》范例数据集-babynames" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/04/《利用Python进行数据分析》范例数据集-babynames/">《利用Python进行数据分析》范例数据集_babynames</a>
-    </h1>
-  
-
-        
-        <a href="/2017/05/04/《利用Python进行数据分析》范例数据集-babynames/" class="archive-article-date">
-  	<time datetime="2017-05-04T10:34:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-04</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>《利用Python进行数据分析》范例数据集-babynames</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</div></pre></td></tr></table></figure>
-<p>载入包含1880年美国新出生婴儿名字统计数据的文件</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">path=<span class="string">'/home/milhaven1733/Desktop/Data Analyst/pydata-book-master/ch02/names/yob1880.txt'</span></div></pre></td></tr></table></figure>
-<p>加载为DataFrame</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">names1880=pd.read_csv(path,names=[<span class="string">'names'</span>,<span class="string">'sex'</span>,<span class="string">'birth'</span>])</div></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">names1880.head()</div></pre></td></tr></table></figure>
-<table>
-<thead>
-<tr>
-<th></th>
-<th>names</th>
-<th>sex</th>
-<th>birth</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>0</td>
-<td>Mary</td>
-<td>F</td>
-<td>7065</td>
-</tr>
-<tr>
-<td>1</td>
-<td>Anna</td>
-<td>F</td>
-<td>2604</td>
-</tr>
-<tr>
-<td>2</td>
-<td>Emma</td>
-<td>F</td>
-<td>2003</td>
-</tr>
-<tr>
-<td>3</td>
-<td>Elizabeth</td>
-<td>F</td>
-<td>1939</td>
-</tr>
-<tr>
-<td>4</td>
-<td>Minnie</td>
-<td>F</td>
-<td>1746</td>
-</tr>
-</tbody>
-</table>
-        
-          <a class="article-more-a" href="/2017/05/04/《利用Python进行数据分析》范例数据集-babynames/#more">查看更多 >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/数据分析/" class="article-tag-list-link color5">数据分析</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/05/04/《利用Python进行数据分析》范例数据集-babynames/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-《利用Python进行数据分析》范例数据集-MovieLens" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/03/《利用Python进行数据分析》范例数据集-MovieLens/">《利用Python进行数据分析》范例数据集_MovieLens</a>
-    </h1>
-  
-
-        
-        <a href="/2017/05/03/《利用Python进行数据分析》范例数据集-MovieLens/" class="archive-article-date">
-  	<time datetime="2017-05-03T14:27:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-03</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</div></pre></td></tr></table></figure>
-<p>加载.dat文件中的数据：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">unames=[<span class="string">'user_id'</span>,<span class="string">'gender'</span>,<span class="string">'age'</span>,<span class="string">'occupation'</span>,<span class="string">'zip'</span>]</div><div class="line">path=<span class="string">'/home/milhaven1733/Desktop/Data Analyst/pydata-book-master/ch02/movielens/users.dat'</span></div><div class="line">users=pd.read_table(path,sep=<span class="string">'::'</span>,header=<span class="keyword">None</span>,names=unames,engine = <span class="string">'python'</span>)</div></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">rnames=[<span class="string">'user_id'</span>,<span class="string">'movie_id'</span>,<span class="string">'rating'</span>,<span class="string">'timestamp'</span>]</div><div class="line">path=<span class="string">'/home/milhaven1733/Desktop/Data Analyst/pydata-book-master/ch02/movielens/ratings.dat'</span></div><div class="line">ratings=pd.read_table(path,sep=<span class="string">'::'</span>,header=<span class="keyword">None</span>,names=rnames,engine = <span class="string">'python'</span>)</div></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">mnames=[<span class="string">'movie_id'</span>,<span class="string">'title'</span>,<span class="string">'genres'</span>]</div><div class="line">path=<span class="string">'/home/milhaven1733/Desktop/Data Analyst/pydata-book-master/ch02/movielens/movies.dat'</span></div><div class="line">movies=pd.read_table(path,sep=<span class="string">'::'</span>,header=<span class="keyword">None</span>,names=mnames,engine = <span class="string">'python'</span>)</div></pre></td></tr></table></figure>
-        
-          <a class="article-more-a" href="/2017/05/03/《利用Python进行数据分析》范例数据集-MovieLens/#more">查看更多 >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/数据分析/" class="article-tag-list-link color5">数据分析</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/05/03/《利用Python进行数据分析》范例数据集-MovieLens/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
+      <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
     </nav>
   
 

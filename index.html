@@ -173,6 +173,219 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-A-B-test-分析结果" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/06/08/A-B-test-分析结果/">A/B test 分析结果</a>
+    </h1>
+  
+
+        
+        <a href="/2017/06/08/A-B-test-分析结果/" class="archive-article-date">
+  	<time datetime="2017-06-08T02:43:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-08</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h4><p>针对实验结果作出分析，从采集的数据中得出结论。</p>
+<ul>
+<li>Sanity checks</li>
+<li>single metric</li>
+<li>multiple metric</li>
+<li>gotchas（陷阱）</li>
+</ul>
+<h4 id="健全性检查"><a href="#健全性检查" class="headerlink" title="健全性检查"></a>健全性检查</h4><p>在得到实验结果之前，需要进行健全性检查确保已恰当的完成了实验。</p>
+<p>可能导致实验结果无效的环节：</p>
+<ul>
+<li>实验分配错误导致实验组与对照组无法进行对比。</li>
+<li>对于实验组和对照组采用了额不同的筛选条件</li>
+<li>没有采集到目标对象的事件</li>
+</ul>
+<p>如何测试：</p>
+<ul>
+<li><p>检查基于分组单元的不变量——总体规模指标</p>
+<p>检查实验组和对照组的总体规模是否具有可比性</p>
+</li>
+<li><p>检查实际不变量（是否没有发生变化）</p>
+</li>
+</ul>
+<h4 id="choose-invariant-metrics"><a href="#choose-invariant-metrics" class="headerlink" title="choose invariant metrics"></a>choose invariant metrics</h4><p><img src="/2017/06/08/A-B-test-分析结果/1.png" alt=""></p>
+<p>在第一个案例中：</p>
+<p>分组单元为user-id，登录用户可以随机分配给实验组和对照组，是较好的总体规模指标</p>
+<p>cookie和event不能直接随机化，但可以最终被平均分配，作为总体规模指标</p>
+<p>由于用户需要先点击“start now”按钮才能查看课表，按钮点击率不受变更影响，是一个实际不变量指标。</p>
+<p>但完成课程的时间会受课表排列顺序更改的影响，不适合作为不变量</p>
+<p>对于第二个案例：</p>
+<p>分组单元为event，event作为总体规模指标可以被随机分配。</p>
+<p>user-id、cookie大于分组单元，根据分组单元分配的随机性，两组user-id和cookie数量也不应有所差别</p>
+<p>第四项理由同上</p>
+<p>由于event随机分配，无法追踪课程完成时间，即使可以追踪，也会受视频加载时间影响，不适合作为不变量</p>
+<p>案例三：更改登录按钮位置（从选择课程页面提示登录，到将按钮添加在每个页面上），查看用户的登录</p>
+<p><img src="/2017/06/08/A-B-test-分析结果/2.png" alt=""></p>
+<p>分组单元为cookie，user-id，cookie、event都应该保证总体规模不变</p>
+<p>由于用户登录后可能直接进入课程页面，从而对开始按钮点击率产生影响，不属于实际不变量</p>
+<p>登录率是实验中想要更改的指标，而登录率改变也可能影响课程的注册率，所以两者都不属于不变量</p>
+<p>视频加载时间与后台变化有关，本次实验中未更改，是较好的不变量</p>
+<h4 id="check-invariants-检查不变量"><a href="#check-invariants-检查不变量" class="headerlink" title="check invariants 检查不变量"></a>check invariants 检查不变量</h4><p>如某一分组单元为cookie的实验进行了两周，首先要进行的不变量检查是对照组中的cookie数量是否大致接近实验组中的数量，总体统计如下：</p>
+<p><img src="/2017/06/08/A-B-test-分析结果/3.png" alt=""></p>
+<p>如果每条cookie的记录都以0.5的概率随机分配进两个组，那么对照组与实验组cookie数量的差异是否在预料之内？</p>
+<p>概率分布问题通过构建二项式置信区间来解决：</p>
+<ul>
+<li>计算成功率为0.5的二项分布的标准差</li>
+<li>SD*置信度Z值得到误差范围</li>
+<li>计算置信区间（若实验设置合理，实验/对照组cookie分配实际概率很可能会落入置信区间）</li>
+<li>检查观察到的成功率是否落入置信区间</li>
+</ul>
+<p>如当前案例中：</p>
+<p>$$SD=\sqrt{\frac{p(1-p)}{N}}=\sqrt{\frac{0.5*0.5}{64454+61818}}=0.0014$$</p>
+<p>$$m=SD*1.96=0.0027$$</p>
+<p>则，0.5之间的置信区间为0.4973～0.5027</p>
+<p>$$ 而 \hat p=\frac{64454}{64454+61818}=0.5104$$</p>
+<p>说明实验采集设置可能出现了一些问题</p>
+<p>可以进一步检查每日数据可以发现是某日的数据异常导致该问题还是整体模式问题</p>
+<p><img src="/2017/06/08/A-B-test-分析结果/4.png" alt=""></p>
+<p>发现大多数日期都出现了异常的比率，说明总体模式存在问题</p>
+<p>可以尝试以地区、语言、平台等为标准进行分割，找到造成该问题的部分。</p>
+<p>一旦完整性检查失败，如果继续，则结论可能全部出错，必须分析查明失败的原因</p>
+<ul>
+<li>首先要检查技术问题，如实验架构、实验分组设置问题</li>
+<li>回顾性分析，从数据采集方面重新对实验分组</li>
+</ul>
+<p>常见的原因：</p>
+<ul>
+<li>数据采集问题</li>
+<li>两组数据筛选机制不同</li>
+</ul>
+<h4 id="single-metric"><a href="#single-metric" class="headerlink" title="single metric"></a>single metric</h4><p>针对单一指标，需要制定业务决策判断实验是否对指标产生积极影响：</p>
+<p>从实验分析角度，即判断实验结果是否具有统计显著性</p>
+<ul>
+<li>以指标如何描述和设置实验运行时间、规模等操作为基础，评估差异性、计算显著性</li>
+</ul>
+<p>如果实验结果不具有显著性，需要多花时间来分析结果，如：</p>
+<p>将实验分到几个不同平台、不同时间段。</p>
+<p>如果是第一次评估差异性，可以通过非参数符号检验等特殊方式进行检验，将得到的结果与参数检验的结果进行对比。</p>
+<h4 id="Simpson‘s-paradox"><a href="#Simpson‘s-paradox" class="headerlink" title="Simpson‘s paradox"></a>Simpson‘s paradox</h4><p>当实验结果出现符号检验结果与假设检验结果不一致，或周末数据具有显著性但工作日时相反应如何处理？</p>
+<p>首先观察实验特征，如是否针对不同的平台产生不同作用。</p>
+<p>但某些统计因素会导致与正常视觉相反的结果——常见的如“辛普森悖论”</p>
+<p>即：数据可分为许多不同小组，每个小组结果单独看稳定，合并考虑时，各小组数据共同对最终结果产生影响。</p>
+<p>例如：</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/数据分析/" class="article-tag-list-link color5">数据分析</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/06/08/A-B-test-分析结果/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-A-B-test-设计实验" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/05/29/A-B-test-设计实验/">A/B test 设计实验</a>
+    </h1>
+  
+
+        
+        <a href="/2017/05/29/A-B-test-设计实验/" class="archive-article-date">
+  	<time datetime="2017-05-29T09:10:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-29</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h4><p>为实验设计做出必要决策：</p>
+<ul>
+<li>choose subject（将总体中的哪些diversion选为测试对象）</li>
+<li>choose population （选定测试的整体对象范围，保证测试和评估指标施加于同等整体）</li>
+<li>size （确定实验规模）</li>
+<li>duration（确定实验时长）</li>
+</ul>
+        
+          <a class="article-more-a" href="/2017/05/29/A-B-test-设计实验/#more">查看更多 >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/数据分析/" class="article-tag-list-link color5">数据分析</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/05/29/A-B-test-设计实验/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
     <article id="post-A-B-test-选择和测量指标" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -990,143 +1203,9 @@
 
 
   
-    <article id="post-Pandas-学习笔记" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/11/Pandas-学习笔记/">《利用Python进行数据分析》笔记——pandas入门</a>
-    </h1>
-  
-
-        
-        <a href="/2017/05/11/Pandas-学习笔记/" class="archive-article-date">
-  	<time datetime="2017-05-10T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-11</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="数据结构相关"><a href="#数据结构相关" class="headerlink" title="数据结构相关"></a>数据结构相关</h3><h4 id="Series"><a href="#Series" class="headerlink" title="Series"></a>Series</h4><p>pandas的isnull、notnull函数可用于检测缺失数据：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">aSer</div><div class="line">Out[3]:</div><div class="line">AXP      86.40</div><div class="line">CSCO    122.64</div><div class="line">BA       99.44</div><div class="line">AAPL       NaN</div><div class="line">dtype: object</div><div class="line">In [4]:</div><div class="line">pd.isnull(aSer)</div><div class="line">Out[4]:</div><div class="line">AXP     False</div><div class="line">CSCO    False</div><div class="line">BA      False</div><div class="line">AAPL     True</div><div class="line">dtype: bool</div><div class="line">In [5]:</div><div class="line">pd.notnull(aSer)</div><div class="line">Out[5]:</div><div class="line">AXP      True</div><div class="line">CSCO     True</div><div class="line">BA       True</div><div class="line">AAPL    False</div><div class="line">dtype: bool</div></pre></td></tr></table></figure>
-<p>Series的索引可以通过赋值方式就地修改。</p>
-        
-          <a class="article-more-a" href="/2017/05/11/Pandas-学习笔记/#more">查看更多 >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/数据分析/" class="article-tag-list-link color5">数据分析</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/05/11/Pandas-学习笔记/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-LeetCode-176-Second-Highest-Salary" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/08/LeetCode-176-Second-Highest-Salary/">LeetCode 176.Second Highest Salary</a>
-    </h1>
-  
-
-        
-        <a href="/2017/05/08/LeetCode-176-Second-Highest-Salary/" class="archive-article-date">
-  	<time datetime="2017-05-08T04:40:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-08</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>问题描述：</p>
-<p>Write a SQL query to get the second highest salary from the <code>Employee</code> table.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">+----+--------+</div><div class="line">| Id | Salary |</div><div class="line">+----+--------+</div><div class="line">| 1  | 100    |</div><div class="line">| 2  | 200    |</div><div class="line">| 3  | 300    |</div><div class="line">+----+--------+</div></pre></td></tr></table></figure>
-<p>For example, given the above Employee table, the second highest salary is <code>200</code>. If there is no second highest salary, then the query should return <code>null</code>.</p>
-<p>问题求解：</p>
-<p>可以先查询出最高的Salary，再从原表中选取Salary低于此最高值的记录作为结果，最后再利用max函数选取结果中的最大值，即第二高的Salary。</p>
-<p>注意提交结果时使用题目指定的别名。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">SELECT MAX(Salary) AS SecondHighestSalary </div><div class="line">FROM Employee </div><div class="line">WHERE Salary&lt;(SELECT MAX(Salary) FROM Employee);</div></pre></td></tr></table></figure>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/SQL/" class="article-tag-list-link color4">SQL</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/05/08/LeetCode-176-Second-Highest-Salary/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
     </nav>
   
 

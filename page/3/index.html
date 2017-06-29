@@ -173,6 +173,186 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-《利用Python进行数据分析》范例数据集-babynames" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/05/04/《利用Python进行数据分析》范例数据集-babynames/">《利用Python进行数据分析》范例数据集_babynames</a>
+    </h1>
+  
+
+        
+        <a href="/2017/05/04/《利用Python进行数据分析》范例数据集-babynames/" class="archive-article-date">
+  	<time datetime="2017-05-04T10:34:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-04</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>《利用Python进行数据分析》范例数据集-babynames</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</div></pre></td></tr></table></figure>
+<p>载入包含1880年美国新出生婴儿名字统计数据的文件</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">path=<span class="string">'/home/milhaven1733/Desktop/Data Analyst/pydata-book-master/ch02/names/yob1880.txt'</span></div></pre></td></tr></table></figure>
+<p>加载为DataFrame</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">names1880=pd.read_csv(path,names=[<span class="string">'names'</span>,<span class="string">'sex'</span>,<span class="string">'birth'</span>])</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">names1880.head()</div></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>names</th>
+<th>sex</th>
+<th>birth</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>Mary</td>
+<td>F</td>
+<td>7065</td>
+</tr>
+<tr>
+<td>1</td>
+<td>Anna</td>
+<td>F</td>
+<td>2604</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Emma</td>
+<td>F</td>
+<td>2003</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Elizabeth</td>
+<td>F</td>
+<td>1939</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Minnie</td>
+<td>F</td>
+<td>1746</td>
+</tr>
+</tbody>
+</table>
+        
+          <a class="article-more-a" href="/2017/05/04/《利用Python进行数据分析》范例数据集-babynames/#more">查看更多 >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/数据分析/" class="article-tag-list-link color5">数据分析</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/05/04/《利用Python进行数据分析》范例数据集-babynames/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-《利用Python进行数据分析》范例数据集-MovieLens" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/05/03/《利用Python进行数据分析》范例数据集-MovieLens/">《利用Python进行数据分析》范例数据集_MovieLens</a>
+    </h1>
+  
+
+        
+        <a href="/2017/05/03/《利用Python进行数据分析》范例数据集-MovieLens/" class="archive-article-date">
+  	<time datetime="2017-05-03T14:27:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-03</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</div></pre></td></tr></table></figure>
+<p>加载.dat文件中的数据：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">unames=[<span class="string">'user_id'</span>,<span class="string">'gender'</span>,<span class="string">'age'</span>,<span class="string">'occupation'</span>,<span class="string">'zip'</span>]</div><div class="line">path=<span class="string">'/home/milhaven1733/Desktop/Data Analyst/pydata-book-master/ch02/movielens/users.dat'</span></div><div class="line">users=pd.read_table(path,sep=<span class="string">'::'</span>,header=<span class="keyword">None</span>,names=unames,engine = <span class="string">'python'</span>)</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">rnames=[<span class="string">'user_id'</span>,<span class="string">'movie_id'</span>,<span class="string">'rating'</span>,<span class="string">'timestamp'</span>]</div><div class="line">path=<span class="string">'/home/milhaven1733/Desktop/Data Analyst/pydata-book-master/ch02/movielens/ratings.dat'</span></div><div class="line">ratings=pd.read_table(path,sep=<span class="string">'::'</span>,header=<span class="keyword">None</span>,names=rnames,engine = <span class="string">'python'</span>)</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">mnames=[<span class="string">'movie_id'</span>,<span class="string">'title'</span>,<span class="string">'genres'</span>]</div><div class="line">path=<span class="string">'/home/milhaven1733/Desktop/Data Analyst/pydata-book-master/ch02/movielens/movies.dat'</span></div><div class="line">movies=pd.read_table(path,sep=<span class="string">'::'</span>,header=<span class="keyword">None</span>,names=mnames,engine = <span class="string">'python'</span>)</div></pre></td></tr></table></figure>
+        
+          <a class="article-more-a" href="/2017/05/03/《利用Python进行数据分析》范例数据集-MovieLens/#more">查看更多 >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/数据分析/" class="article-tag-list-link color5">数据分析</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/05/03/《利用Python进行数据分析》范例数据集-MovieLens/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
     <article id="post-《利用Python进行数据分析》范例数据集-usagov-bitly-data" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -716,145 +896,9 @@
 
 
   
-    <article id="post-使用NumPy和Pandas分析一维数据" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/22/使用NumPy和Pandas分析一维数据/">使用NumPy和Pandas分析一维数据</a>
-    </h1>
-  
-
-        
-        <a href="/2017/04/22/使用NumPy和Pandas分析一维数据/" class="archive-article-date">
-  	<time datetime="2017-04-22T02:25:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-22</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="课程内容概述"><a href="#课程内容概述" class="headerlink" title="课程内容概述"></a>课程内容概述</h4><ul>
-<li>熟悉NumPy的使用</li>
-<li>熟悉Pandas库的使用</li>
-<li>两种库的优势：降低编写数据分析代码的难度，提高代码的运算速度。</li>
-</ul>
-        
-          <a class="article-more-a" href="/2017/04/22/使用NumPy和Pandas分析一维数据/#more">查看更多 >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/数据分析/" class="article-tag-list-link color5">数据分析</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/04/22/使用NumPy和Pandas分析一维数据/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-MySQL-学习笔记-5" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/21/MySQL-学习笔记-5/">MySQL-学习笔记-5</a>
-    </h1>
-  
-
-        
-        <a href="/2017/04/21/MySQL-学习笔记-5/" class="archive-article-date">
-  	<time datetime="2017-04-21T02:47:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-21</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="子查询与连接"><a href="#子查询与连接" class="headerlink" title="子查询与连接"></a>子查询与连接</h3><h4 id="数据的准备"><a href="#数据的准备" class="headerlink" title="数据的准备"></a>数据的准备</h4><p>创建商城信息数据库：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">mysql&gt; CREATE TABLE IF NOT EXISTS tdb_goods(</div><div class="line">    -&gt;     goods_id    SMALLINT UNSIGNED PRIMARY KEY AUTO_INCREMENT,</div><div class="line">    -&gt;     goods_name  VARCHAR(150) NOT NULL,</div><div class="line">    -&gt;     goods_cate  VARCHAR(40)  NOT NULL,</div><div class="line">    -&gt;     brand_name  VARCHAR(40)  NOT NULL,</div><div class="line">    -&gt;     goods_price DECIMAL(15,3) UNSIGNED NOT NULL DEFAULT 0,</div><div class="line">    -&gt;     is_show     BOOLEAN NOT NULL DEFAULT 1,</div><div class="line">    -&gt;     is_saleoff  BOOLEAN NOT NULL DEFAULT 0</div><div class="line">    -&gt;   );</div></pre></td></tr></table></figure>
-<p>字段说明：</p>
-<p>goods_id 商品id 主键    goods_cate 商品分类</p>
-<p>is_show  是否上架 布尔型    is_saleoff 是否售空 布尔型</p>
-        
-          <a class="article-more-a" href="/2017/04/21/MySQL-学习笔记-5/#more">查看更多 >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/SQL/" class="article-tag-list-link color4">SQL</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/04/21/MySQL-学习笔记-5/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/4/">Next &raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/4/">Next &raquo;</a>
     </nav>
   
 

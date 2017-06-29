@@ -1,3 +1,10 @@
+---
+title: deepin Linux 利用aria2下载百度云文件
+date: 2017-06-29 10:43:12
+tags:
+categories: 
+---
+
 ### deepin Linux 利用aria2下载百度云文件
 
 #### 目的
